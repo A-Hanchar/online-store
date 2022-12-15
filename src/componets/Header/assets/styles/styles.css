@@ -2,8 +2,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffffff;
   padding: 12px 40px;
+  background-color: #FFF;
 }
 
 img {
@@ -13,31 +13,31 @@ img {
 input {
   width: 15rem;
   height: 2rem;
-  background-color: #f7f7f7;
-  background-image: url('../images/Union.svg');
+  padding: 0 0 0 40px;
+  background-color: #F7F7F7;
+  background-image: url(../images/Union.svg);
   background-repeat: no-repeat;
   background-position: 10px;
-  padding: 0 0 0 40px;
   border: none;
-  outline: none;
   border-radius: 20px;
+  outline: none;
 }
 
 .cartElement {
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: url('../images/cart.svg') center no-repeat;
+  justify-content: center;
   width: 3rem;
   height: 3rem;
   cursor: pointer;
+  background: url(../images/cart.svg) center no-repeat;
 }
 
 .cartElement span {
   width: 1.2rem;
   height: 1.2rem;
-  background-color: #f7f7f7;
-  border-radius: 50%;
-  border: 2px solid #1ab76c;
   text-align: center;
+  background-color: #F7F7F7;
+  border: 2px solid #1AB76C;
+  border-radius: 50%;
 }
