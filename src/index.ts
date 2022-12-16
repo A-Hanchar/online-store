@@ -1,4 +1,3 @@
-import { Header } from './componets/Header/Header'
 import { Test } from 'types'
 import styles from './styles.css'
 
@@ -14,5 +13,3 @@ testArrayIds.forEach(({ id }) => {
   p.innerText = `Id - ${id}`
   root.append(p)
 })
-
-Header()
