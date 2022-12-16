@@ -1,0 +1,16 @@
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 40px;
+  background-color: #fff;
+}
+
+.logo {
+  width: 5rem;
+}
+
+.autors {
+  display: flex;
+  flex-direction: column;
+}
