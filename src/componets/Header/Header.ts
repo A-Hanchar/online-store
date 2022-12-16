@@ -1,5 +1,5 @@
 import { getRoot } from './../Root/Root'
-import styles from './assets/styles/styles.css'
+import styles from './styles/styles.css'
 
 export const Header = () => {
   const root = getRoot()

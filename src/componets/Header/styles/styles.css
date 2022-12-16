@@ -15,7 +15,7 @@ input {
   height: 2rem;
   padding: 0 0 0 40px;
   background-color: #F7F7F7;
-  background-image: url(../images/Union.svg);
+  background-image: url(../../../assets/images/Union.svg);
   background-repeat: no-repeat;
   background-position: 10px;
   border: none;
@@ -30,7 +30,7 @@ input {
   width: 3rem;
   height: 3rem;
   cursor: pointer;
-  background: url(../images/cart.svg) center no-repeat;
+  background: url(../../../assets/images/cart.svg) center no-repeat;
 }
 
 .cartElement span {
