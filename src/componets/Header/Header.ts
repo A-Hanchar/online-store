@@ -1,7 +1,8 @@
+import { getRoot } from './../Root/Root'
 import styles from './assets/styles/styles.css'
 
 export const Header = () => {
-  const root = document.querySelector('#root')
+  const root = getRoot()
   const header = document.createElement('header')
   const logo = document.createElement('img')
   const InputSearch = document.createElement('input')
