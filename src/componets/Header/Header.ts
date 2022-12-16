@@ -9,8 +9,7 @@ export const Header = () => {
   const cartElement = document.createElement('div')
   const goodsCounter = document.createElement('span')
 
-  const headerElements = [cartElement, InputSearch, logo]
-  headerElements.forEach((e) => header.prepend(e))
+  header.prepend(logo, InputSearch, cartElement)
 
   root?.prepend(header)
   header.classList.add(styles.header!)
