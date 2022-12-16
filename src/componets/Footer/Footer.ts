@@ -10,8 +10,7 @@ export const Footer = () => {
   const businator = document.createElement('a')
   const aHanchar = document.createElement('a')
 
-  const footerElements = [logoLink, date, autors]
-  footerElements.forEach((e) => footer.prepend(e))
+  footer.prepend(autors, date, logoLink)
 
   const linkElemts = [logoLink, businator, aHanchar]
   linkElemts.forEach((e) => (e.target = '_blank'))
