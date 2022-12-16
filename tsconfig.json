@@ -36,9 +36,9 @@
     "incremental": true,
     "pretty": true,
     "skipLibCheck": true,
-    "assumeChangesOnlyAffectDirectDependencies": false,
+    "assumeChangesOnlyAffectDirectDependencies": false
   },
-  "include": ["./src"],
+  "include": ["./src", "*.ts"],
   "exclude": ["node_modules"],
   "typeAcquisition": {
     "disableFilenameBasedTypeAcquisition": true

@@ -1,4 +1,4 @@
-import { getURLParams } from 'router'
+import { getURLParams } from 'router/utils'
 
 export const Product = (() => {
   const { productId } = getURLParams()
