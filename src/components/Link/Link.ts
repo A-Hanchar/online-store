@@ -1,17 +1,17 @@
-import { renderComponent, routerPathes } from 'router'
+import { renderComponent } from 'router'
 import { LinkProps } from './types'
 
-export const Link = ({ id, content, linkKey }: LinkProps) => {
+export const Link = ({ id, content, href }: LinkProps) => {
   const a = document.createElement('a')
 
   a.id = id
   a.innerText = content
-  a.href = routerPathes[linkKey]
+  a.href = href
 
   const handleLinkClick = (event: MouseEvent) => {
     event.preventDefault()
 
-    window.history.pushState({}, '', routerPathes[linkKey])
+    window.history.pushState({}, '', href)
     renderComponent()
   }
 

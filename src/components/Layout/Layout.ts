@@ -1,5 +1,6 @@
 import { Link } from 'components/Link'
-import { RoutePathesKeys, routerPathes } from 'router'
+import { Sidebar } from 'components/Sidebar'
+import { routerPathes } from 'router'
 import { PropsWithChildren } from 'types'
 
 export const Layout = async ({ children }: PropsWithChildren) => {
@@ -12,10 +13,8 @@ export const Layout = async ({ children }: PropsWithChildren) => {
   const ul = document.createElement('ul')
 
   for (const [key, value] of Object.entries(routerPathes)) {
-    const linkKey = key as RoutePathesKeys
-
     const li = document.createElement('li')
-    const a = Link({ content: value, linkKey, id: key })
+    const a = Link({ content: value, href: value, id: key })
 
     li.append(a)
     ul.append(li)
@@ -27,9 +26,11 @@ export const Layout = async ({ children }: PropsWithChildren) => {
   const footer = document.createElement('footer')
   footer.innerText = 'Footer'
 
+  const aside = await Sidebar()
+
   const main = document.createElement('main')
 
-  fragment.append(header, main, footer)
+  fragment.append(header, aside, main, footer)
 
   if (children) {
     const content = await children
