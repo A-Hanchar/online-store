@@ -4,7 +4,7 @@ import { router } from './router'
 import { routerPathes } from './routerPathes'
 import { getURLParams } from './utils'
 
-export const renderComponent = () => {
+export const renderComponent = async () => {
   const url = new URL(window.location.href)
   const { productId } = getURLParams()
 
@@ -22,12 +22,13 @@ export const renderComponent = () => {
   })?.content
 
   if (component) {
-    const pageContent = Layout({ children: component })
+    const pageContent = await Layout({ children: component })
 
     RootComponent?.append(pageContent)
 
     return
   }
 
-  window.location.replace(routerPathes.notFound)
+  window.history.pushState({}, '', routerPathes.notFound)
+  renderComponent()
 }
