@@ -24,6 +24,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
+    'import/no-absolute-path': 'off',
     '@typescript-eslint/array-type': [
       'error',
       {

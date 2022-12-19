@@ -1,6 +1,4 @@
-import { RoutePathesKeys } from './types'
-
-export const routerPathes: Record<RoutePathesKeys, string> = {
+export const routerPathes = {
   home: '/',
 
   categories: '/categories',

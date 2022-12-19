@@ -1,3 +1,3 @@
 export * from './IProduct'
-export * from './IAllProductsResponse'
+export * from './IProductsResponse'
 export * from './Categories'

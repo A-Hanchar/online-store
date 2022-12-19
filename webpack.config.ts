@@ -47,7 +47,7 @@ const config: IConfiguration = {
           {
             loader: 'file-loader',
             options: {
-              name: 'images/[hash]-[name].[ext]',
+              name: 'assests/images/[hash]-[name].[ext]',
             },
           },
         ],

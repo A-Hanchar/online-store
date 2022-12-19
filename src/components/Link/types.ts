@@ -1,5 +1,6 @@
-export type LinkProps = {
+import { PropsWithChildren } from 'types'
+export type LinkProps = PropsWithChildren<{
   id: string
-  content: string
   href: string
-}
+  classname?: string
+}>

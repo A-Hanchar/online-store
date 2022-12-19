@@ -1,10 +1,10 @@
+import { Body } from 'components/Body'
 import { Layout } from 'components/Layout'
-import { RootComponent } from 'helpers'
 import { routerPathes } from './routerPathes'
 import { getRoute } from './utils'
 
 export const renderComponent = async () => {
-  RootComponent?.replaceChildren()
+  Body.replaceChildren()
 
   const route = getRoute()
 
@@ -12,7 +12,5 @@ export const renderComponent = async () => {
     window.history.pushState({}, '', routerPathes.notFound)
   }
 
-  const content = await Layout({ children: route.content })
-
-  RootComponent?.append(content)
+  Body.append(await Layout({ children: route.content }))
 }

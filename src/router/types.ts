@@ -2,6 +2,6 @@ export type RoutePathesKeys = 'home' | 'categories' | 'product' | 'basket' | 'no
 
 export type RouterOwnObject = {
   path: string
-  content: HTMLElement | Promise<HTMLDivElement>
+  content: Node | Promise<Node>
   childrenRoutes?: RouterOwnObject[]
 }

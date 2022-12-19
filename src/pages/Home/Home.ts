@@ -1,14 +1,23 @@
 import { getAllProducts } from 'api/products'
+import { Cards } from './components/Cards'
+import { Sidebar } from './components/Sidebar'
+import { Title } from './components/Title'
+import styles from './styles.css'
 
 export const Home = (async () => {
-  const div = document.createElement('div')
-  div.innerText = 'Loading...'
+  const fragment = document.createDocumentFragment()
+
+  const contentWrapper = document.createElement('div')
+  styles.contentWrapper && contentWrapper.classList.add(styles.contentWrapper)
 
   try {
-    const data = await getAllProducts({ page: 2, searchParams: {} })
+    const [aside, contentData] = await Promise.all([Sidebar(), getAllProducts({ page: 1, searchParams: {} })])
 
-    div.innerText = String(data.total)
+    contentWrapper.replaceChildren()
+
+    contentWrapper.append(Title, await Cards({ products: contentData.products }))
+    fragment.append(aside, contentWrapper)
   } catch (error) {}
 
-  return div
+  return fragment
 })()
