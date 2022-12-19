@@ -91,5 +91,18 @@ export const modalWindow = () => {
     }
   })
 
+  cardValid.maxLength = 5
+
+  cardValid.addEventListener('input', () => {
+    const arr = cardValid.value.split('')
+    if (cardValid.value.length === 2) {
+      if (arr.includes('/', 0)) {
+        arr.splice(arr.indexOf('/'), 1)
+      }
+      arr.splice(2, 0, '/')
+      cardValid.value = arr.join('')
+    }
+  })
+
   return fragment
 }
