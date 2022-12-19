@@ -1,11 +1,20 @@
 .filterWrapper {
 
+  & .title {
+    padding-bottom: 16px;
+    margin: 0;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--color-gray);
+  }
+
   & ul {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-height: 35vh;
     padding: 0;
     margin: 0;
+    overflow: auto;
     list-style: none;
 
     & button {

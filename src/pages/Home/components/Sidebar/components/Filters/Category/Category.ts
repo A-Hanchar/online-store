@@ -1,4 +1,6 @@
 import { getCategories, getProductsOfACategory } from 'api/products'
+import { Button } from 'components/Button'
+import { Text } from 'components/Text'
 import { capitalizeText } from 'helpers'
 import commonStyles from '../commonStyles.css'
 
@@ -12,31 +14,24 @@ export const CategoryFilters = (async () => {
     const categories = await getCategories()
     const productsOfCategories = await Promise.all(categories.map((category) => getProductsOfACategory(category)))
 
-    const categoriesInfo = categories.map((category, index) => ({
-      category,
-      total: productsOfCategories[index]!.total,
-    }))
+    const lists = await Promise.all(
+      categories.map(async (category, index) => {
+        const total = productsOfCategories[index]!.total
+        const categoryText = category.split('-').join(' ')
 
-    categoriesInfo.forEach(({ category, total }) => {
-      const button = document.createElement('button')
+        const li = document.createElement('li')
+        li.append(
+          await Button({ children: Text({ tagName: 'span', text: `${capitalizeText(categoryText)} (${total})` }) }),
+        )
 
-      const categoryText = category.split('-').join(' ')
+        return li
+      }),
+    )
 
-      button.innerText = `${capitalizeText(categoryText)} (${total})`
-      button.addEventListener('click', (event: MouseEvent) => {
-        event.preventDefault()
-
-        console.info(button)
-      })
-
-      const li = document.createElement('li')
-
-      li.append(button)
-      ul.append(li)
-    })
+    ul.append(...lists)
   } catch (error) {}
 
-  div.append(ul)
+  div.append(Text({ tagName: 'h2', text: 'Categories', classname: commonStyles.title }), ul)
 
   return div
 })()

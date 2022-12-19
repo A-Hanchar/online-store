@@ -1,4 +1,5 @@
-import { notFoundRoute, rootRoute, router, RouterOwnObject, routerPathes } from 'router'
+import { notFoundRoute, rootRoute, router, RouterOwnObject } from 'router'
+import { routerPathes } from 'router/routerPathes'
 
 export const getRoute = () => {
   const url = new URL(window.location.href)

@@ -1,5 +1,6 @@
 import { Image } from 'components/Image'
 import { Link } from 'components/Link'
+import { routerPathes } from 'router/routerPathes'
 import styles from './styles.css'
 
 export const Logo = (async () => {
@@ -8,7 +9,7 @@ export const Logo = (async () => {
     alt: 'Online Shop',
   })
 
-  const link = await Link({ id: 'logo', children: LogoImage, href: '/' })
+  const link = await Link({ id: 'logo', children: LogoImage, href: routerPathes.home })
   styles.logo && link.classList.add(styles.logo)
 
   return link
