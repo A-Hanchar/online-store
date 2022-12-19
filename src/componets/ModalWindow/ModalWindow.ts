@@ -1,3 +1,5 @@
+import styles from './styles/styles.css'
+
 export const modalWindow = () => {
   const fragment = document.createDocumentFragment()
 
@@ -10,6 +12,7 @@ export const modalWindow = () => {
   const emailInput = document.createElement('input')
 
   const cardContainer = document.createElement('div')
+  const cardLogo = document.createElement('img')
   const cardNumber = document.createElement('input')
   const cardValid = document.createElement('input')
   const cardCVV = document.createElement('input')
@@ -27,7 +30,7 @@ export const modalWindow = () => {
   fragment.append(container)
   container.append(form)
   form.append(nameInput, phoneInput, addressInput, emailInput, cardContainer, btnConfirm)
-  cardContainer.append(cardNumber, cardValid, cardCVV)
+  cardContainer.append(cardLogo, cardNumber, cardValid, cardCVV)
 
   function checkValidation(input, regexp) {
     if (regexp.test(input.value)) {
@@ -49,9 +52,42 @@ export const modalWindow = () => {
       checkValidation(cardValid, regCardValid) &&
       checkValidation(cardCVV, regCardCVV)
     ) {
-      container.innerHTML = '<h1>Sent</h1>'
+      console.log('sent')
     } else {
-      container.innerHTML = '<h1>Error</h1>'
+      console.log('err')
+    }
+  })
+
+  nameInput.placeholder = 'Name'
+  phoneInput.placeholder = 'Phone number'
+  addressInput.placeholder = 'Delivery address'
+  emailInput.placeholder = 'E-mail'
+  cardNumber.placeholder = 'Card number'
+  cardValid.placeholder = 'Valid Thru'
+  cardCVV.placeholder = 'Code'
+  btnConfirm.textContent = 'CONFIRM'
+
+  container.classList.add(styles.container!)
+  cardContainer.classList.add(styles.cardContainer!)
+
+  cardLogo.src =
+    'https://i.guim.co.uk/img/media/b73cc57cb1d46ae742efd06b6c58805e8600d482/16_0_2443_1466/master/2443.jpg?width=445&quality=85&dpr=1&s=none'
+
+  cardNumber.addEventListener('input', () => {
+    switch (cardNumber.value) {
+      case '2':
+        cardLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Mir-logo.SVG.svg'
+        break
+      case '4':
+        cardLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg'
+        break
+      case '5':
+        cardLogo.src =
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/300px-MasterCard_Logo.svg.png?20140711182052'
+        break
+      default:
+        cardLogo.src =
+          'https://i.guim.co.uk/img/media/b73cc57cb1d46ae742efd06b6c58805e8600d482/16_0_2443_1466/master/2443.jpg?width=445&quality=85&dpr=1&s=none'
     }
   })
 
