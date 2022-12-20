@@ -1,0 +1,12 @@
+.link {
+  font-size: 24px;
+  color: #FFF;
+  text-decoration: none;
+}
+
+.button {
+  width: 287px;
+  height: 66px;
+  background: #000;
+  border-radius: 48px;
+}
