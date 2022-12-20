@@ -1,7 +1,10 @@
 .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   font-size: 24px;
-  color: #FFF;
-  text-decoration: none;
+  color: #fff;
 }
 
 .button {
