@@ -10,7 +10,7 @@ export const Basket = async () => {
 
   content.append(span, 'Basket')
 
-  const link = await Link({ id: 'basket', children: content, href: routerPathes.basket })
+  const link = await Link({ id: 'basket', children: () => content, href: routerPathes.basket })
 
   styles.basket && link.classList.add(styles.basket)
 

@@ -9,7 +9,7 @@ export const Logo = async () => {
     alt: 'Online Shop',
   })
 
-  const link = await Link({ id: 'logo', children: LogoImage, href: routerPathes.home })
+  const link = await Link({ id: 'logo', children: () => LogoImage, href: routerPathes.home })
   styles.logo && link.classList.add(styles.logo)
 
   return link

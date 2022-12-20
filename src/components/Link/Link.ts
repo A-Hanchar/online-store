@@ -6,7 +6,7 @@ export const Link = async ({ id, children, href, classname }: LinkProps) => {
 
   a.id = id
   a.href = href
-  children && a.append(await children)
+  children && a.append(await children())
   classname && a.classList.add(classname)
 
   const handleLinkClick = (event: MouseEvent) => {
