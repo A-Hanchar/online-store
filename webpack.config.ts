@@ -19,6 +19,7 @@ const config: IConfiguration = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
+    publicPath: '/',
   },
   entry: ['./src/index.ts'],
   module: {
@@ -46,7 +47,7 @@ const config: IConfiguration = {
           {
             loader: 'file-loader',
             options: {
-              name: 'images/[hash]-[name].[ext]',
+              name: 'assests/images/[hash]-[name].[ext]',
             },
           },
         ],
