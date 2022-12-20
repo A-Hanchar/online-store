@@ -1,7 +1,10 @@
 export const routerPathes = {
   home: '/',
-  products: '/products',
-  product: '/products/:productId',
+
+  categories: '/categories',
+  category: '/:categoryId',
+  product: '/:productId',
+
   basket: '/basket',
   notFound: '/not-found',
 }

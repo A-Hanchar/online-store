@@ -1,5 +1,6 @@
 export const getURLParams = (): {
   productId?: string
+  categoryId?: string
 } => {
   const url = new URL(window.location.href)
   const pathname = url.pathname

@@ -1,3 +1,2 @@
-.main {
-  background-color: #D1D1D1;
-}
+@import url(./normalize.css);
+@import url(./variables.css);

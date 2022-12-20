@@ -1,33 +1,16 @@
+import { Body } from 'components/Body'
 import { Layout } from 'components/Layout'
-import { RootComponent } from 'helpers'
-import { router } from './router'
 import { routerPathes } from './routerPathes'
-import { getURLParams } from './utils'
+import { getRoute } from './utils'
 
-export const renderComponent = () => {
-  const url = new URL(window.location.href)
-  const { productId } = getURLParams()
+export const renderComponent = async () => {
+  Body.replaceChildren()
 
-  RootComponent?.replaceChildren()
+  const route = getRoute()
 
-  const component = router.find(({ pathname }) => {
-    if (productId) {
-      const productPathname = `${routerPathes.products}/${productId}`
-      const desiredPathname = productPathname.replace(productId, ':productId')
-
-      return pathname === desiredPathname
-    }
-
-    return pathname === url.pathname
-  })?.content
-
-  if (component) {
-    const pageContent = Layout({ children: component })
-
-    RootComponent?.append(pageContent)
-
-    return
+  if (route.path === routerPathes.notFound) {
+    window.history.pushState({}, '', routerPathes.notFound)
   }
 
-  window.location.replace(routerPathes.notFound)
+  Body.append(await Layout({ children: route.content }))
 }
