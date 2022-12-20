@@ -9,15 +9,6 @@ export const Layout = async ({ children }: PropsWithChildren) => {
   const fragment = document.createDocumentFragment()
   const main = document.createElement('main')
 
-  switch (window.location.href) {
-    case routerPathes.home:
-      styles.mainHome && main.classList.add(styles.mainHome)
-      break
-
-    default:
-      break
-  }
-
   if (children) {
     const content = await children()
 
@@ -27,6 +18,15 @@ export const Layout = async ({ children }: PropsWithChildren) => {
   styles.page && Body.classList.add(styles.page)
 
   fragment.append(await Header(), main, Footer())
+
+  switch (new URL(window.location.href).pathname) {
+    case routerPathes.home:
+      styles.mainHome && main.classList.add(styles.mainHome)
+      break
+
+    default:
+      break
+  }
 
   return fragment
 }

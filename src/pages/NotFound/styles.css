@@ -4,3 +4,11 @@
   align-items: center;
   background-color: var(--color-white);
 }
+
+.h2 {
+  font-size: 32px;
+}
+
+.h1 {
+  font-size: 64px;
+}
