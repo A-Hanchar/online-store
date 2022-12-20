@@ -1,8 +1,8 @@
-h1 {
+.h1 {
   font-size: 64px;
 }
 
-h2 {
+.h2 {
   font-size: 32px;
 }
 
@@ -18,15 +18,15 @@ h2 {
   background: url(../../../assets/images/404.svg) center no-repeat;
 }
 
-.btn {
+.button {
   width: 287px;
   height: 66px;
-  background: #000000;
+  background: #000;
   border-radius: 48px;
 }
 
 .link {
   font-size: 24px;
+  color: #FFF;
   text-decoration: none;
-  color: #ffffff;
 }
