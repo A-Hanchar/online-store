@@ -1,10 +1,12 @@
 import { getCategories, getProductsOfACategory } from 'api/products'
 import { Button } from 'components/Button'
 import { Text } from 'components/Text'
-import { capitalizeText } from 'helpers'
+import { capitalizeText, comma } from 'helpers'
+import { Categories } from 'interfaces'
+import { SEARCH_PARAMS } from 'types'
 import commonStyles from '../commonStyles.css'
 
-export const CategoryFilters = (async () => {
+export const CategoryFilters = async () => {
   const div = document.createElement('div')
   commonStyles.filterWrapper && div.classList.add(commonStyles.filterWrapper)
 
@@ -20,9 +22,40 @@ export const CategoryFilters = (async () => {
         const categoryText = category.split('-').join(' ')
 
         const li = document.createElement('li')
-        li.append(
-          await Button({ children: Text({ tagName: 'span', text: `${capitalizeText(categoryText)} (${total})` }) }),
-        )
+
+        const handleClick = (category: Categories) => {
+          const url = new URL(window.location.href)
+
+          let searchValue = url.searchParams.get(SEARCH_PARAMS.CATERORY)
+
+          if (searchValue) {
+            if (searchValue.includes(category)) {
+              searchValue = searchValue
+                .split(comma)
+                .filter((value) => value !== category)
+                .join(comma)
+
+              if (!searchValue) {
+                url.searchParams.delete(SEARCH_PARAMS.CATERORY)
+              }
+            } else {
+              searchValue += `${comma}${category}`
+            }
+          } else {
+            searchValue = category
+          }
+
+          url.searchParams.set(SEARCH_PARAMS.CATERORY, searchValue)
+
+          window.history.pushState({}, '', url.href)
+        }
+
+        const button = await Button({
+          children: () => Text({ tagName: 'span', text: `${capitalizeText(categoryText)} (${total})` }),
+          onclick: () => handleClick(category),
+        })
+
+        li.append(button)
 
         return li
       }),
@@ -34,4 +67,4 @@ export const CategoryFilters = (async () => {
   div.append(Text({ tagName: 'h2', text: 'Categories', classname: commonStyles.title }), ul)
 
   return div
-})()
+}

@@ -18,7 +18,7 @@ export const LoadMoreButton = async ({ loadMore, contentWrapper }: LoadMoreButto
   }
 
   const ShowMoreButton = await Button({
-    children: Text({ tagName: 'span', text: 'Show More' }),
+    children: () => Text({ tagName: 'span', text: 'Show More' }),
     onclick: handleShowMoreClick,
     classname: styles.button,
   })

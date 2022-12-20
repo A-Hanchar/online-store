@@ -2,7 +2,7 @@ import { Link } from 'components/Link'
 import { routerPathes } from 'router/routerPathes'
 import styles from './styles.css'
 
-export const Basket = (async () => {
+export const Basket = async () => {
   const content = document.createDocumentFragment()
 
   const span = document.createElement('span')
@@ -15,4 +15,4 @@ export const Basket = (async () => {
   styles.basket && link.classList.add(styles.basket)
 
   return link
-})()
+}

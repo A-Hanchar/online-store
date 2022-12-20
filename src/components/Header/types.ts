@@ -1,4 +1,4 @@
 export type AddContentType = {
-  content: HTMLElement | Promise<HTMLElement>
+  content: () => HTMLElement | Promise<HTMLElement>
   className?: string
 }
