@@ -5,7 +5,7 @@ import { Sidebar } from './components/Sidebar'
 import { Title } from './components/Title'
 import styles from './styles.css'
 
-export const Home = (async () => {
+export const Home = async () => {
   const fragment = document.createDocumentFragment()
 
   const contentWrapper = document.createElement('div')
@@ -21,18 +21,18 @@ export const Home = (async () => {
     return contentData
   }
 
-  try {
-    const [aside, contentData] = await Promise.all([Sidebar(), loadMoreProducts()])
+  // try {
+  const [aside, contentData] = await Promise.all([Sidebar(), loadMoreProducts()])
 
-    contentWrapper.replaceChildren()
+  contentWrapper.replaceChildren()
 
-    contentWrapper.append(
-      Title,
-      await Cards({ products: contentData.products }),
-      await LoadMoreButton({ loadMore: loadMoreProducts, contentWrapper }),
-    )
-    fragment.append(aside, contentWrapper)
-  } catch (error) {}
+  contentWrapper.append(
+    Title(),
+    await Cards({ products: contentData.products }),
+    await LoadMoreButton({ loadMore: loadMoreProducts, contentWrapper }),
+  )
+  fragment.append(aside, contentWrapper)
+  // } catch (error) {}
 
   return fragment
-})()
+}

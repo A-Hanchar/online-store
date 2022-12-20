@@ -9,14 +9,14 @@ export const Layout = async ({ children }: PropsWithChildren) => {
   const main = document.createElement('main')
 
   if (children) {
-    const content = await children
+    const content = await children()
 
     main.append(content)
   }
 
   styles.page && Body.classList.add(styles.page)
 
-  fragment.append(Header, main, Footer)
+  fragment.append(await Header(), main, Footer())
 
   return fragment
 }

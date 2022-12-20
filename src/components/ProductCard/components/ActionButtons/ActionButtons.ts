@@ -11,11 +11,11 @@ export const ActionButtons = async ({ id, category, brand }: ActionButtonsProps)
   wrapper.append(
     await Link({
       id: `${category}-${brand}-${id}`,
-      children: Text({ tagName: 'span', text: 'View Deal' }),
+      children: () => Text({ tagName: 'span', text: 'View Deal' }),
       href: '/',
       classname: styles.viewDeal,
     }),
-    await Button({ children: Text({ tagName: 'span', text: '+' }), classname: styles.addButton }),
+    await Button({ children: () => Text({ tagName: 'span', text: '+' }), classname: styles.addButton }),
   )
 
   return wrapper

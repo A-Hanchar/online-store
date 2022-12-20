@@ -4,7 +4,7 @@ export const Button = async ({ children, classname, onclick }: ButtonProps) => {
   const button = document.createElement('button')
 
   classname && button.classList.add(classname)
-  children && button.append(await children)
+  children && button.append(await children())
 
   const handleClick = (event: MouseEvent) => {
     event.preventDefault()

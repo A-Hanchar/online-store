@@ -1,9 +1,9 @@
 import { CategoryFilters } from './Category'
 
-export const Filters = (async () => {
+export const Filters = async () => {
   const fragment = document.createDocumentFragment()
 
-  fragment.append(await CategoryFilters)
+  fragment.append(await CategoryFilters())
 
   return fragment
-})()
+}
