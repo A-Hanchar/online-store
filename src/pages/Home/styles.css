@@ -1,0 +1,12 @@
+main {
+  display: grid;
+  grid-template-columns: 305px 1fr;
+  background-color: var(--color-light-gray);
+
+  & .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px;
+  }
+}
