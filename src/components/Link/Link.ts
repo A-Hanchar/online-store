@@ -1,13 +1,16 @@
 import { renderComponent } from 'router'
 import { LinkProps } from './types'
 
-export const Link = async ({ id, children, text, href, classname }: LinkProps) => {
+export const Link = async ({ id, children, href, classname }: LinkProps) => {
   const a = document.createElement('a')
 
   a.id = id
   a.href = href
-  a.textContent = text
-  children && a.append(await children)
+  if (typeof children === 'string') {
+    a.textContent = children
+  } else {
+    children && a.append(await children())
+  }
   classname && a.classList.add(classname)
 
   const handleLinkClick = (event: MouseEvent) => {
