@@ -1,6 +1,6 @@
 import { getURLParams } from 'router/utils'
 
-export const Product = (() => {
+export const Product = () => {
   const { productId } = getURLParams()
 
   const div = document.createElement('div')
@@ -8,4 +8,4 @@ export const Product = (() => {
   div.innerHTML = `<h1>Product: id - ${productId ?? ''}</h1>`
 
   return div
-})()
+}

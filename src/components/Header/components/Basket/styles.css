@@ -1,0 +1,15 @@
+.basket {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  font-size: 18px;
+  color: #000;
+  text-decoration: none;
+
+  & .basketImage {
+    width: 27px;
+    height: 27px;
+    background: url(assets/images/basket.svg) center/contain no-repeat;
+  }
+}

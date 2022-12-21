@@ -1,1 +1,1 @@
-export type PropsWithChildren<P = unknown> = P & { children?: HTMLDivElement | undefined }
+export type PropsWithChildren<P = unknown> = P & { children?: () => Node | Promise<Node> }
