@@ -24,4 +24,37 @@
       border: none;
     }
   }
+
+  & .filterButton {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+
+    &::before {
+      display: block;
+      width: 16px;
+      height: 16px;
+      content: "";
+      border: 1px solid;
+    }
+
+    &.isActive {
+      position: relative;
+      font-size: 20px;
+
+      &::after {
+        position: absolute;
+        display: block;
+        width: 18px;
+        height: 18px;
+        content: "";
+        background-color: var(--color-green);
+        background-image: url(assets/images/check.svg);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: contain;
+      }
+    }
+  }
 }
