@@ -17,7 +17,7 @@ export const Layout = async ({ children }: PropsWithChildren) => {
 
   styles.page && Body.classList.add(styles.page)
 
-  fragment.append(await Header(), main, Footer())
+  fragment.append(await Header(), main, await Footer())
 
   switch (new URL(window.location.href).pathname) {
     case routerPathes.home:

@@ -1,0 +1,11 @@
+.autors {
+  display: flex;
+  flex-direction: column;
+}
+
+.autor {
+  text-decoration: underline;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
