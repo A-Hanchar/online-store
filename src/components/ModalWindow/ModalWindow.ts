@@ -8,9 +8,7 @@ export const modalWindow = async () => {
   styles.container && container.classList.add(styles.container)
   fragment.append(container)
 
-  const form = await Form()
-
-  container.append(form)
+  container.append(await Form())
 
   return fragment
 }
