@@ -1,17 +1,17 @@
 import { Link } from 'components/Link'
 import styles from './styles.css'
 
-export const Autors = async () => {
+export const Autors = () => {
   const autors = document.createElement('div')
 
   styles.autors && autors.classList.add(styles.autors)
-  const businator = await Link({
+  const businator = Link({
     id: 'businator',
     children: 'Businator',
     href: 'https://github.com/Businator',
     classname: styles.autor,
   })
-  const aHanchar = await Link({
+  const aHanchar = Link({
     id: 'aHanchar',
     children: 'A-Hanchar',
     href: 'https://github.com/A-Hanchar',
