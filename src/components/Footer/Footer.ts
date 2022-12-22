@@ -3,7 +3,6 @@ import { Authors } from './components/Authors/'
 import { Text } from './../Text/Text'
 import { Logo } from './components/Logo/Logo'
 import styles from './styles.css'
-import { addClassnameToElement } from 'helpers'
 
 export const Footer = () => {
   const footer = createElementWithClassName({ tagName: 'footer', classname: styles.footer })
