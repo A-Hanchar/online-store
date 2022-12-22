@@ -1,3 +1,5 @@
 export * from './PropsWithChildren'
 export { CURRENCY } from './CURRENCY'
 export { SEARCH_PARAMS } from './SEARCH_PARAMS'
+export { SYMBOL } from './SYMBOL'
+export { LOCAL_STORAGE_KEY } from './LOCAL_STORAGE_KEY'

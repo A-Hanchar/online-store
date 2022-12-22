@@ -1,31 +1,25 @@
 import { Body } from 'components/Body'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
+import { addClassnameToElement } from 'helpers'
 import { routerPathes } from 'router/routerPathes'
 import { PropsWithChildren } from 'types'
 import styles from './styles.css'
 
-export const Layout = async ({ children }: PropsWithChildren) => {
+export const Layout = ({ children }: PropsWithChildren) => {
   const fragment = document.createDocumentFragment()
   const main = document.createElement('main')
 
-  if (children) {
-    const content = await children()
+  children && main.append(children)
 
-    main.append(content)
-  }
+  addClassnameToElement({ element: Body, classname: styles.page })
 
-  styles.page && Body.classList.add(styles.page)
+  fragment.append(Header(), main, Footer())
 
-  fragment.append(await Header(), main, Footer())
+  const url = new URL(window.location.href)
 
-  switch (new URL(window.location.href).pathname) {
-    case routerPathes.home:
-      styles.mainHome && main.classList.add(styles.mainHome)
-      break
-
-    default:
-      break
+  if (url.pathname === routerPathes.home) {
+    addClassnameToElement({ element: main, classname: styles.mainHome })
   }
 
   return fragment

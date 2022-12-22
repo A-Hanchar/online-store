@@ -1,19 +1,19 @@
-import { Basket, Logo } from './components'
+import { Logo } from 'components/Logo'
+import { addClassnameToElement, createElementWithClassName, localStorageInstanse } from 'helpers'
 import styles from './styles.css'
 import { AddContentType } from './types'
 
-export const Header = async () => {
-  const header = document.createElement('header')
-  styles.header && header.classList.add(styles.header)
+export const Header = () => {
+  const header = createElementWithClassName({ tagName: 'header', classname: styles.header })
 
-  const addContent = async ({ content, className }: AddContentType) => {
-    const addedContent = await content()
+  const addContent = ({ content, classname }: AddContentType) => {
+    header.append(content)
 
-    header.append(addedContent)
-    className && addedContent.classList.add(className)
+    addClassnameToElement({ element: content, classname })
   }
 
-  await Promise.all([addContent({ content: Logo, className: styles.logoWrapper }), addContent({ content: Basket })])
+  addContent({ content: Logo(), classname: styles.logoWrapper })
+  addContent({ content: localStorageInstanse.BasketElement })
 
   return header
 }

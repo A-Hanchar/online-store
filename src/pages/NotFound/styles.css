@@ -25,3 +25,9 @@
   background: #000;
   border-radius: 48px;
 }
+
+.image404 {
+  width: 448.86px;
+  height: 295.6px;
+  background: url(assets/images/404.svg) center no-repeat;
+}
