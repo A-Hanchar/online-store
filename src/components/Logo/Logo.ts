@@ -9,7 +9,13 @@ export const Logo = () => {
     alt: 'Online Shop',
   })
 
-  const link = Link({ id: 'logo', children: LogoImage, href: routerPathes.home, classname: styles.logo })
+  const link = Link({
+    id: 'logo',
+    children: LogoImage,
+    href: routerPathes.home,
+    classname: styles.logo,
+    target: '_blank',
+  })
 
   return link
 }
