@@ -8,8 +8,13 @@ export const Logo = () => {
     alt: 'RS School',
   })
 
-  const link = Link({ id: 'logo', children: LogoImage, href: 'https://rs.school/js/' })
-  styles.logo && link.classList.add(styles.logo)
+  const link = Link({
+    id: 'logo',
+    children: LogoImage,
+    href: 'https://rs.school/js/',
+    target: '_blank',
+    classname: styles.logo,
+  })
 
   return link
 }
