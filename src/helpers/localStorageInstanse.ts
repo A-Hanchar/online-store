@@ -1,10 +1,33 @@
-import { dataBasketCountItems } from 'components/Header/components/Basket/constants'
-
-export enum LOCAL_STORAGE_KEY {
-  PRODUCTS_IDS = 'PRODUCTS_IDS',
-}
+import { Basket } from 'components/Basket'
+import { LOCAL_STORAGE_KEY } from 'types'
 
 class LocalStorageInstanse {
+  #dataBasketCountItems = 'data-basket-count-items'
+
+  BasketElement: HTMLAnchorElement
+  constructor() {
+    this.BasketElement = this.createBasketElement()
+  }
+
+  createBasketElement() {
+    const basket = Basket()
+    const productsIds = this.getProductsIds()
+
+    basket.setAttribute(this.#dataBasketCountItems, String(productsIds.length))
+
+    return basket
+  }
+
+  updateBasket() {
+    this.setBasketCountItems()
+  }
+
+  setBasketCountItems() {
+    const productsIds = this.getProductsIds()
+
+    this.BasketElement.setAttribute(this.#dataBasketCountItems, String(productsIds.length))
+  }
+
   getValue<T>(key: LOCAL_STORAGE_KEY): T[] {
     return JSON.parse(localStorage.getItem(key) ?? '[]') as T[]
   }
@@ -24,16 +47,6 @@ class LocalStorageInstanse {
 
   getProductsIds() {
     return this.getValue<number>(LOCAL_STORAGE_KEY.PRODUCTS_IDS)
-  }
-
-  updateBasket() {
-    const basket = document.querySelector(`a#basket[${dataBasketCountItems}]`)
-
-    if (basket) {
-      const productsIds = this.getProductsIds()
-
-      basket.setAttribute(dataBasketCountItems, String(productsIds.length))
-    }
   }
 }
 

@@ -1,5 +1,6 @@
 import { notFoundRoute, rootRoute, router, RouterOwnObject } from 'router'
 import { routerPathes } from 'router/routerPathes'
+import { SYMBOL } from 'types'
 
 export const getRoute = () => {
   const url = new URL(window.location.href)
@@ -17,23 +18,26 @@ export const getRoute = () => {
     const [firstPathname, ...restPathnames] = pathnames
 
     if (pathnames.length === 1) {
-      return routes.find(({ path }) => (path.includes(':') ? true : path === `/${firstPathname!}`)) ?? notFoundRoute
+      return (
+        routes.find(({ path }) => (path.includes(SYMBOL.COLON) ? true : path === `${SYMBOL.SLASH}${firstPathname!}`)) ??
+        notFoundRoute
+      )
     }
 
     const nextRoutes = routes.find(({ path, childrenRoutes }) => {
       const hasChildrenRoutes = Boolean(childrenRoutes)
 
-      if (path.includes(':')) {
+      if (path.includes(SYMBOL.COLON)) {
         return hasChildrenRoutes
       }
 
-      return path === `/${firstPathname!}` && hasChildrenRoutes
+      return path === `${SYMBOL.SLASH}${firstPathname!}` && hasChildrenRoutes
     })?.childrenRoutes
 
     return getDeeplsRoute(nextRoutes, restPathnames)
   }
 
-  const pathNameParts = pathname.split('/').filter(Boolean)
+  const pathNameParts = pathname.split(SYMBOL.SLASH).filter(Boolean)
 
   return getDeeplsRoute(router, pathNameParts)
 }
