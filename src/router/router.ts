@@ -4,27 +4,27 @@ import { RouterOwnObject } from './types'
 
 export const rootRoute: RouterOwnObject = {
   path: routerPathes.home,
-  content: Home(),
+  content: Home,
 }
 
 export const notFoundRoute: RouterOwnObject = {
   path: routerPathes.notFound,
-  content: NotFound(),
+  content: NotFound,
 }
 
 export const router: RouterOwnObject[] = [
   rootRoute,
   {
     path: routerPathes.categories,
-    content: Products(),
+    content: Products,
     childrenRoutes: [
       {
         path: routerPathes.category,
-        content: Category(),
+        content: Category,
         childrenRoutes: [
           {
             path: routerPathes.product,
-            content: Product(),
+            content: Product,
           },
         ],
       },
@@ -32,7 +32,7 @@ export const router: RouterOwnObject[] = [
   },
   {
     path: routerPathes.basket,
-    content: Basket(),
+    content: Basket,
   },
   notFoundRoute,
 ]

@@ -12,5 +12,5 @@ export const renderComponent = () => {
     window.history.pushState({}, '', routerPathes.notFound)
   }
 
-  Body.append(Layout({ children: route.content }))
+  Body.append(Layout({ children: route.content() }))
 }
