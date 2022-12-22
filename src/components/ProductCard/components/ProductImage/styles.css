@@ -13,9 +13,9 @@
     padding: 6px;
     font-size: 20px;
     font-weight: 700;
-    color: var(--color-white);
+    color: var(--color-black);
     content: attr(data-discountPercentage);
-    background: var(--color-green);
+    background: var(--color-gold);
     border-radius: 50%;
   }
 
