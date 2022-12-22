@@ -1,1 +1,0 @@
-export { Autors } from './Autors'

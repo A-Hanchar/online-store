@@ -1,4 +1,4 @@
-import { Autors } from './components/Autors/Autors'
+import { Authors } from './components/Authors/'
 import { Text } from './../Text/Text'
 import { Logo } from './components/Logo/Logo'
 import styles from './styles.css'
@@ -14,7 +14,7 @@ export const Footer = () => {
   const logo = Logo()
   logo.target = '_blank'
 
-  footer.prepend(Autors(), date, logo)
+  footer.prepend(Authors(), date, logo)
 
   return footer
 }
