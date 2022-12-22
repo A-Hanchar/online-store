@@ -11,7 +11,7 @@ export const Home = async () => {
   const contentWrapper = document.createElement('div')
   styles.contentWrapper && contentWrapper.classList.add(styles.contentWrapper)
 
-  let page = 1
+  let page = 0
 
   const loadMoreProducts = async () => {
     const contentData = await getAllProducts({ page, searchParams: {} })
@@ -21,18 +21,18 @@ export const Home = async () => {
     return contentData
   }
 
-  // try {
-  const [aside, contentData] = await Promise.all([Sidebar(), loadMoreProducts()])
+  try {
+    const [aside, contentData] = await Promise.all([Sidebar(), loadMoreProducts()])
 
-  contentWrapper.replaceChildren()
+    contentWrapper.replaceChildren()
 
-  contentWrapper.append(
-    Title(),
-    await Cards({ products: contentData.products }),
-    await LoadMoreButton({ loadMore: loadMoreProducts, contentWrapper }),
-  )
-  fragment.append(aside, contentWrapper)
-  // } catch (error) {}
+    contentWrapper.append(
+      Title(),
+      await Cards({ products: contentData.products }),
+      await LoadMoreButton({ loadMore: loadMoreProducts, contentWrapper }),
+    )
+    fragment.append(aside, contentWrapper)
+  } catch (error) {}
 
   return fragment
 }
