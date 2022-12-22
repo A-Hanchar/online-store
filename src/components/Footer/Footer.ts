@@ -9,9 +9,7 @@ export const Footer = () => {
 
   const date = Text({ tagName: 'span', text: '2023', classname: styles.date })
 
-  const logo = Logo()
-
-  footer.prepend(Authors(), date, logo)
+  footer.prepend(Authors(), date, Logo())
 
   return footer
 }
