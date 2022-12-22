@@ -1,17 +1,19 @@
-import { addClassnameToElement } from 'helpers/addClassnameToElement'
+import { createElementWithClassName } from './../../helpers/createElementWithClassName'
 import { renderComponent } from 'router'
 import { LinkProps } from './types'
 
-export const Link = ({ id, children, href, classname }: LinkProps) => {
-  const a = document.createElement('a')
+export const Link = ({ id, children, href, classname, target = '_self' }: LinkProps) => {
+  const a = createElementWithClassName({ tagName: 'a', classname })
+  children && a.append(children)
 
   a.id = id
   a.href = href
-
-  children && a.append(children)
-  addClassnameToElement({ element: a, classname })
+  a.target = target
 
   const handleLinkClick = (event: MouseEvent) => {
+    if (target === '_blank') {
+      return
+    }
     event.preventDefault()
 
     window.history.pushState({}, '', href)
