@@ -1,10 +1,11 @@
+import { addClassnameToElement } from 'helpers'
 import { IProduct } from 'interfaces'
 import { ActionButtons } from './components/ActionButtons'
 import { ProductImage } from './components/ProductImage'
 import { ProductInfo } from './components/ProductInfo'
 import styles from './styles.css'
 
-export const ProductCard = async ({
+export const ProductCard = ({
   title,
   images,
   description,
@@ -15,13 +16,14 @@ export const ProductCard = async ({
   brand,
 }: IProduct) => {
   const card = document.createElement('div')
-  styles.card && card.classList.add(styles.card)
 
   card.append(
     ProductImage({ alt: title, src: images[0] ?? '', discountPercentage }),
     ProductInfo({ title, description, discountPercentage, price, category }),
-    await ActionButtons({ id, brand, category }),
+    ActionButtons({ id, brand, category }),
   )
+
+  addClassnameToElement({ element: card, classname: styles.card })
 
   return card
 }

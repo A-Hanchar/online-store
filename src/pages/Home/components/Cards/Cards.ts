@@ -1,12 +1,12 @@
 import { ProductCard } from 'components/ProductCard'
+import { createElementWithClassName } from 'helpers'
+import { products } from 'mock/products'
 import styles from './styles.css'
-import { CardsProps } from './types'
 
-export const Cards = async ({ products }: CardsProps) => {
-  const cardsWrapper = document.createElement('div')
-  styles.cardsWrapper && cardsWrapper.classList.add(styles.cardsWrapper)
+export const Cards = () => {
+  const cardsWrapper = createElementWithClassName({ tagName: 'div', classname: styles.cardsWrapper })
 
-  cardsWrapper.append(...(await Promise.all(products.map((product) => ProductCard(product)))))
+  cardsWrapper.append(...products.map((product) => ProductCard(product)))
 
   return cardsWrapper
 }
