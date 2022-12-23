@@ -2,16 +2,18 @@ import { CardLogo } from './../CardLogo/CardLogo'
 import { Input } from 'components/Input'
 import styles from './styles.css'
 import { INPUT_TYPES } from 'components/Input/enums'
+import { createElementWithClassName } from 'helpers'
 
 export const CardInput = () => {
-  const container = document.createElement('div')
-  styles.container && container.classList.add(styles.container)
+  const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
 
   const cardNumber = Input({
     id: 'cardNumber',
     type: INPUT_TYPES.text,
     placeholder: 'Card number',
     classname: styles.input,
+    dataset: 'number',
+    container: true,
   })
 
   const cardValid = Input({
@@ -19,6 +21,8 @@ export const CardInput = () => {
     type: INPUT_TYPES.text,
     placeholder: 'Valid Thru',
     classname: styles.input,
+    dataset: 'valid',
+    container: true,
   })
 
   const cardCVV = Input({
@@ -26,44 +30,48 @@ export const CardInput = () => {
     type: INPUT_TYPES.text,
     placeholder: 'Code',
     classname: styles.input,
+    dataset: 'code',
+    container: true,
   })
 
   const cardLogo = CardLogo()
 
-  cardNumber.addEventListener('input', () => {
+  const num = cardNumber.querySelector('input')
+
+  num!.addEventListener('input', () => {
     cardLogo.src =
       'https://i.guim.co.uk/img/media/b73cc57cb1d46ae742efd06b6c58805e8600d482/16_0_2443_1466/master/2443.jpg?width=445&quality=85&dpr=1&s=none'
-    if (cardNumber.value.startsWith('2')) {
+    if (num!.value.startsWith('2')) {
       cardLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Mir-logo.SVG.svg'
     }
-    if (cardNumber.value.startsWith('4')) {
+    if (num!.value.startsWith('4')) {
       cardLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg'
     }
-    if (cardNumber.value.startsWith('5')) {
+    if (num!.value.startsWith('5')) {
       cardLogo.src =
         'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/300px-MasterCard_Logo.svg.png?20140711182052'
     }
   })
 
-  cardValid.maxLength = 5
+  const val = cardValid.querySelector('input')
 
-  cardValid.addEventListener('input', () => {
-    const arr = cardValid.value.split('')
-    if (cardValid.value.length === 2) {
+  val!.maxLength = 5
+
+  val!.addEventListener('input', () => {
+    const arr = val!.value.split('')
+    if (val!.value.length === 2) {
       if (arr.includes('/', 0)) {
         arr.splice(arr.indexOf('/'), 1)
       }
       arr.splice(2, 0, '/')
-      cardValid.value = arr.join('')
+      val!.value = arr.join('')
     }
   })
 
-  const topContainer = document.createElement('div')
-  styles.topContainer && topContainer.classList.add(styles.topContainer)
+  const topContainer = createElementWithClassName({ tagName: 'div', classname: styles.topContainer })
   topContainer.append(cardValid, cardCVV)
 
-  const bottomContainer = document.createElement('div')
-  styles.bottomContainer && bottomContainer.classList.add(styles.bottomContainer)
+  const bottomContainer = createElementWithClassName({ tagName: 'div', classname: styles.bottomContainer })
   bottomContainer.append(cardLogo, cardNumber)
 
   container.append(bottomContainer, topContainer)

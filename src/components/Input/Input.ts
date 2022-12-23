@@ -1,11 +1,19 @@
+import { createElementWithClassName } from 'helpers'
 import { InputProps } from './types'
 
-export const Input = ({ id, type, placeholder, classname }: InputProps) => {
-  const input = document.createElement('input')
+export const Input = ({ id, type, placeholder, dataset, classname, container }: InputProps) => {
+  const input = createElementWithClassName({ tagName: 'input', classname })
 
   input.id = id
   input.type = type
   input.placeholder = placeholder
-  classname && input.classList.add(classname)
+  input.dataset[dataset] = dataset
+
+  if (container === true) {
+    const container = createElementWithClassName({ tagName: 'div' })
+    container.append(input)
+    return container
+  }
+
   return input
 }
