@@ -1,9 +1,11 @@
-import { timer } from './components/ButtonConfirm/ButtonConfirm'
 import styles from './styles.css'
+import { regArr } from './components/RegExp/RegExp'
 import { PersonInput } from './components/PersonIntup'
 import { CardInput } from './components/CardInput'
 import { ButtonConfirm } from './components/ButtonConfirm'
 import { createElementWithClassName } from 'helpers'
+import { routerPathes } from 'router/routerPathes'
+import { checkValidation } from './components/Functions/CheckValidation'
 
 export const Form = () => {
   const form = createElementWithClassName({ tagName: 'form', classname: styles.form })
@@ -12,7 +14,14 @@ export const Form = () => {
 
   form.append(PersonInput(), CardInput(), btn)
 
-  btn.addEventListener('click', () => timer(form))
+  btn.addEventListener('click', (event) => {
+    event.preventDefault()
+    if (checkValidation(form, regArr)) {
+      setTimeout(() => {
+        window.location.href = routerPathes.home
+      }, 3000)
+    }
+  })
 
   return form
 }
