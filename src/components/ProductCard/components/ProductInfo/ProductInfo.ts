@@ -1,16 +1,12 @@
 import { ProductInfoProps } from './types'
 import styles from './styles.css'
 import { Text } from 'components/Text'
-import { getPricesByDiscount } from 'helpers'
+import { createElementWithClassName, getPricesByDiscount } from 'helpers'
 import { CURRENCY } from 'types'
 
 export const ProductInfo = ({ title, description, price, discountPercentage, category }: ProductInfoProps) => {
-  const wrapper = document.createElement('div')
-
-  styles.productInfo && wrapper.classList.add(styles.productInfo)
-
-  const pricesWrapper = document.createElement('div')
-  styles.prices && pricesWrapper.classList.add(styles.prices)
+  const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.productInfo })
+  const pricesWrapper = createElementWithClassName({ tagName: 'div', classname: styles.prices })
 
   const { price: oldPrice, priceWithDiscount: currentPrice } = getPricesByDiscount(price, discountPercentage)
 

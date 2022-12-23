@@ -4,7 +4,7 @@ import { CardInput } from './components/CardInput'
 import { ButtonConfirm } from './components/ButtonConfirm'
 import { checkValidation } from './components/Functions/CheckValidation'
 
-export const Form = async () => {
+export const Form = () => {
   const form = document.createElement('form')
   styles.form && form.classList.add(styles.form)
 
@@ -16,7 +16,7 @@ export const Form = async () => {
   const cardValidRegEx = /^(0[1-9]|1[0-2])\/?([0-9]{2}|[0-9]{2})$/
   const cardCVVRegEx = /^\d{3}$/
 
-  const btn = await ButtonConfirm()
+  const btn = ButtonConfirm()
 
   form.append(PersonInput(), CardInput(), btn)
 

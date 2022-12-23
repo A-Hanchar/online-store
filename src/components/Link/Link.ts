@@ -1,19 +1,19 @@
+import { createElementWithClassName } from './../../helpers/createElementWithClassName'
 import { renderComponent } from 'router'
 import { LinkProps } from './types'
 
-export const Link = async ({ id, children, href, classname }: LinkProps) => {
-  const a = document.createElement('a')
+export const Link = ({ id, children, href, classname, target = '_self' }: LinkProps) => {
+  const a = createElementWithClassName({ tagName: 'a', classname })
+  children && a.append(children)
 
   a.id = id
   a.href = href
-  if (typeof children === 'string') {
-    a.textContent = children
-  } else {
-    children && a.append(await children())
-  }
-  classname && a.classList.add(classname)
+  a.target = target
 
   const handleLinkClick = (event: MouseEvent) => {
+    if (target === '_blank') {
+      return
+    }
     event.preventDefault()
 
     window.history.pushState({}, '', href)

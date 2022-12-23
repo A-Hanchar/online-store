@@ -1,5 +1,6 @@
 export { capitalizeText } from './capitalizeText'
 export { getPricesByDiscount } from './getPricesByDiscount'
-export { delimiter } from './delimiter'
-export { comma } from './comma'
 export * from './localStorageInstanse'
+export { workDataInstanse } from './workDataInstanse'
+export { addClassnameToElement } from './addClassnameToElement'
+export { createElementWithClassName } from './createElementWithClassName'
