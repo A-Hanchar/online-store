@@ -2,6 +2,7 @@ import { CardLogo } from './../CardLogo/CardLogo'
 import { Input } from 'components/Input'
 import styles from './styles.css'
 import { createElementWithClassName } from 'helpers'
+import { SYMBOL } from 'types'
 
 export const CardInput = () => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
@@ -59,10 +60,10 @@ export const CardInput = () => {
   val!.addEventListener('input', () => {
     const arr = val!.value.split('')
     if (val!.value.length === 2) {
-      if (arr.includes('/', 0)) {
-        arr.splice(arr.indexOf('/'), 1)
+      if (arr.includes(SYMBOL.SLASH, 0)) {
+        arr.splice(arr.indexOf(SYMBOL.SLASH), 1)
       }
-      arr.splice(2, 0, '/')
+      arr.splice(2, 0, SYMBOL.SLASH)
       val!.value = arr.join('')
     }
   })
