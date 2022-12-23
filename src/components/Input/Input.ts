@@ -7,9 +7,9 @@ export const Input = ({ id, type = 'text', placeholder, dataset, classname, cont
   input.id = id
   input.type = type
   input.placeholder = placeholder
-  input.dataset[dataset] = dataset
+  input.dataset[dataset!] = dataset
 
-  if (container === true) {
+  if (container) {
     const container = createElementWithClassName({ tagName: 'div' })
     container.append(input)
     return container
