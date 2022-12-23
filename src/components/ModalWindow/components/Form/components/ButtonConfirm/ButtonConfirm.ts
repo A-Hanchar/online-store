@@ -9,7 +9,7 @@ export const timer = function (form: HTMLFormElement) {
   if (checkValidation(form, regArr)) {
     setTimeout(() => {
       window.location.href = routerPathes.home
-    }, 5000)
+    }, 3000)
   }
 }
 
