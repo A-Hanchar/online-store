@@ -1,7 +1,6 @@
-import { INPUT_TYPES } from './enums'
 export type InputProps = {
   id: string
-  type: INPUT_TYPES
+  type: 'button' | 'checkbox' | 'email' | 'number' | 'radio' | 'range' | 'text' | 'submit'
   placeholder: string
   dataset: string
   container?: boolean

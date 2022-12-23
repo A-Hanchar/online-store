@@ -1,6 +1,5 @@
 import { Input } from 'components/Input'
 import styles from './styles.css'
-import { INPUT_TYPES } from 'components/Input/enums'
 import { createElementWithClassName } from 'helpers'
 
 export const PersonInput = () => {
@@ -8,7 +7,7 @@ export const PersonInput = () => {
 
   const nameInput = Input({
     id: 'nameInput',
-    type: INPUT_TYPES.text,
+    type: 'text',
     placeholder: 'Name',
     classname: styles.input,
     dataset: 'name',
@@ -17,7 +16,7 @@ export const PersonInput = () => {
 
   const phoneInput = Input({
     id: 'phoneInput',
-    type: INPUT_TYPES.text,
+    type: 'text',
     placeholder: 'Phone number',
     classname: styles.input,
     dataset: 'phone',
@@ -26,7 +25,7 @@ export const PersonInput = () => {
 
   const addressInput = Input({
     id: 'addressInput',
-    type: INPUT_TYPES.text,
+    type: 'text',
     placeholder: 'Delivery address',
     classname: styles.input,
     dataset: 'address',
@@ -35,7 +34,7 @@ export const PersonInput = () => {
 
   const emailInput = Input({
     id: 'emailInput',
-    type: INPUT_TYPES.email,
+    type: 'email',
     placeholder: 'E-mail',
     classname: styles.input,
     dataset: 'email',

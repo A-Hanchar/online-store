@@ -1,7 +1,6 @@
 import { CardLogo } from './../CardLogo/CardLogo'
 import { Input } from 'components/Input'
 import styles from './styles.css'
-import { INPUT_TYPES } from 'components/Input/enums'
 import { createElementWithClassName } from 'helpers'
 
 export const CardInput = () => {
@@ -9,7 +8,7 @@ export const CardInput = () => {
 
   const cardNumber = Input({
     id: 'cardNumber',
-    type: INPUT_TYPES.text,
+    type: 'text',
     placeholder: 'Card number',
     classname: styles.input,
     dataset: 'number',
@@ -18,7 +17,7 @@ export const CardInput = () => {
 
   const cardValid = Input({
     id: 'cardValid',
-    type: INPUT_TYPES.text,
+    type: 'text',
     placeholder: 'Valid Thru',
     classname: styles.input,
     dataset: 'valid',
@@ -27,7 +26,7 @@ export const CardInput = () => {
 
   const cardCVV = Input({
     id: 'cardCVV',
-    type: INPUT_TYPES.text,
+    type: 'text',
     placeholder: 'Code',
     classname: styles.input,
     dataset: 'code',
