@@ -26,65 +26,20 @@ export const checkValidation = (form: HTMLFormElement, arr: typeof regArr) => {
     removeClassnameToElement({ element: parent!, classname: styles.error })
   }
 
-  for (const input of allInputs) {
-    arr.forEach((e) => {
-      if (input.dataset.name && e.id === ID_FOR_REGEXP.name) {
-        if (e.regExp.test(input.value)) {
-          removeError(input)
+  const checkRegExp = () => {
+    for (let i = 0; i < allInputs.length; i++) {
+      if (allInputs[i]!.dataset[arr[i]!.id] && arr[i]?.id === arr[i]!.id) {
+        if (arr[i]!.regExp.test(allInputs[i]!.value)) {
+          removeError(allInputs[i]!)
         } else {
-          createError(input, 'Error')
+          createError(allInputs[i]!, 'Error')
           res = false
         }
       }
-      if (input.dataset.phone && e.id === ID_FOR_REGEXP.phone) {
-        if (e.regExp.test(input.value)) {
-          removeError(input)
-        } else {
-          createError(input, 'Error')
-          res = false
-        }
-      }
-      if (input.dataset.address && e.id === ID_FOR_REGEXP.address) {
-        if (e.regExp.test(input.value)) {
-          removeError(input)
-        } else {
-          createError(input, 'Error')
-          res = false
-        }
-      }
-      if (input.dataset.email && e.id === ID_FOR_REGEXP.email) {
-        if (e.regExp.test(input.value)) {
-          removeError(input)
-        } else {
-          createError(input, 'Error')
-          res = false
-        }
-      }
-      if (input.dataset.number && e.id === ID_FOR_REGEXP.number) {
-        if (e.regExp.test(input.value)) {
-          removeError(input)
-        } else {
-          createError(input, 'Error')
-          res = false
-        }
-      }
-      if (input.dataset.valid && e.id === ID_FOR_REGEXP.valid) {
-        if (e.regExp.test(input.value)) {
-          removeError(input)
-        } else {
-          createError(input, 'Error')
-          res = false
-        }
-      }
-      if (input.dataset.code && e.id === ID_FOR_REGEXP.code) {
-        if (e.regExp.test(input.value)) {
-          removeError(input)
-        } else {
-          createError(input, 'Error')
-          res = false
-        }
-      }
-    })
+    }
   }
+
+  checkRegExp()
+
   return res
 }
