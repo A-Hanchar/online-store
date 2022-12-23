@@ -5,8 +5,5 @@ export const containsClassnameToElement = ({
   element: HTMLElement
   classname?: string
 }): boolean => {
-  if (classname && element.classList.contains(classname)) {
-    return true
-  }
-  return false
+  return element.classList.contains(classname!)
 }
