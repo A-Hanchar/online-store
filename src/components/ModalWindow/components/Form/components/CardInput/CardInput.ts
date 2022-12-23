@@ -13,7 +13,7 @@ export const CardInput = () => {
     placeholder: 'Card number',
     classname: styles.input,
     dataset: 'number',
-    container: true,
+    container: createElementWithClassName({ tagName: 'div' }),
   })
 
   const cardValid = Input({
@@ -22,7 +22,7 @@ export const CardInput = () => {
     placeholder: 'Valid Thru',
     classname: styles.input,
     dataset: 'valid',
-    container: true,
+    container: createElementWithClassName({ tagName: 'div' }),
   })
 
   const cardCVV = Input({
@@ -31,7 +31,7 @@ export const CardInput = () => {
     placeholder: 'Code',
     classname: styles.input,
     dataset: 'code',
-    container: true,
+    container: createElementWithClassName({ tagName: 'div' }),
   })
 
   const cardLogo = CardLogo()

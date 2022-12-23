@@ -1,7 +1,14 @@
 import { createElementWithClassName } from 'helpers'
 import { InputProps } from './types'
 
-export const Input = ({ id, type = 'text', placeholder, dataset, classname, container }: InputProps) => {
+export const Input = ({
+  id,
+  type = 'text',
+  placeholder,
+  dataset,
+  classname,
+  container = document.createDocumentFragment(),
+}: InputProps) => {
   const input = createElementWithClassName({ tagName: 'input', classname })
 
   input.id = id
@@ -9,11 +16,7 @@ export const Input = ({ id, type = 'text', placeholder, dataset, classname, cont
   input.placeholder = placeholder
   input.dataset[dataset!] = dataset
 
-  if (container) {
-    const container = createElementWithClassName({ tagName: 'div' })
-    container.append(input)
-    return container
-  }
+  container.append(input)
 
-  return input
+  return container
 }

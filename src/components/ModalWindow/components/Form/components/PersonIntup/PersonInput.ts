@@ -11,7 +11,7 @@ export const PersonInput = () => {
     placeholder: 'Name',
     classname: styles.input,
     dataset: 'name',
-    container: true,
+    container: createElementWithClassName({ tagName: 'div' }),
   })
 
   const phoneInput = Input({
@@ -20,7 +20,7 @@ export const PersonInput = () => {
     placeholder: 'Phone number',
     classname: styles.input,
     dataset: 'phone',
-    container: true,
+    container: createElementWithClassName({ tagName: 'div' }),
   })
 
   const addressInput = Input({
@@ -29,7 +29,7 @@ export const PersonInput = () => {
     placeholder: 'Delivery address',
     classname: styles.input,
     dataset: 'address',
-    container: true,
+    container: createElementWithClassName({ tagName: 'div' }),
   })
 
   const emailInput = Input({
@@ -38,7 +38,7 @@ export const PersonInput = () => {
     placeholder: 'E-mail',
     classname: styles.input,
     dataset: 'email',
-    container: true,
+    container: createElementWithClassName({ tagName: 'div' }),
   })
 
   container.append(nameInput, phoneInput, addressInput, emailInput)
