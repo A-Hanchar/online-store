@@ -1,5 +1,6 @@
 import { IProduct } from 'interfaces'
 import { products as productsList } from 'mock/products'
+import { SEARCH_PARAMS } from 'types'
 
 class WorkDataInstanse {
   products: IProduct[]
@@ -12,28 +13,23 @@ class WorkDataInstanse {
     return this.products
   }
 
-  getAllCategories() {
-    return [...new Set(this.products.map(({ category }) => category))]
+  getAllElemntsByKey(key: SEARCH_PARAMS.BRAND | SEARCH_PARAMS.CATERORY) {
+    return [...new Set(this.products.map((product) => product[key]))]
   }
 
-  getProductsByCategory(categoryId: string) {
-    return this.products.filter(({ category }) => category === categoryId)
+  getProductsByKey(key: SEARCH_PARAMS.BRAND | SEARCH_PARAMS.CATERORY, value: string) {
+    return this.products.filter((product) => product[key] === value)
   }
 
-  getCountProductsOfCategory(categoryId: string) {
-    return this.getProductsByCategory(categoryId).length
+  getCountByKey(key: SEARCH_PARAMS.BRAND | SEARCH_PARAMS.CATERORY, value: string) {
+    return this.getProductsByKey(key, value).length
   }
 
-  getAllBrands() {
-    return [...new Set(this.products.map(({ brand }) => brand))]
-  }
-
-  getProductsByBrand(searchedBrand: string) {
-    return this.products.filter(({ brand }) => brand === searchedBrand)
-  }
-
-  getCountProductsOfBrand(brand: string) {
-    return this.getProductsByBrand(brand).length
+  getRange(key: SEARCH_PARAMS.STOCK | SEARCH_PARAMS.PRICE) {
+    return {
+      min: Math.min(...this.products.map((product) => product[key])),
+      max: Math.max(...this.products.map((product) => product[key])),
+    }
   }
 }
 
