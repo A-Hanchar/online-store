@@ -1,3 +1,4 @@
+import { ProductDescriptionPage } from './../../components/ProductDescriptionPage/ProductDescriptionPage'
 import { Link } from 'components/Link'
 import { Text } from 'components/Text'
 import styles from './styles.css'
@@ -13,6 +14,7 @@ export const NotFound = () => {
     Text({ tagName: 'h1', text: 'Sorry, it looks like the page get lost', classname: styles.h1 }),
     Text({ tagName: 'h2', text: '(or someone has stolen it recently)', classname: styles.h2 }),
     Link({ id: 'a', children: 'Back to Home', href: routerPathes.home, classname: styles.link }),
+    ProductDescriptionPage(),
   )
 
   return container

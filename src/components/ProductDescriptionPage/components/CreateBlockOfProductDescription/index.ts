@@ -1,0 +1,1 @@
+export { createBlockOfProductDescription } from './createBlockOfProductDescription'
