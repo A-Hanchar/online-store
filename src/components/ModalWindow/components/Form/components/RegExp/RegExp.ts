@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export const regArr = [
   { id: 'name', regExp: /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/ },
   { id: 'phone', regExp: /^[\+][(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,}$/ },
