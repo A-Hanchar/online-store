@@ -1,7 +1,10 @@
 .cardsWrapper {
   display: grid;
-  grid-template-columns: repeat(4, minmax(350px, 1fr));
   gap: 16px;
   justify-items: center;
   padding: 16px;
+
+  &[data-grid-appearance="standart"] {
+    grid-template-columns: repeat(4, minmax(350px, 1fr));
+  }
 }

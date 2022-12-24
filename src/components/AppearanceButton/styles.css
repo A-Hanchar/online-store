@@ -1,0 +1,20 @@
+.button {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: var(--color-white);
+  border: none;
+  border-radius: 50%;
+
+  & .standart {
+    width: 100%;
+    height: 100%;
+    background: url(assets/images/appearanceStandartIcon.svg) center/contain no-repeat;
+  }
+
+  & .full {
+    width: 100%;
+    height: 100%;
+    background: url(assets/images/appearanceFullIcon.svg) center/contain no-repeat;
+  }
+}
