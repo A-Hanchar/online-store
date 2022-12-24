@@ -1,0 +1,8 @@
+.label {
+  color: var(--color-red);
+}
+
+.error {
+  display: flex;
+  align-items: center;
+}
