@@ -1,24 +1,23 @@
-import { Brand } from './components/Brand/Brand'
+import { Brand } from './components/Brand/'
 import { createElementWithClassName } from 'helpers'
 import styles from './styles.css'
-import { Description } from './components/Description'
 import { Category } from './components/Category'
 import { products } from 'mock/products'
+import { Description } from './components/Description'
 
 export const DescriptionBlock = (product: typeof products[0]) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
-  const prod = product
 
-  for (const key in prod) {
+  for (const key in product) {
     switch (key) {
       case 'brand':
-        container.append(Brand(key, prod[key]))
+        container.append(Brand(key, product[key]))
         break
       case 'category':
-        container.append(Category(key, prod[key]))
+        container.append(Category(key, product[key]))
         break
       case 'description':
-        container.append(Description(key, prod[key]))
+        container.append(Description(key, product[key]))
         break
     }
   }
