@@ -1,9 +1,10 @@
+import { urlInstanse } from 'helpers/urlInstanse'
 import { notFoundRoute, rootRoute, router, RouterOwnObject } from 'router'
 import { routerPathes } from 'router/routerPathes'
 import { SYMBOL } from 'types'
 
 export const getRoute = () => {
-  const url = new URL(window.location.href)
+  const url = urlInstanse.getUrl()
   const pathname = url.pathname
 
   if (pathname === routerPathes.home) {

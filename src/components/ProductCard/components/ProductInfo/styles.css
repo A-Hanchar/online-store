@@ -27,25 +27,4 @@
     -webkit-box-orient: vertical;
     line-clamp: 2;
   }
-
-  & .prices {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--color-gray);
-
-    & .new {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--color-red);
-    }
-
-    & .old {
-      font-size: 20px;
-      color: var(--color-gray);
-      text-decoration: line-through;
-    }
-  }
 }

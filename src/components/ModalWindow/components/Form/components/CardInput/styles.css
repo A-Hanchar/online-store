@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  background: linear-gradient(90deg, rgb(236 97 97 / 1) 0%, rgb(182 83 83 / 1) 35%, rgb(0 212 255 / 1) 100%);
+  border-radius: 10px;
+}
+
+.input {
+  width: 80%;
+  padding: 5px;
+  margin: 10px;
+  text-align: center;
+  border: none;
+  border-radius: 24px;
+  outline: none;
+}
+
+.topContainer {
+  display: flex;
+}
+
+.bottomContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}

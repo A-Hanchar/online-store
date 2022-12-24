@@ -4,4 +4,6 @@ export type ProductInfoProps = {
   price: number
   discountPercentage: number
   category: string
+  rating: number
+  stock: number
 }

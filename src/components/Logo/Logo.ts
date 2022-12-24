@@ -14,7 +14,6 @@ export const Logo = () => {
     children: LogoImage,
     href: routerPathes.home,
     classname: styles.logo,
-    target: '_blank',
   })
 
   return link

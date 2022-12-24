@@ -4,6 +4,7 @@ import { Link } from 'components/Link'
 import { Text } from 'components/Text'
 import styles from './styles.css'
 import { routerPathes } from 'router/routerPathes'
+import { modalWindow } from 'components/ModalWindow'
 import { createElementWithClassName } from 'helpers'
 
 export const NotFound = () => {
@@ -17,6 +18,10 @@ export const NotFound = () => {
     Link({ id: 'a', children: 'Back to Home', href: routerPathes.home, classname: styles.link }),
     ProductDescriptionPage(products[0]!),
   )
+
+  const modal = modalWindow()
+
+  container.append(modal)
 
   return container
 }
