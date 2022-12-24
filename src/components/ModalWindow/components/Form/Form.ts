@@ -6,6 +6,7 @@ import { ButtonConfirm } from './components/ButtonConfirm'
 import { createElementWithClassName } from 'helpers'
 import { routerPathes } from 'router/routerPathes'
 import { checkValidation } from './components/Functions/CheckValidation'
+import { THREE_SECONDS } from 'helpers/constants'
 
 export const Form = () => {
   const form = createElementWithClassName({ tagName: 'form', classname: styles.form })
@@ -19,7 +20,7 @@ export const Form = () => {
     if (checkValidation(form, regArr)) {
       setTimeout(() => {
         window.location.href = routerPathes.home
-      }, 3000)
+      }, THREE_SECONDS)
     }
   })
 
