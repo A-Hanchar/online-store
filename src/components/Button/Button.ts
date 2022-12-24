@@ -1,10 +1,10 @@
+import { createElementWithClassName } from 'helpers'
 import { ButtonProps } from './types'
 
-export const Button = async ({ children, classname, onclick }: ButtonProps) => {
-  const button = document.createElement('button')
+export const Button = ({ children, classname, onclick }: ButtonProps) => {
+  const button = createElementWithClassName({ tagName: 'button', classname })
 
-  classname && button.classList.add(classname)
-  children && button.append(await children())
+  children && button.append(children)
 
   const handleClick = (event: MouseEvent) => {
     event.preventDefault()

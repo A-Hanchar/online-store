@@ -1,11 +1,11 @@
+import { createElementWithClassName } from 'helpers'
 import { Filters } from './components/Filters'
 import styles from './styles.css'
 
-export const Sidebar = async () => {
-  const aside = document.createElement('aside')
-  styles.sidebar && aside.classList.add(styles.sidebar)
+export const Sidebar = () => {
+  const aside = createElementWithClassName({ tagName: 'aside', classname: styles.sidebar })
 
-  aside.append(await Filters())
+  aside.append(Filters())
 
   return aside
 }

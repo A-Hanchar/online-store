@@ -3,7 +3,7 @@ import { Layout } from 'components/Layout'
 import { routerPathes } from './routerPathes'
 import { getRoute } from './utils'
 
-export const renderComponent = async () => {
+export const renderComponent = () => {
   Body.replaceChildren()
 
   const route = getRoute()
@@ -12,5 +12,5 @@ export const renderComponent = async () => {
     window.history.pushState({}, '', routerPathes.notFound)
   }
 
-  Body.append(await Layout({ children: route.content }))
+  Body.append(Layout({ children: route.content() }))
 }
