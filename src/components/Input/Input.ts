@@ -14,7 +14,9 @@ export const Input = ({
   input.id = id
   input.type = type
   input.placeholder = placeholder
-  input.dataset[dataset!] = dataset
+  if (typeof dataset === 'string') {
+    input.dataset[dataset] = dataset
+  }
 
   container.append(input)
 
