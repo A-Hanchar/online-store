@@ -1,12 +1,13 @@
+import { urlInstanse } from 'helpers/urlInstanse'
 import { SEARCH_PARAMS, SYMBOL } from 'types'
-import commonStyles from '../../commonStyles.css'
+import styles from '../styles.css'
 
 export const onClickFilterButton: (props: {
   button: HTMLButtonElement
   key: SEARCH_PARAMS
   addedValue: string
 }) => void = ({ button, key, addedValue }) => {
-  const url = new URL(window.location.href)
+  const url = urlInstanse.getUrl()
 
   let searchValue = url.searchParams.get(key)
 
@@ -27,7 +28,7 @@ export const onClickFilterButton: (props: {
     searchValue = addedValue
   }
 
-  commonStyles.isActive && button.classList.toggle(commonStyles.isActive)
+  styles.isActive && button.classList.toggle(styles.isActive)
 
   searchValue ? url.searchParams.set(key, searchValue) : url.searchParams.delete(key)
   window.history.pushState({}, '', url.href)

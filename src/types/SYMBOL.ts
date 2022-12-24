@@ -5,4 +5,5 @@ export enum SYMBOL {
   DASH = '-',
   SLASH = '/',
   COLON = ':',
+  IN = 'in',
 }
