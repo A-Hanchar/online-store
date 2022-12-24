@@ -12,5 +12,7 @@ export const ProductDescriptionPage = (product: typeof products[0]) => {
   container.append(DescriptionBlock(product), PriceBlock(product), ImagesBlock(product))
   fragment.append(container)
 
+  console.log(products[0])
+
   return fragment
 }
