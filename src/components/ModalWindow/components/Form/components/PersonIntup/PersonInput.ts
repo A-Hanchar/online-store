@@ -7,7 +7,6 @@ export const PersonInput = () => {
 
   const nameInput = Input({
     id: 'nameInput',
-    type: 'text',
     placeholder: 'Name',
     classname: styles.input,
     dataset: 'name',
@@ -16,7 +15,6 @@ export const PersonInput = () => {
 
   const phoneInput = Input({
     id: 'phoneInput',
-    type: 'text',
     placeholder: 'Phone number',
     classname: styles.input,
     dataset: 'phone',
@@ -25,7 +23,6 @@ export const PersonInput = () => {
 
   const addressInput = Input({
     id: 'addressInput',
-    type: 'text',
     placeholder: 'Delivery address',
     classname: styles.input,
     dataset: 'address',

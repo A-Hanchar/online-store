@@ -9,7 +9,6 @@ export const CardInput = () => {
 
   const cardNumber = Input({
     id: 'cardNumber',
-    type: 'text',
     placeholder: 'Card number',
     classname: styles.input,
     dataset: 'number',
@@ -18,7 +17,6 @@ export const CardInput = () => {
 
   const cardValid = Input({
     id: 'cardValid',
-    type: 'text',
     placeholder: 'Valid Thru',
     classname: styles.input,
     dataset: 'valid',
@@ -27,7 +25,6 @@ export const CardInput = () => {
 
   const cardCVV = Input({
     id: 'cardCVV',
-    type: 'text',
     placeholder: 'Code',
     classname: styles.input,
     dataset: 'code',
