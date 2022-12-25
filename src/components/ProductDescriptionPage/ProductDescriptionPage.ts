@@ -1,18 +1,34 @@
-import { ImagesBlock } from './components/ImagesBlock/'
-import { DescriptionBlock } from './components/DescriptionBlock/'
+import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
+import { IProduct } from 'interfaces'
+import { ProductImage } from './components/ProductImage'
+import { ImagesBlock } from './components/ImagesBlock'
+import { DescriptionBlock } from './components/DescriptionBlock'
+import { Breadcrumbs } from './components/Breadcrumbs'
 import styles from './styles.css'
-import { products } from 'mock/products'
-import { PriceBlock } from './components/PriceBlock'
 
-export const ProductDescriptionPage = (product: typeof products[0]) => {
-  const fragment = document.createDocumentFragment()
+export const ProductDescriptionPage = ({
+  title,
+  description,
+  price,
+  discountPercentage,
+  category,
+  id,
+  brand,
+  stock,
+  rating,
+  thumbnail,
+  images,
+}: IProduct) => {
+  const card = createElementWithClassName({ tagName: 'div', classname: styles.card })
 
-  const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
-  container.append(DescriptionBlock(product), PriceBlock(product), ImagesBlock(product))
-  fragment.append(container)
+  card.append(
+    Text({ tagName: 'h2', text: title, classname: styles.header }),
+    Breadcrumbs({ category, brand, title }),
+    ProductImage({ alt: title, src: thumbnail }),
+    ImagesBlock({ images, title }),
+    DescriptionBlock({ brand, category, description, price, discountPercentage, rating, stock, id, brand, category }),
+  )
 
-  console.log(products[0])
-
-  return fragment
+  return card
 }

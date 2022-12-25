@@ -1,3 +1,9 @@
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -20,7 +26,7 @@
   width: 287px;
   height: 66px;
   font-size: 24px;
-  color: #FFF;
+  color: #fff;
   text-decoration: none;
   background: #000;
   border-radius: 48px;

@@ -1,28 +1,27 @@
-import { products } from 'mock/products'
+import { ImagesBlockProps } from './types'
 import { createElementWithClassName } from 'helpers'
 import styles from './styles.css'
 import { Image } from 'components/Image'
 
-export const ImagesBlock = (product: typeof products[0]) => {
+export const ImagesBlock = ({ images, title }: ImagesBlockProps) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
-  const image = createElementWithClassName({ tagName: 'div', classname: styles.container })
+  const imageIsShow = createElementWithClassName({ tagName: 'div', classname: styles.imageIsShow })
   const imagesBlock = createElementWithClassName({ tagName: 'div', classname: styles.imagesBlock })
 
-  product.images
-    .slice(1, 4)
-    .forEach((img) => imagesBlock.append(Image({ src: img, alt: product.title, classname: styles.img })))
+  images.slice(2, 4).forEach((img) => imagesBlock.append(Image({ src: img, alt: title, classname: styles.img })))
 
-  container.append(imagesBlock)
+  imageIsShow.append(Image({ src: images[2], alt: title, classname: styles.selectedImg }))
+
+  container.append(imagesBlock, imageIsShow)
 
   imagesBlock.addEventListener('click', (event) => {
     const target = event.target as HTMLImageElement
 
     if (target) {
-      if (image.querySelector('img')) {
-        image.querySelector('img')?.remove()
+      if (imageIsShow.querySelector('img')) {
+        imageIsShow.querySelector('img')?.remove()
       }
-      image.append(Image({ src: target.src, alt: product.title, classname: styles.selectedImg }))
-      container.append(image)
+      imageIsShow.append(Image({ src: target.src, alt: title, classname: styles.selectedImg }))
     }
   })
 
