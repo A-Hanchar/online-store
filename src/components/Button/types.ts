@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'types'
 
 type ButtonOwnProps = {
-  classname?: string
+  classname?: string | Array<string | undefined>
   onclick?: () => void
 }
 

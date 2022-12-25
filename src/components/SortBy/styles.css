@@ -1,0 +1,41 @@
+.sortButton {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 5px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-black);
+  cursor: pointer;
+  background-color: var(--color-white);
+  border: none;
+  border-radius: 4px;
+
+  & .arrowsWrapper {
+    display: flex;
+
+    & .arrow {
+      width: 0;
+      height: 0;
+      border-right: 7px solid transparent;
+      border-left: 7px solid transparent;
+
+      &.arrowAsc {
+        border-bottom: 14px solid var(--color-gold);
+
+        &[data-sort-type="desc"] {
+          opacity: 0.4;
+        }
+      }
+
+      &.arrowDesc {
+        border-top: 14px solid var(--color-gold);
+
+        &[data-sort-type="asc"] {
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+}

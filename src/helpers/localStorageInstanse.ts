@@ -1,9 +1,7 @@
 import { Basket } from 'components/Basket'
-import { LOCAL_STORAGE_KEY } from 'types'
+import { DATA_ATTRIBUTE, LOCAL_STORAGE_KEY } from 'types'
 
 class LocalStorageInstanse {
-  #dataBasketCountItems = 'data-basket-count-items'
-
   BasketElement: HTMLAnchorElement
   constructor() {
     this.BasketElement = this.createBasketElement()
@@ -13,7 +11,7 @@ class LocalStorageInstanse {
     const basket = Basket()
     const productsIds = this.getProductsIds()
 
-    basket.setAttribute(this.#dataBasketCountItems, String(productsIds.length))
+    basket.setAttribute(DATA_ATTRIBUTE.DATA_BASKET_COUNT_ITEMS, String(productsIds.length))
 
     return basket
   }
@@ -25,7 +23,7 @@ class LocalStorageInstanse {
   setBasketCountItems() {
     const productsIds = this.getProductsIds()
 
-    this.BasketElement.setAttribute(this.#dataBasketCountItems, String(productsIds.length))
+    this.BasketElement.setAttribute(DATA_ATTRIBUTE.DATA_BASKET_COUNT_ITEMS, String(productsIds.length))
   }
 
   getValue<T>(key: LOCAL_STORAGE_KEY): T[] {

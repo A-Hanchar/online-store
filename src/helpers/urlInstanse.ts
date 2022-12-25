@@ -1,20 +1,27 @@
-import { SEARCH_PARAMS, SYMBOL } from 'types'
+import { SEARCH_PARAMS, SORT_KEY, SORT_TYPE, SYMBOL } from 'types'
 
-type SetQueryValue = {
-  key: SEARCH_PARAMS
-} & (
+type SetQueryValue =
   | {
-      type: 'none'
+      key: SEARCH_PARAMS
+      type: 'equal' | 'like'
       value: string
     }
   | {
+      key: SEARCH_PARAMS
       type: 'range'
       value: {
         min: number
         max: number
       }
     }
-)
+  | {
+      key?: undefined
+      type: 'sort'
+      value: {
+        sortType: SORT_TYPE
+        sortKey: SORT_KEY
+      }
+    }
 
 class URLInstanse {
   url: URL
@@ -33,42 +40,69 @@ class URLInstanse {
   }
 
   getRangeParam(key: SEARCH_PARAMS) {
-    this.updateURL()
-
     const param = this.getQueryParam(key)
-
-    if (typeof param === 'string') {
-      const range = param.replace(/[in()=]/g, '').split(',')
-
-      return {
-        start: Number(range[0]),
-        end: Number(range[1]),
-      }
-    }
+    const range = param?.replace(/[in()=]/g, '').split(',')
 
     return {
-      start: null,
-      end: null,
+      start: range?.[0] && Number(range[0]),
+      end: range?.[1] && Number(range[1]),
     }
   }
 
-  getQueryParam(key: SEARCH_PARAMS) {
+  getLikeParam(key: SEARCH_PARAMS) {
+    const param = this.getQueryParam(key)
+
+    return param?.replace(/[*]/g, '')
+  }
+
+  getQueryParam<T = string>(key: SEARCH_PARAMS) {
     this.updateURL()
 
-    return this.url.searchParams.get(key)
+    return this.url.searchParams.get(key) as T | null
+  }
+
+  getSortByParam() {
+    return (this.getQueryParam(SEARCH_PARAMS.SORT_BY) ?? '').split(SYMBOL.COMMA).filter(Boolean)
+  }
+
+  getSortTypeByKey(key: SORT_KEY) {
+    const param = this.getSortByParam().find((item) => item.includes(key))
+
+    return (param?.split(SYMBOL.EQUAL)[1] as SORT_TYPE | undefined) ?? SORT_TYPE.ASC
   }
 
   setSearchValue({ key, type, value }: SetQueryValue) {
     this.updateURL()
 
-    if (type === 'none') {
+    if (type === 'equal') {
       this.url.searchParams.set(key, value)
     }
 
     if (type === 'range') {
-      const newVal = `${SYMBOL.IN}=(${value.min},${value.max})`
+      const { min, max } = value
+
+      const newVal = `${SYMBOL.IN}=(${min},${max})`
 
       this.url.searchParams.set(key, newVal)
+    }
+
+    if (type === 'like') {
+      const newVal = `${SYMBOL.ASTERISK}${value}${SYMBOL.ASTERISK}`
+
+      this.url.searchParams.set(key, newVal)
+    }
+
+    if (type === 'sort') {
+      const { sortKey, sortType } = value
+
+      const currentVal = this.getSortByParam()
+      const indexExistedKey = currentVal.findIndex((item) => item.includes(sortKey))
+
+      const newValue = `${sortKey}${SYMBOL.EQUAL}${sortType}`
+
+      indexExistedKey > -1 ? (currentVal[indexExistedKey] = newValue) : currentVal.push(newValue)
+
+      this.url.searchParams.set(SEARCH_PARAMS.SORT_BY, currentVal.toString())
     }
 
     window.history.pushState({}, '', this.url.href)

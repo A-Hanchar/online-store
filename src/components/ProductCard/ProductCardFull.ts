@@ -1,11 +1,11 @@
 import { createElementWithClassName } from 'helpers'
 import { IProduct } from 'interfaces'
-import { ActionButtons } from './components/ActionButtons'
-import { ProductImage } from './components/ProductImage'
+import { ActionButtonsFull } from './components/ActionButtons'
+import { ProductImageFull } from './components/ProductImage'
 import { ProductInfo } from './components/ProductInfo'
 import styles from './styles.css'
 
-export const ProductCard = ({
+export const ProductCardFull = ({
   title,
   description,
   price,
@@ -17,12 +17,12 @@ export const ProductCard = ({
   rating,
   thumbnail,
 }: IProduct) => {
-  const card = createElementWithClassName({ tagName: 'div', classname: [styles.card, styles.standart] })
+  const card = createElementWithClassName({ tagName: 'div', classname: [styles.card, styles.full] })
 
   card.append(
-    ProductImage({ alt: title, src: thumbnail, discountPercentage }),
+    ProductImageFull({ alt: title, src: thumbnail, discountPercentage }),
     ProductInfo({ title, description, discountPercentage, price, category, rating, stock }),
-    ActionButtons({ id, brand, category }),
+    ActionButtonsFull({ id, brand, category }),
   )
 
   return card

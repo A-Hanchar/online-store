@@ -6,4 +6,6 @@ export enum SYMBOL {
   SLASH = '/',
   COLON = ':',
   IN = 'in',
+  ASTERISK = '*',
+  EQUAL = '=',
 }
