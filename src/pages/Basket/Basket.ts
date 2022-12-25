@@ -1,7 +1,11 @@
+import { products } from './../../mock/products'
+import { Cart } from 'components/Cart'
+import styles from './styles.css'
+
 export const Basket = () => {
-  const div = document.createElement('div')
+  const fragment = document.createDocumentFragment()
 
-  div.innerHTML = '<h1>Basket</h1>'
+  fragment.append(Cart(products[0]!))
 
-  return div
+  return fragment
 }
