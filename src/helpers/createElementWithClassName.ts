@@ -5,11 +5,19 @@ export const createElementWithClassName = <K extends keyof HTMLElementTagNameMap
   classname,
 }: {
   tagName: K
-  classname?: string
+  classname?: string | Array<string | undefined>
 }) => {
   const element = document.createElement(tagName)
 
-  addClassnameToElement({ element, classname })
+  if (typeof classname === 'string') {
+    addClassnameToElement({ element, classname })
+  }
+
+  if (Array.isArray(classname)) {
+    classname.filter(Boolean).forEach((cssClass) => {
+      addClassnameToElement({ element, classname: cssClass })
+    })
+  }
 
   return element
 }

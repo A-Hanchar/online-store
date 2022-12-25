@@ -1,37 +1,18 @@
 import { ActionButtonsProps } from './types'
 import styles from './styles.css'
-import { Link } from 'components/Link'
-import { Button } from 'components/Button'
-import { routerPathes } from 'router/routerPathes'
 import { createElementWithClassName, localStorageInstanse } from 'helpers'
+import { ViewDealButton } from './components/ViewDealButton'
+import { AddToCartButton } from './components/AddToCartButton'
 
 export const ActionButtons = ({ id, category, brand }: ActionButtonsProps) => {
-  const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.actionButtons })
+  const wrapper = createElementWithClassName({ tagName: 'div', classname: [styles.actionButtons, styles.standart] })
 
-  wrapper.append(
-    Link({
-      id: `${category}-${brand}-${id}`,
-      children: 'View Deal',
-      href: routerPathes.home,
-      classname: styles.viewDeal,
-    }),
-  )
+  wrapper.append(ViewDealButton({ brand, category, id }))
 
   const productsIds = localStorageInstanse.getProductsIds()
 
   if (!productsIds.includes(id)) {
-    const addInBasket = Button({
-      children: '+',
-      classname: styles.addButton,
-    })
-
-    addInBasket.addEventListener('click', () => {
-      localStorageInstanse.setProductId(id)
-
-      addInBasket.remove()
-    })
-
-    wrapper.append(addInBasket)
+    wrapper.append(AddToCartButton({ buttonText: '+', id }))
   }
 
   return wrapper

@@ -1,6 +1,6 @@
-import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
 import { Cards } from './components/Cards'
+import { CardsHeader } from './components/CardsHeader'
 import { Sidebar } from './components/Sidebar'
 import styles from './styles.css'
 
@@ -9,7 +9,7 @@ export const Home = () => {
   const contentWrapper = createElementWithClassName({ tagName: 'div', classname: styles.contentWrapper })
 
   fragment.append(Sidebar(), contentWrapper)
-  contentWrapper.append(Text({ tagName: 'h1', text: 'Online Shop', classname: styles.title }), Cards())
+  contentWrapper.append(CardsHeader(), Cards())
 
   return fragment
 }
