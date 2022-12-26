@@ -6,7 +6,8 @@ import { Rating } from 'components/ProductCard/components/ProductInfo/components
 
 export const DescriptionItem = ({ title, category, brand, rating, thumbnail }) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
-  const block = createElementWithClassName({ tagName: 'div', classname: styles.block })
+  const leftBlock = createElementWithClassName({ tagName: 'div', classname: styles.leftBlock })
+  const centerBlock = createElementWithClassName({ tagName: 'div', classname: styles.centerBlock })
 
   const itemNumber = Text({ tagName: 'span', text: '1', classname: styles.itemNumber })
   const img = Image({ src: thumbnail, alt: title, classname: styles.img })
@@ -15,9 +16,10 @@ export const DescriptionItem = ({ title, category, brand, rating, thumbnail }) =
   const itemCategory = Text({ tagName: 'span', text: category, classname: styles.category })
   const raiting = Rating({ rating })
 
-  block.append(header, itemBrand, itemCategory, raiting)
+  centerBlock.append(header, itemBrand, itemCategory, raiting)
+  leftBlock.append(itemNumber, img)
 
-  container.append(itemNumber, img, block)
+  container.append(leftBlock, centerBlock)
 
   return container
 }

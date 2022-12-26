@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.input {
+  width: 15%;
+}
+.inputText {
+  color: var(--color-white);
+}
