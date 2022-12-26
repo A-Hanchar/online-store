@@ -1,6 +1,6 @@
 import { ActionButtonsProps } from './types'
 import styles from './styles.css'
-import { createElementWithClassName, localStorageInstanse } from 'helpers'
+import { createElementWithClassName } from 'helpers'
 import { AddToCartButton } from './components/AddToCartButton'
 import { ViewDealButton } from './components/ViewDealButton'
 
@@ -9,11 +9,14 @@ export const ActionButtonsFull = ({ id, category, brand }: ActionButtonsProps) =
 
   wrapper.append(ViewDealButton({ brand, category, id, appearance: 'full' }))
 
-  const productsIds = localStorageInstanse.getProductsIds()
-
-  if (!productsIds.includes(id)) {
-    wrapper.append(AddToCartButton({ buttonText: 'Add To Cart', id, appearance: 'full' }))
-  }
+  wrapper.append(
+    AddToCartButton({
+      textInBasket: 'Remove From Cart',
+      textNotInBasket: 'Add To Cart',
+      id,
+      appearance: 'full',
+    }),
+  )
 
   return wrapper
 }

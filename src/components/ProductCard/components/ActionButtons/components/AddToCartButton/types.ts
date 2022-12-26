@@ -1,6 +1,7 @@
 import { Appearance } from 'types'
 export type AddToCartButtonProps = {
-  buttonText: string
+  textInBasket: string
+  textNotInBasket: string
   id: number
   appearance?: Appearance
 }
