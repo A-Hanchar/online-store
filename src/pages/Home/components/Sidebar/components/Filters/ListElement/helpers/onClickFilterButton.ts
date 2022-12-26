@@ -1,3 +1,4 @@
+import { toggleClassnameToElement } from 'helpers'
 import { urlInstanse } from 'helpers/urlInstanse'
 import { SEARCH_PARAMS, SYMBOL } from 'types'
 import styles from '../styles.css'
@@ -28,7 +29,7 @@ export const onClickFilterButton: (props: {
     searchValue = addedValue
   }
 
-  styles.isActive && button.classList.toggle(styles.isActive)
+  toggleClassnameToElement({ element: button, classname: styles.isActive })
 
   searchValue ? url.searchParams.set(key, searchValue) : url.searchParams.delete(key)
   window.history.pushState({}, '', url.href)
