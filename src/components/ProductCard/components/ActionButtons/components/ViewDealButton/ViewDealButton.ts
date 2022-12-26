@@ -1,12 +1,12 @@
 import { Link } from 'components/Link'
-import { routerPathes } from 'router/routerPathes'
 import { ViewButtonProps } from './types'
 import styles from './styles.css'
+import { generatePathname } from 'helpers'
 
 export const ViewDealButton = ({ brand, category, id, appearance = 'standart' }: ViewButtonProps) =>
   Link({
     id: `${category}-${brand}-${id}`,
     children: 'View Deal',
-    href: routerPathes.home,
+    href: generatePathname.categoriesCategoryIdProductId(category, String(id)),
     classname: [styles.viewDeal, styles[appearance]],
   })
