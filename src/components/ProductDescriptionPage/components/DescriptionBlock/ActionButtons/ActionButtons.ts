@@ -32,7 +32,7 @@ export const ActionButtons = ({ id, category, brand }: ActionButtonsProps) => {
   //   addInBasket.addEventListener('click', () => {
   //     localStorageInstanse.setProductId(id)
 
-  //     addInBasket.remove()
+  //     // addInBasket.remove()
   //   })
 
   //   wrapper.append(addInBasket)
