@@ -10,7 +10,9 @@ export const Price = ({ price, discountPercentage, rating }: PriceProps) => {
 
   const priceWrapper = createElementWithClassName({ tagName: 'div', classname: styles.prices })
 
-  wrapper.append(priceWrapper, Rating({ rating }))
+  if (rating) {
+    wrapper.append(priceWrapper, Rating({ rating }))
+  }
 
   const { price: oldPrice, priceWithDiscount: currentPrice } = getPricesByDiscount(price, discountPercentage)
 

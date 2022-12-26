@@ -1,0 +1,1 @@
+export { QuantityOfItem } from './QuantityOfItem'
