@@ -3,16 +3,33 @@ import { AddToCartButtonProps } from './types'
 import styles from './styles.css'
 import { localStorageInstanse } from 'helpers'
 
-export const AddToCartButton = ({ buttonText, id, appearance = 'standart' }: AddToCartButtonProps) => {
+export const AddToCartButton = ({
+  textInBasket,
+  textNotInBasket,
+  id,
+  appearance = 'standart',
+}: AddToCartButtonProps) => {
+  const buttonText = localStorageInstanse.hasProductId(id) ? textInBasket : textNotInBasket
+
   const button = Button({
     children: buttonText,
     classname: [styles.button, styles[appearance]],
   })
 
   button.addEventListener('click', () => {
+    button.replaceChildren()
+
+    if (localStorageInstanse.hasProductId(id)) {
+      localStorageInstanse.removeProductId(id)
+
+      button.append(textNotInBasket)
+
+      return
+    }
+
     localStorageInstanse.setProductId(id)
 
-    button.remove()
+    button.append(textInBasket)
   })
 
   return button

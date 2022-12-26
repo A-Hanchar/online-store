@@ -31,9 +31,9 @@ class LocalStorageInstanse {
   }
 
   setProductId(id: number) {
-    const productsIds = this.getValue<number>(LOCAL_STORAGE_KEY.PRODUCTS_IDS)
+    const productsIds = this.getProductsIds()
 
-    if (productsIds.includes(id)) {
+    if (this.hasProductId(id)) {
       return
     }
 
@@ -41,6 +41,23 @@ class LocalStorageInstanse {
 
     localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS_IDS, JSON.stringify(productsIds))
     this.updateBasket()
+  }
+
+  removeProductId(id: number) {
+    const productsIds = this.getProductsIds().filter((checkedId) => checkedId !== id)
+
+    localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS_IDS, JSON.stringify(productsIds))
+    this.updateBasket()
+
+    if (!productsIds.length) {
+      localStorage.removeItem(LOCAL_STORAGE_KEY.PRODUCTS_IDS)
+    }
+  }
+
+  hasProductId(id: number) {
+    const productsIds = this.getProductsIds()
+
+    return productsIds.includes(id)
   }
 
   getProductsIds() {
