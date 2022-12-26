@@ -1,8 +1,6 @@
 import { PropsWithChildren } from 'types'
 
-type ButtonOwnProps = {
+export type ButtonProps = PropsWithChildren<{
   classname?: string | Array<string | undefined>
   onclick?: () => void
-}
-
-export type ButtonProps = PropsWithChildren<ButtonOwnProps> | (ButtonOwnProps & { children?: string })
+}>

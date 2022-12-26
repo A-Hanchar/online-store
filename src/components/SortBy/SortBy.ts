@@ -1,40 +1,33 @@
 import { Button } from 'components/Button'
-import { createElementWithClassName } from 'helpers'
+import { createElementWithClassName, toggleClassnameToElement } from 'helpers'
 import { urlInstanse } from 'helpers/urlInstanse'
-import { DATA_ATTRIBUTE, SORT_TYPE } from 'types'
+import { Arrows } from './components/Arrows'
+import { SortingElements } from './components/SortingElements'
 import styles from './styles.css'
 import { SortByProps } from './types'
 
-export const SortBy = ({ key, sort = SORT_TYPE.ASC, title }: SortByProps) => {
-  let currentSort = urlInstanse.getSortTypeByKey(key) ?? sort
+export const SortBy = ({ elements }: SortByProps) => {
+  const { sortKey } = urlInstanse.getSortByParam()
+  const currentElem = elements.find(({ key }) => key === sortKey) ?? elements[0]
 
-  const sortWrapper = createElementWithClassName({ tagName: 'div' })
+  const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
 
-  const arrowsWrapper = createElementWithClassName({ tagName: 'div', classname: styles.arrowsWrapper })
-  const arrowAsc = createElementWithClassName({ tagName: 'span', classname: [styles.arrowAsc, styles.arrow] })
-  const arrowDesc = createElementWithClassName({ tagName: 'span', classname: [styles.arrowDesc, styles.arrow] })
+  const sortingTypeButton = Button({
+    children: currentElem.title,
+    classname: styles.chooseSorting,
+    onclick: () => toggleClassnameToElement({ element: sortingElements, classname: styles.hidden }),
+  })
 
-  arrowsWrapper.append(arrowAsc, arrowDesc)
+  const handleClickOnSortTitle = (title: string) => {
+    sortingTypeButton.replaceChildren()
+    sortingTypeButton.innerText = title
 
-  const setArrowsSortType = () => {
-    arrowAsc.setAttribute(DATA_ATTRIBUTE.DATA_SORT_TYPE, currentSort)
-    arrowDesc.setAttribute(DATA_ATTRIBUTE.DATA_SORT_TYPE, currentSort)
+    toggleClassnameToElement({ element: sortingElements, classname: styles.hidden })
   }
 
-  setArrowsSortType()
+  const sortingElements = SortingElements({ elements, onClick: handleClickOnSortTitle, classname: styles.hidden })
 
-  const handleButtonClick = () => {
-    currentSort = currentSort === SORT_TYPE.ASC ? SORT_TYPE.DESC : SORT_TYPE.ASC
-    setArrowsSortType()
+  wrapper.append(sortingTypeButton, Arrows({ initialKey: currentElem.key }), sortingElements)
 
-    urlInstanse.setSearchValue({ type: 'sort', value: { sortKey: key, sortType: currentSort } })
-  }
-
-  const sortButton = Button({ children: title, classname: styles.sortButton, onclick: handleButtonClick })
-
-  sortButton.append(arrowsWrapper)
-
-  sortWrapper.append(sortButton)
-
-  return sortWrapper
+  return wrapper
 }
