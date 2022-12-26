@@ -17,7 +17,7 @@ export const DescriptionItem = ({ title, category, brand, rating, thumbnail }) =
 
   block.append(header, itemBrand, itemCategory, raiting)
 
-  container.append(itemNumber, img)
+  container.append(itemNumber, img, block)
 
   return container
 }
