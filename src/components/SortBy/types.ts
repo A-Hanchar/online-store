@@ -1,7 +1,5 @@
-import { SORT_KEY, SORT_TYPE } from 'types'
+import { SortElement } from './components/SortElement/types'
 
 export type SortByProps = {
-  key: SORT_KEY
-  sort?: SORT_TYPE
-  title: string
+  elements: [SortElement, ...SortElement[]]
 }

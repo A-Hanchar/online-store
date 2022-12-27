@@ -1,5 +1,7 @@
+import { getCategoriesParams } from 'router'
+
 export const Product = () => {
-  const productId = 'Need realize function for get productId from URL'
+  const { productId = '' } = getCategoriesParams()
 
   const div = document.createElement('div')
 
