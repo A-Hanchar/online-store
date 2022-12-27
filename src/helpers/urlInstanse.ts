@@ -18,8 +18,8 @@ type SetQueryValue =
       key?: undefined
       type: 'sort'
       value: {
-        sortType: SORT_TYPE
         sortKey: SORT_KEY
+        sortType: SORT_TYPE
       }
     }
 
@@ -37,6 +37,18 @@ class URLInstanse {
     this.updateURL()
 
     return this.url
+  }
+
+  clearSearchParams() {
+    this.updateURL()
+
+    window.history.pushState({}, '', this.url.pathname)
+  }
+
+  hasSearchParams() {
+    this.updateURL()
+
+    return Boolean(this.url.search)
   }
 
   getRangeParam(key: SEARCH_PARAMS) {
@@ -62,13 +74,12 @@ class URLInstanse {
   }
 
   getSortByParam() {
-    return (this.getQueryParam(SEARCH_PARAMS.SORT_BY) ?? '').split(SYMBOL.COMMA).filter(Boolean)
-  }
+    const param = (this.getQueryParam(SEARCH_PARAMS.SORT_BY) ?? '').split(SYMBOL.COMMA).filter(Boolean)
 
-  getSortTypeByKey(key: SORT_KEY) {
-    const param = this.getSortByParam().find((item) => item.includes(key))
-
-    return (param?.split(SYMBOL.EQUAL)[1] as SORT_TYPE | undefined) ?? SORT_TYPE.ASC
+    return {
+      sortKey: param[0] as SORT_KEY | undefined,
+      sortType: (param[1] as SORT_TYPE | undefined) ?? SORT_TYPE.ASC,
+    }
   }
 
   setSearchValue({ key, type, value }: SetQueryValue) {
@@ -95,14 +106,9 @@ class URLInstanse {
     if (type === 'sort') {
       const { sortKey, sortType } = value
 
-      const currentVal = this.getSortByParam()
-      const indexExistedKey = currentVal.findIndex((item) => item.includes(sortKey))
+      const newValue = `${sortKey}${SYMBOL.COMMA}${sortType}`
 
-      const newValue = `${sortKey}${SYMBOL.EQUAL}${sortType}`
-
-      indexExistedKey > -1 ? (currentVal[indexExistedKey] = newValue) : currentVal.push(newValue)
-
-      this.url.searchParams.set(SEARCH_PARAMS.SORT_BY, currentVal.toString())
+      this.url.searchParams.set(SEARCH_PARAMS.SORT_BY, newValue)
     }
 
     window.history.pushState({}, '', this.url.href)

@@ -1,0 +1,13 @@
+.wrapper {
+  margin: -16px 0;
+
+  & .text {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+
+    & .countSpan {
+      font-weight: 700;
+    }
+  }
+}
