@@ -9,9 +9,9 @@ export const QuantityOfItem = ({ stock, price, discountPercentage }) => {
   const block = createElementWithClassName({ tagName: 'div', classname: styles.block })
 
   const stockItem = Text({ tagName: 'span', text: `Stock: ${stock}`, classname: styles.stock })
-  const btnMin = Button({ children: '-', classname: styles.btnMin })
+  const btnMin = Button({ children: '-', classname: styles.btn })
   const num = Text({ tagName: 'span', text: '1', classname: styles.num })
-  const btnPlus = Button({ children: '+', classname: styles.btnPlus })
+  const btnPlus = Button({ children: '+', classname: styles.btn })
   const priceItem = Price({ price, discountPercentage })
   addClassnameToElement({ element: priceItem, classname: styles.price })
 

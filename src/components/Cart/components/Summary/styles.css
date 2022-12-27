@@ -22,10 +22,12 @@
   background-color: var(--color-green);
   color: var(--color-white);
   cursor: pointer;
+  border: none;
 }
 
 .btnBuyNow {
   background-color: var(--color-red);
   color: var(--color-white);
   cursor: pointer;
+  border: none;
 }

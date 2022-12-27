@@ -3,18 +3,14 @@ import { createElementWithClassName } from './../../helpers/createElementWithCla
 import { CartList } from './components/CartList'
 import { HeaderItem } from './components/HeaderItem'
 import { Summary } from './components/Summary'
-import styles from './styles.css'
 import { getPricesByDiscount } from 'helpers'
 import { Text } from 'components/Text'
+import styles from './styles.css'
 
 export const Cart = (products: IProduct[]) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
   const productsInCartBlock = createElementWithClassName({ tagName: 'div', classname: styles.block })
   const summaryBlock = createElementWithClassName({ tagName: 'div', classname: styles.block })
-
-  productsInCartBlock.append(HeaderItem())
-  summaryBlock.append(Text({ tagName: 'h2', text: 'Summary', classname: styles.header }))
-  container.append(productsInCartBlock)
 
   const getFullPrice = function (arr: IProduct[]) {
     return arr
@@ -22,7 +18,10 @@ export const Cart = (products: IProduct[]) => {
       .toFixed(2)
   }
 
-  if (products) {
+  if (products.length > 0) {
+    productsInCartBlock.append(HeaderItem())
+    summaryBlock.append(Text({ tagName: 'h2', text: 'Summary', classname: styles.header }))
+    container.append(productsInCartBlock)
     products.forEach((product) => {
       productsInCartBlock.append(CartList(product))
     })
