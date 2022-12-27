@@ -1,6 +1,6 @@
-import { SEARCH_PARAMS } from 'types'
+import { LikeKeys } from './../../interfaces/IProduct'
 
 export type SearchByProps = {
-  key: SEARCH_PARAMS.TITLE
+  key: LikeKeys
   placeholder?: string
 }

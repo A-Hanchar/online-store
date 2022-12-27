@@ -1,10 +1,10 @@
-import { SORT_KEY } from 'types'
+import { SortingKeys } from 'interfaces'
 
 export type SortElement = {
-  key: SORT_KEY
+  key: SortingKeys
   title: string
 }
 
 export type SortElementProps = SortElement & {
-  onClick?: (title: string) => void
+  onClick?: () => void
 }

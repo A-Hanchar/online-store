@@ -1,23 +1,26 @@
-import { createElementWithClassName } from 'helpers'
+import { createElementWithClassName, workDataInstanse } from 'helpers'
 import { SearchByProps } from './types'
 import styles from './styles.css'
 import { urlInstanse } from 'helpers/urlInstanse'
 
-export const SearchBy = ({ key, placeholder }: SearchByProps) => {
+export const SearchBy = ({ key, placeholder = '' }: SearchByProps) => {
   const input = createElementWithClassName({ tagName: 'input', classname: styles.input })
 
   input.type = 'text'
-  input.placeholder = placeholder ?? ''
+  input.placeholder = placeholder
 
-  input.value = urlInstanse.getLikeParam(key) ?? ''
+  const setValue = () => {
+    input.value = urlInstanse.getLikeParam(key) ?? ''
+  }
 
   input.addEventListener('input', () => {
     const inputValue = input.value
 
-    inputValue
-      ? urlInstanse.setSearchValue({ key, type: 'like', value: input.value })
-      : urlInstanse.removeSearchValueByKey(key)
+    inputValue ? urlInstanse.setLikeValue(key, input.value) : urlInstanse.removeSearchValueByKey(key)
   })
+
+  workDataInstanse.addProductFilter({ key, type: 'like' })
+  urlInstanse.addCallback(setValue)
 
   return input
 }
