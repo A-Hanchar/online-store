@@ -3,10 +3,10 @@ import { AppearanceButtonProps } from './types'
 import styles from './styles.css'
 import { Button } from 'components/Button'
 import { urlInstanse } from 'helpers/urlInstanse'
-import { Appearance, SEARCH_PARAMS } from 'types'
+import { Appearance } from 'types'
 
 export const AppearanceButton = ({ type = 'standart' }: AppearanceButtonProps) => {
-  let currentType = urlInstanse.getQueryParam<Appearance>(SEARCH_PARAMS.APPEARANCE) ?? type
+  let currentType = urlInstanse.getQueryParam<Appearance>('appearance') ?? type
 
   const standartContent = createElementWithClassName({ tagName: 'div', classname: styles.standart })
   const fullContent = createElementWithClassName({ tagName: 'div', classname: styles.full })
@@ -22,7 +22,7 @@ export const AppearanceButton = ({ type = 'standart' }: AppearanceButtonProps) =
       buttonContent.append(standartContent)
     }
 
-    urlInstanse.setSearchValue({ type: 'equal', key: SEARCH_PARAMS.APPEARANCE, value: currentType })
+    urlInstanse.setEqualValue('appearance', currentType)
   }
 
   const buttonContent = Button({

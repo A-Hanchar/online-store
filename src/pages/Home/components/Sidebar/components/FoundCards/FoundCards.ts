@@ -1,11 +1,10 @@
 import { Text } from 'components/Text'
-import { createElementWithClassName } from 'helpers'
-import { products } from 'mock/products'
+import { createElementWithClassName, workDataInstanse } from 'helpers'
+import { urlInstanse } from 'helpers/urlInstanse'
 import styles from './styles.css'
 
 export const FoundCards = () => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
-  const foundCardCount = products.length
 
   const textContent = document.createDocumentFragment()
 
@@ -13,12 +12,20 @@ export const FoundCards = () => {
   foundSpan.innerText = 'Found: '
 
   const countSpan = createElementWithClassName({ tagName: 'span', classname: styles.countSpan })
-  countSpan.innerText = String(foundCardCount)
 
   textContent.append(foundSpan, countSpan)
   const text = Text({ tagName: 'p', children: textContent, classname: styles.text })
 
   wrapper.append(text)
+
+  const setCountOfElements = () => {
+    workDataInstanse.updateProductsWithRange()
+    const products = workDataInstanse.getAllProducts()
+
+    countSpan.innerText = String(products.length)
+  }
+
+  urlInstanse.addCallback(setCountOfElements)
 
   return wrapper
 }

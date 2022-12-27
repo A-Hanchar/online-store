@@ -1,5 +1,5 @@
-import { SORT_KEY } from 'types'
+import { SortingKeys } from 'interfaces'
 
 export type ArrowsProps = {
-  initialKey: SORT_KEY
+  initialKey: SortingKeys
 }

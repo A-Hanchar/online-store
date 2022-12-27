@@ -1,6 +1,6 @@
 import { RangeKeys } from 'interfaces'
 
-export type RangeFilterProps = {
+export type InputProps = {
+  type: 'left' | 'right'
   key: RangeKeys
-  title: string
 }

@@ -6,19 +6,25 @@ import { ListElement } from '../ListElement'
 import { Text } from 'components/Text'
 
 export const ListFilter = ({ key, title }: ListFilterProps) => {
-  const essences = workDataInstanse.getAllElemntsByKey(key)
+  workDataInstanse.setInitialProducts()
+  const essences = workDataInstanse.getUniqElemntsByKey(key)
 
   const div = createElementWithClassName({ tagName: 'div', classname: commonStyles.filterWrapper })
   const ul = createElementWithClassName({ tagName: 'ul', classname: styles.list })
 
   ul.append(
     ...essences.map((essence) => {
-      return ListElement({
-        content: capitalizeText(essence),
-        searchKey: key,
-        searchValue: essence,
-        countOfProducts: workDataInstanse.getCountByKey(key, essence),
-      })
+      const li = document.createElement('li')
+
+      li.append(
+        ListElement({
+          content: capitalizeText(essence),
+          searchKey: key,
+          searchValue: essence,
+        }),
+      )
+
+      return li
     }),
   )
 

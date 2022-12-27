@@ -1,13 +1,8 @@
-import { toggleClassnameToElement } from 'helpers'
 import { urlInstanse } from 'helpers/urlInstanse'
-import { SEARCH_PARAMS, SYMBOL } from 'types'
-import styles from '../styles.css'
+import { EqualKeys } from 'interfaces'
+import { SYMBOL } from 'types'
 
-export const onClickFilterButton: (props: {
-  button: HTMLButtonElement
-  key: SEARCH_PARAMS
-  addedValue: string
-}) => void = ({ button, key, addedValue }) => {
+export const onClickFilterButton: (props: { key: EqualKeys; addedValue: string }) => void = ({ key, addedValue }) => {
   const url = urlInstanse.getUrl()
 
   let searchValue = url.searchParams.get(key)
@@ -29,8 +24,5 @@ export const onClickFilterButton: (props: {
     searchValue = addedValue
   }
 
-  toggleClassnameToElement({ element: button, classname: styles.isActive })
-
-  searchValue ? url.searchParams.set(key, searchValue) : url.searchParams.delete(key)
-  window.history.pushState({}, '', url.href)
+  searchValue ? urlInstanse.setEqualValue(key, searchValue) : urlInstanse.removeSearchValueByKey(key)
 }
