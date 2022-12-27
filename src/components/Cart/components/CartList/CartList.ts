@@ -15,6 +15,8 @@ export const CartList = ({
 }: CartListProps) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
 
+  container.id = 'item-id'
+
   container.append(CartItem({ title, price, discountPercentage, category, brand, stock, thumbnail, rating }))
 
   return container

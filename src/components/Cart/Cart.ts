@@ -19,7 +19,7 @@ export const Cart = (products: IProduct[]) => {
   }
 
   if (products.length > 0) {
-    productsInCartBlock.append(HeaderItem())
+    productsInCartBlock.append(HeaderItem(products.length))
     summaryBlock.append(Text({ tagName: 'h2', text: 'Summary', classname: styles.header }))
     container.append(productsInCartBlock)
     products.forEach((product) => {
