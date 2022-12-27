@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--color-black);
+}
+
+.promoBlock {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.headerBlock {
+  margin: 0;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.btnDrop {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.btnBuyNow {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  cursor: pointer;
+}

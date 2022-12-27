@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header {
+  margin: 0;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  text-align: center;
+}

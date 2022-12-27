@@ -1,9 +1,8 @@
-import { addClassnameToElement } from './../../../../../../../../helpers/addClassnameToElement'
-import { Button } from './../../../../../../../Button/Button'
-import { createElementWithClassName } from 'helpers'
+import { addClassnameToElement, createElementWithClassName } from 'helpers'
 import styles from './styles.css'
 import { Text } from 'components/Text'
 import { Price } from 'components/ProductCard/components/ProductInfo/components/Price'
+import { Button } from 'components/Button'
 
 export const QuantityOfItem = ({ stock, price, discountPercentage }) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
