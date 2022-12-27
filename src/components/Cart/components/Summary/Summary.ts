@@ -4,7 +4,7 @@ import { Input } from 'components/Input'
 import { Button } from 'components/Button'
 import styles from './styles.css'
 
-export const Summary = (products, price) => {
+export const Summary = (products: number, price: number) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
   const blockApplied = createElementWithClassName({ tagName: 'div', classname: styles.block })
   const rsBlock = createElementWithClassName({ tagName: 'div', classname: styles.promoBlock })

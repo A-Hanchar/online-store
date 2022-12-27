@@ -25,7 +25,7 @@ export const Cart = (products: IProduct[]) => {
     products.forEach((product) => {
       productsInCartBlock.append(CartList(product))
     })
-    summaryBlock.append(Summary(products.length, getFullPrice(products)))
+    summaryBlock.append(Summary(products.length, +getFullPrice(products)))
     container.append(summaryBlock)
   }
 

@@ -1,12 +1,12 @@
 .container {
   display: flex;
-  align-items: center;
   gap: 1rem;
+  align-items: center;
 }
 
 .header {
   margin: 0;
-  background-color: var(--color-black);
   color: var(--color-white);
   text-align: center;
+  background-color: var(--color-black);
 }

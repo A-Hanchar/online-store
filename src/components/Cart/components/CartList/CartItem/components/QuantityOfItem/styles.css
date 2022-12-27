@@ -6,8 +6,8 @@
 
 .block {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
+  align-items: center;
 }
 
 .price {
@@ -16,9 +16,9 @@
 }
 
 .btn {
-  background-color: var(--color-green);
   color: var(--color-white);
+  cursor: pointer;
+  background-color: var(--color-green);
   border: none;
   border-radius: 50%;
-  cursor: pointer;
 }

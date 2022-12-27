@@ -3,8 +3,9 @@ import styles from './styles.css'
 import { Text } from 'components/Text'
 import { Price } from 'components/ProductCard/components/ProductInfo/components/Price'
 import { Button } from 'components/Button'
+import { QuantityOfItemProps } from './types'
 
-export const QuantityOfItem = ({ stock, price, discountPercentage }) => {
+export const QuantityOfItem = ({ stock, price, discountPercentage }: QuantityOfItemProps) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
   const block = createElementWithClassName({ tagName: 'div', classname: styles.block })
 

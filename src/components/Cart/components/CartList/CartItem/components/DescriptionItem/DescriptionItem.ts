@@ -3,8 +3,9 @@ import { createElementWithClassName } from 'helpers'
 import styles from './styles.css'
 import { Text } from 'components/Text'
 import { Rating } from 'components/ProductCard/components/ProductInfo/components/Rating'
+import { DescriptionItemProps } from './typse'
 
-export const DescriptionItem = ({ title, category, brand, rating, thumbnail }) => {
+export const DescriptionItem = ({ title, category, brand, rating, thumbnail }: DescriptionItemProps) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
   const leftBlock = createElementWithClassName({ tagName: 'div', classname: styles.leftBlock })
   const centerBlock = createElementWithClassName({ tagName: 'div', classname: styles.centerBlock })
