@@ -1,33 +1,41 @@
 import { Button } from 'components/Button'
-import { createElementWithClassName, toggleClassnameToElement } from 'helpers'
+import { createElementWithClassName, toggleClassnameToElement, workDataInstanse } from 'helpers'
 import { urlInstanse } from 'helpers/urlInstanse'
+import { SORTING_TYPE } from 'interfaces'
 import { Arrows } from './components/Arrows'
 import { SortingElements } from './components/SortingElements'
 import styles from './styles.css'
 import { SortByProps } from './types'
 
 export const SortBy = ({ elements }: SortByProps) => {
-  const { sortKey } = urlInstanse.getSortByParam()
-  const currentElem = elements.find(({ key }) => key === sortKey) ?? elements[0]
+  const sortParam = urlInstanse.getSortByParam()
+  const currentElem = sortParam ? elements.find(({ key }) => key === sortParam.sortKey) ?? elements[0] : elements[0]
 
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
 
   const sortingTypeButton = Button({
-    children: currentElem.title,
     classname: styles.chooseSorting,
     onclick: () => toggleClassnameToElement({ element: sortingElements, classname: styles.hidden }),
   })
 
-  const handleClickOnSortTitle = (title: string) => {
-    sortingTypeButton.replaceChildren()
-    sortingTypeButton.innerText = title
+  const updateSortingElements = () => {
+    const sortParam = urlInstanse.getSortByParam()
+    const currentElem = sortParam ? elements.find(({ key }) => key === sortParam.sortKey) ?? elements[0] : elements[0]
 
-    toggleClassnameToElement({ element: sortingElements, classname: styles.hidden })
+    const sortKey = sortParam?.sortKey ?? currentElem.key
+    const sortType = sortParam?.sortType ?? SORTING_TYPE.ASC
+
+    sortingTypeButton.replaceChildren()
+    sortingTypeButton.innerText = currentElem.title
+
+    workDataInstanse.setSortingParams(sortKey, sortType)
   }
 
-  const sortingElements = SortingElements({ elements, onClick: handleClickOnSortTitle, classname: styles.hidden })
+  const sortingElements = SortingElements({ elements, hiddenClassname: styles.hidden })
 
   wrapper.append(sortingTypeButton, Arrows({ initialKey: currentElem.key }), sortingElements)
+
+  urlInstanse.addCallback(updateSortingElements)
 
   return wrapper
 }
