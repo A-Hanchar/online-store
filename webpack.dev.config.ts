@@ -15,7 +15,9 @@ const config: IConfiguration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'Online Shop',
       template: 'src/index.html',
+      publicPath: '/',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
