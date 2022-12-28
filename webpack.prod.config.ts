@@ -26,6 +26,7 @@ const config: IConfiguration = {
         {
           from: '/*',
           to: '/',
+          status: 404,
         },
       ],
     }),
