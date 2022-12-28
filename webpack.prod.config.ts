@@ -14,9 +14,10 @@ const config: IConfiguration = {
     }),
     new CleanPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Webpack 5 Boilerplate',
+      title: 'Online Shop',
       template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html',
+      publicPath: '/',
     }),
     new MiniCssExtractPlugin({ filename: `${packageJson.name}.css` }),
   ],
