@@ -7,13 +7,14 @@ import { LOCAL_STORAGE_KEY } from 'types'
 export const Basket = () => {
   const fragment = document.createDocumentFragment()
 
-  if (localStorage.getItem('PRODUCTS_IDS')) {
-    const localArr: number[] = localStorageInstanse.getValue(LOCAL_STORAGE_KEY.PRODUCTS_IDS)
+  if (localStorage.getItem('PRODUCTS')) {
+    const localArr = localStorageInstanse.getProducts()
+
     const arr: IProduct[] = []
 
     localArr.forEach((e) =>
       products.forEach((el) => {
-        if (el.id === e) {
+        if (el.id === e.id) {
           arr.push(el)
         }
       }),
