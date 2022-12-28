@@ -19,6 +19,7 @@ const config: IConfiguration = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
+    publicPath: '/',
   },
   entry: ['./src/index.ts'],
   module: {

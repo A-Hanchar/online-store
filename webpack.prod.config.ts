@@ -17,7 +17,7 @@ const config: IConfiguration = {
       title: 'Online Shop',
       template: path.resolve(__dirname, './src/index.html'),
       // filename: 'index.html',
-      // publicPath: '/',
+      publicPath: '/',
     }),
     new MiniCssExtractPlugin({ filename: `${packageJson.name}.css` }),
   ],
