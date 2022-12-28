@@ -10,8 +10,7 @@
 
   &::after {
     position: absolute;
-    top: 0;
-    right: 0;
+    left: calc(50% + 10px);
     display: flex;
     align-items: center;
     justify-content: center;

@@ -4,7 +4,7 @@ import { createElementWithClassName } from 'helpers'
 import { AddToCartButton } from './components/AddToCartButton'
 import { ViewDealButton } from './components/ViewDealButton'
 
-export const ActionButtonsFull = ({ id, category, brand }: ActionButtonsProps) => {
+export const ActionButtonsFull = ({ id, category, brand, price, discount }: ActionButtonsProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: [styles.actionButtons, styles.full] })
 
   wrapper.append(ViewDealButton({ brand, category, id, appearance: 'full' }))
@@ -15,6 +15,8 @@ export const ActionButtonsFull = ({ id, category, brand }: ActionButtonsProps) =
       textNotInBasket: 'Add To Cart',
       id,
       appearance: 'full',
+      price,
+      discount,
     }),
   )
 

@@ -22,7 +22,7 @@ export const ProductCardFull = ({
   card.append(
     ProductImageFull({ alt: title, src: thumbnail, discountPercentage }),
     ProductInfo({ title, description, discountPercentage, price, category, rating, stock }),
-    ActionButtonsFull({ id, brand, category }),
+    ActionButtonsFull({ id, brand, category, price, discount: discountPercentage }),
   )
 
   return card
