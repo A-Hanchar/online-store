@@ -25,8 +25,8 @@ const config: IConfiguration = {
       redirects: [
         {
           from: '/*',
-          to: '/',
-          status: 404,
+          to: '/index.html',
+          status: 200,
         },
       ],
     }),
