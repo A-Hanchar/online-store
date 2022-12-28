@@ -5,12 +5,15 @@ import { Text } from 'components/Text'
 import { Rating } from 'components/ProductCard/components/ProductInfo/components/Rating'
 import { DescriptionItemProps } from './typse'
 
-export const DescriptionItem = ({ title, category, brand, rating, thumbnail }: DescriptionItemProps) => {
+export const DescriptionItem = (
+  { title, category, brand, rating, thumbnail }: DescriptionItemProps,
+  lineNumber: number,
+) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
   const leftBlock = createElementWithClassName({ tagName: 'div', classname: styles.leftBlock })
   const centerBlock = createElementWithClassName({ tagName: 'div', classname: styles.centerBlock })
 
-  const itemNumber = Text({ tagName: 'span', text: '1', classname: styles.itemNumber })
+  const itemNumber = Text({ tagName: 'span', text: lineNumber.toString(), classname: styles.itemNumber })
   const img = Image({ src: thumbnail, alt: title, classname: styles.img })
   const header = Text({ tagName: 'h3', text: title, classname: styles.header })
   const itemBrand = Text({ tagName: 'span', text: brand, classname: styles.brand })

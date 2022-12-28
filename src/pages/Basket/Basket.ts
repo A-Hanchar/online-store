@@ -2,7 +2,6 @@ import { IProduct } from 'interfaces'
 import { products } from './../../mock/products'
 import { Cart } from 'components/Cart'
 import { localStorageInstanse } from 'helpers'
-import { LOCAL_STORAGE_KEY } from 'types'
 
 export const Basket = () => {
   const fragment = document.createDocumentFragment()

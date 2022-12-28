@@ -1,9 +1,10 @@
+import { products } from './../mock/products'
 import { Basket } from 'components/Basket'
 import { CURRENCY, DATA_ATTRIBUTE, LOCAL_STORAGE_KEY } from 'types'
 import { createElementWithClassName } from './createElementWithClassName'
 import { getPricesByDiscount } from './getPricesByDiscount'
 
-type LocalStorageProduct = {
+export type LocalStorageProduct = {
   id: number
   count: number
   price: number
@@ -42,6 +43,39 @@ class ProductsInstanse extends LocalStorageInstanse {
     localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS, JSON.stringify(products))
   }
 
+  setCount(id: number, num: number) {
+    const products = this.getProducts()
+    products.forEach((e) => {
+      if (e.id === id) {
+        e.count = num
+        this.removeProductId(id)
+        localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS, JSON.stringify(products))
+      }
+    })
+  }
+
+  setPrice(id: number, num: number) {
+    const products = this.getProducts()
+    products.forEach((e) => {
+      if (e.id === id) {
+        e.price = num
+        this.removeProductId(id)
+        localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS, JSON.stringify(products))
+      }
+    })
+  }
+
+  setDiscount(id: number, num: number) {
+    const products = this.getProducts()
+    products.forEach((e) => {
+      if (e.id === id) {
+        e.discount = num
+        this.removeProductId(id)
+        localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS, JSON.stringify(products))
+      }
+    })
+  }
+
   removeProductId(id: number) {
     const products = this.getProducts().filter(({ id: checkedId }) => checkedId !== id)
 
@@ -60,6 +94,12 @@ class ProductsInstanse extends LocalStorageInstanse {
 
   getProducts() {
     return this.getValue<LocalStorageProduct>(LOCAL_STORAGE_KEY.PRODUCTS)
+  }
+
+  returnProduct(id: number) {
+    const products = this.getProducts()
+    const arr = products.filter((e) => e.id === id)
+    return arr[0]
   }
 }
 

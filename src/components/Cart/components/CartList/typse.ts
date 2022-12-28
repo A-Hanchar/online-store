@@ -1,4 +1,5 @@
 export type CartListProps = {
+  id: number
   title: string
   price: number
   discountPercentage: number

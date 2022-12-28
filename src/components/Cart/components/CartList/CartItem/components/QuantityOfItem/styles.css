@@ -11,8 +11,7 @@
 }
 
 .price {
-  padding: 0;
-  border: none;
+  color: var(--color-red);
 }
 
 .btn {

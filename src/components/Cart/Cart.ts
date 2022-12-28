@@ -3,7 +3,7 @@ import { createElementWithClassName } from './../../helpers/createElementWithCla
 import { CartList } from './components/CartList'
 import { HeaderItem } from './components/HeaderItem'
 import { Summary } from './components/Summary'
-import { getPricesByDiscount } from 'helpers'
+import { getPricesByDiscount, localStorageInstanse } from 'helpers'
 import { Text } from 'components/Text'
 import styles from './styles.css'
 
@@ -22,8 +22,8 @@ export const Cart = (products: IProduct[]) => {
     productsInCartBlock.append(HeaderItem(products.length))
     summaryBlock.append(Text({ tagName: 'h2', text: 'Summary', classname: styles.header }))
     container.append(productsInCartBlock)
-    products.forEach((product) => {
-      productsInCartBlock.append(CartList(product))
+    products.forEach((product, i) => {
+      productsInCartBlock.append(CartList(product, i + 1))
     })
     summaryBlock.append(Summary(products.length, +getFullPrice(products)))
     container.append(summaryBlock)

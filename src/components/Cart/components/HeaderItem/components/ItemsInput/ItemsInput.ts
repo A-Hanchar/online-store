@@ -11,12 +11,6 @@ export const ItemsInput = (itemsNum: number) => {
   input.querySelector('input')!.min = '1'
   input.querySelector('input')!.max = itemsNum.toString()
 
-  const value = input.querySelector('input')?.value
-
-  input.querySelector('input')!.oninput = () => {
-    localStorage.setItem('NUMBER_OF_ITEMS', JSON.stringify(value))
-  }
-
   container.append(Text({ tagName: 'span', text: 'ITEMS: ', classname: styles.inputText }), input)
 
   return container
