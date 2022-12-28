@@ -1,29 +1,35 @@
 import { Button } from 'components/Button'
-import { addClassnameToElement } from 'helpers'
+import { addClassnameToElement, workDataInstanse } from 'helpers'
 import { SYMBOL } from 'types'
 import styles from './styles.css'
 import { onClickFilterButton } from './helpers'
 import { ListElementProps } from './types'
 import { urlInstanse } from 'helpers/urlInstanse'
+import { removeClassnameToElement } from 'helpers/removeClassnameToElement '
 
-export const ListElement = ({ content, searchKey, searchValue, countOfProducts }: ListElementProps) => {
-  const url = urlInstanse.getUrl()
-  const gettedSearchValue = url.searchParams.get(searchKey)?.split(SYMBOL.COMMA)
-
-  const li = document.createElement('li')
-
+export const ListElement = ({ content, searchKey, searchValue }: ListElementProps) => {
   const button = Button({
-    children: `${content} (${countOfProducts})`,
     classname: styles.filterButton,
   })
 
-  button.addEventListener('click', () => onClickFilterButton({ button, key: searchKey, addedValue: searchValue }))
+  button.addEventListener('click', () => onClickFilterButton({ key: searchKey, addedValue: searchValue }))
 
-  if (gettedSearchValue?.includes(searchValue)) {
-    addClassnameToElement({ element: button, classname: styles.isActive })
+  const checkButton = () => {
+    workDataInstanse.updateProductsWithRange()
+
+    const countOfElements = workDataInstanse.getProductsByKey(searchKey, searchValue).length
+    const gettedSearchValue = urlInstanse.getQueryParam(searchKey)?.split(SYMBOL.COMMA)
+
+    gettedSearchValue?.includes(searchValue)
+      ? addClassnameToElement({ element: button, classname: styles.isActive })
+      : removeClassnameToElement({ element: button, classname: styles.isActive })
+
+    button.innerText = `${content}(${countOfElements})`
+    button.disabled = !countOfElements
   }
 
-  li.append(button)
+  urlInstanse.addCallback(checkButton)
+  workDataInstanse.addProductFilter({ type: 'equal', key: searchKey })
 
-  return li
+  return button
 }

@@ -1,6 +1,6 @@
-import { SEARCH_PARAMS } from 'types'
+import { FilterCheckboxKeys } from 'interfaces'
 
 export type ListFilterProps = {
-  key: SEARCH_PARAMS.CATERORY | SEARCH_PARAMS.BRAND
+  key: FilterCheckboxKeys
   title: string
 }

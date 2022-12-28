@@ -1,72 +1,79 @@
 import styles from './styles.css'
 import { createElementWithClassName, workDataInstanse } from 'helpers'
 import { urlInstanse } from 'helpers/urlInstanse'
-import { SEARCH_PARAMS } from 'types'
+import { InputProps } from './types'
 
-export const Input = ({
-  type,
-  key,
-  textValueWrapper,
-}: {
-  type: 'left' | 'right'
-  key: SEARCH_PARAMS.PRICE | SEARCH_PARAMS.STOCK
-  textValueWrapper: HTMLParagraphElement
-}) => {
-  const searchPrice = urlInstanse.getRangeParam(key)
-  const { min, max } = workDataInstanse.getRange(key)
+export const Input = ({ type, key }: InputProps) => {
+  const isLeftType = type === 'left'
+  const isRightType = type === 'right'
+
+  const textValueWrapper = document.createElement('p')
 
   const input = createElementWithClassName({ tagName: 'input', classname: styles.inputRange })
   input.type = 'range'
-
-  input.min = String(min)
-  input.max = String(max)
-
   input.step = '1'
 
-  if (type === 'left') {
-    const value = String(searchPrice.start ?? min)
+  const setInputParams = () => {
+    workDataInstanse.updateProductsByFilters()
+    const searchRangeParams = urlInstanse.getRangeParam(key)
+    const { min, max } = workDataInstanse.getCurrentRange(key)
 
-    input.value = value
-    textValueWrapper.innerText = value
-  }
+    input.min = String(min)
+    input.max = String(max)
 
-  if (type === 'right') {
-    const value = String(searchPrice.end ?? max)
+    input.value = (() => {
+      if (!searchRangeParams) {
+        return String(isLeftType ? min : max)
+      }
 
-    input.value = value
-    textValueWrapper.innerText = value
+      const { start, end } = searchRangeParams
+
+      if (isLeftType) {
+        return String(start >= min ? start : min)
+      }
+
+      return String(end <= max ? end : max)
+    })()
+
+    textValueWrapper.innerText = input.value
   }
 
   input.addEventListener('input', () => {
-    const { start, end } = urlInstanse.getRangeParam(key)
+    workDataInstanse.updateProductsByFilters()
+    const searchRangeParams = urlInstanse.getRangeParam(key)
 
-    const currentValue = Number(input.value)
+    if (searchRangeParams) {
+      const { start, end } = searchRangeParams
+      const currentValue = Number(input.value)
 
-    if (type === 'left') {
-      if (end && currentValue >= end) {
+      if (isLeftType && currentValue >= end) {
         input.value = String(end)
       }
 
-      urlInstanse.setSearchValue({
-        key,
-        type: 'range',
-        value: { min: Number(input.value), max: Number(end ?? max) },
-      })
-    }
-
-    if (type === 'right') {
-      if (start && currentValue < start) {
+      if (isRightType && currentValue <= start) {
         input.value = String(start)
       }
-
-      urlInstanse.setSearchValue({
-        key,
-        type: 'range',
-        value: { min: Number(start ?? min), max: Number(input.value) },
-      })
     }
 
-    textValueWrapper.innerText = String(input.value)
+    textValueWrapper.innerText = input.value
   })
-  return input
+
+  input.addEventListener('mouseup', () => {
+    const { min, max } = workDataInstanse.getRange(key)
+    const searchRangeParams = urlInstanse.getRangeParam(key)
+
+    const value = Number(input.value)
+
+    const left = isLeftType ? value : searchRangeParams?.start ?? min
+    const right = isRightType ? value : searchRangeParams?.end ?? max
+
+    left === min && right === max
+      ? urlInstanse.removeSearchValueByKey(key)
+      : urlInstanse.setRangeValue(key, { min: left, max: right })
+  })
+
+  workDataInstanse.addProductRangeFilter(key)
+  urlInstanse.addCallback(setInputParams)
+
+  return { input, textValueWrapper }
 }

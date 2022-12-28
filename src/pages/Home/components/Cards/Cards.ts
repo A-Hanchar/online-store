@@ -1,27 +1,23 @@
-import { ProductCard, ProductCardFull } from 'components/ProductCard'
-import { createElementWithClassName } from 'helpers'
+import { createElementWithClassName, workDataInstanse } from 'helpers'
+import { cardsList } from 'helpers/cardsList'
 import { urlInstanse } from 'helpers/urlInstanse'
-import { products } from 'mock/products'
-import { Appearance, DATA_ATTRIBUTE, SEARCH_PARAMS } from 'types'
+import { Appearance, DATA_ATTRIBUTE } from 'types'
 import styles from './styles.css'
 
 export const Cards = () => {
-  const searchAppearance: Appearance = urlInstanse.getQueryParam<Appearance>(SEARCH_PARAMS.APPEARANCE) ?? 'standart'
-
   const cardsWrapper = createElementWithClassName({ tagName: 'div', classname: styles.cardsWrapper })
-  cardsWrapper.setAttribute(DATA_ATTRIBUTE.DATA_GRID_APPEARANCE, searchAppearance)
 
-  cardsWrapper.append(
-    ...products.map((product) => {
-      switch (searchAppearance) {
-        case 'full':
-          return ProductCardFull(product)
+  const renderCards = () => {
+    cardsWrapper.replaceChildren()
+    workDataInstanse.updateProductsWithRange()
 
-        default:
-          return ProductCard(product)
-      }
-    }),
-  )
+    const searchAppearance: Appearance = urlInstanse.getQueryParam<Appearance>('appearance') ?? 'standart'
+    cardsWrapper.setAttribute(DATA_ATTRIBUTE.DATA_GRID_APPEARANCE, searchAppearance)
+
+    cardsWrapper.append(...workDataInstanse.getAllProducts().map(({ id }) => cardsList[id]![searchAppearance]))
+  }
+
+  urlInstanse.addCallback(renderCards, 'end')
 
   return cardsWrapper
 }

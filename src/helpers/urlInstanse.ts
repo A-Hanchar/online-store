@@ -1,30 +1,9 @@
-import { SEARCH_PARAMS, SORT_KEY, SORT_TYPE, SYMBOL } from 'types'
-
-type SetQueryValue =
-  | {
-      key: SEARCH_PARAMS
-      type: 'equal' | 'like'
-      value: string
-    }
-  | {
-      key: SEARCH_PARAMS
-      type: 'range'
-      value: {
-        min: number
-        max: number
-      }
-    }
-  | {
-      key?: undefined
-      type: 'sort'
-      value: {
-        sortKey: SORT_KEY
-        sortType: SORT_TYPE
-      }
-    }
+import { EqualKeys, LikeKeys, RangeKeys, SearchKeys, SEARCH_PARAMS, SortingKeys, SORTING_TYPE } from 'interfaces'
+import { SYMBOL } from 'types'
 
 class URLInstanse {
   url: URL
+
   constructor() {
     this.url = new URL(window.location.href)
   }
@@ -39,88 +18,177 @@ class URLInstanse {
     return this.url
   }
 
-  clearSearchParams() {
-    this.updateURL()
-
-    window.history.pushState({}, '', this.url.pathname)
-  }
-
   hasSearchParams() {
     this.updateURL()
 
     return Boolean(this.url.search)
   }
+}
 
-  getRangeParam(key: SEARCH_PARAMS) {
-    const param = this.getQueryParam(key)
-    const range = param?.replace(/[in()=]/g, '').split(',')
+class URLCallbacks extends URLInstanse {
+  callbackList: Array<() => void>
 
-    return {
-      start: range?.[0] && Number(range[0]),
-      end: range?.[1] && Number(range[1]),
+  constructor() {
+    super()
+
+    this.callbackList = []
+  }
+
+  addCallback(callback: () => void, place: 'start' | 'end' = 'start') {
+    if (place === 'start') {
+      this.callbackList.unshift(callback)
+
+      return
+    }
+
+    this.callbackList.push(callback)
+  }
+
+  clearCallbackLists() {
+    this.callbackList = []
+  }
+
+  callCallbacks() {
+    if (this.callbackList.length) {
+      this.callbackList.forEach((callback) => callback())
     }
   }
+}
 
-  getLikeParam(key: SEARCH_PARAMS) {
-    const param = this.getQueryParam(key)
-
-    return param?.replace(/[*]/g, '')
+class URLClearMethods extends URLCallbacks {
+  resetUrl(resetedPath: string) {
+    window.history.pushState({}, '', resetedPath)
+    this.callCallbacks()
   }
 
-  getQueryParam<T = string>(key: SEARCH_PARAMS) {
+  clearSearchParams() {
+    this.updateURL()
+
+    this.resetUrl(this.url.pathname)
+  }
+
+  removeSearchValueByKey(key: SearchKeys) {
+    this.updateURL()
+
+    this.url.searchParams.delete(key)
+    this.resetUrl(this.url.href)
+  }
+}
+
+class URLGetters extends URLClearMethods {
+  getQueryParam<T = string>(key: SearchKeys) {
     this.updateURL()
 
     return this.url.searchParams.get(key) as T | null
   }
 
-  getSortByParam() {
-    const param = (this.getQueryParam(SEARCH_PARAMS.SORT_BY) ?? '').split(SYMBOL.COMMA).filter(Boolean)
+  getRangeParam(key: RangeKeys) {
+    const param = this.getQueryParam(key)
+
+    if (!param) {
+      return
+    }
+
+    const range = param.replace(/[in()=]/g, '').split(SYMBOL.COMMA)
 
     return {
-      sortKey: param[0] as SORT_KEY | undefined,
-      sortType: (param[1] as SORT_TYPE | undefined) ?? SORT_TYPE.ASC,
+      start: Number(range[0]),
+      end: Number(range[1]),
     }
   }
 
-  setSearchValue({ key, type, value }: SetQueryValue) {
-    this.updateURL()
+  getLikeParam(key: LikeKeys) {
+    const param = this.getQueryParam(key)
 
-    if (type === 'equal') {
-      this.url.searchParams.set(key, value)
+    if (!param) {
+      return
     }
 
-    if (type === 'range') {
-      const { min, max } = value
-
-      const newVal = `${SYMBOL.IN}=(${min},${max})`
-
-      this.url.searchParams.set(key, newVal)
-    }
-
-    if (type === 'like') {
-      const newVal = `${SYMBOL.ASTERISK}${value}${SYMBOL.ASTERISK}`
-
-      this.url.searchParams.set(key, newVal)
-    }
-
-    if (type === 'sort') {
-      const { sortKey, sortType } = value
-
-      const newValue = `${sortKey}${SYMBOL.COMMA}${sortType}`
-
-      this.url.searchParams.set(SEARCH_PARAMS.SORT_BY, newValue)
-    }
-
-    window.history.pushState({}, '', this.url.href)
+    return param.replace(/[*]/g, '')
   }
 
-  removeSearchValueByKey(key: SEARCH_PARAMS) {
-    this.updateURL()
+  getSortByParam() {
+    const param = this.getQueryParam(SEARCH_PARAMS.SORT_BY)
 
-    this.url.searchParams.delete(key)
+    if (!param) {
+      return
+    }
 
-    window.history.pushState({}, '', this.url.href)
+    const splitedParam = param.split(SYMBOL.COMMA).filter(Boolean)
+
+    return {
+      sortKey: splitedParam[0] as SortingKeys,
+      sortType: splitedParam[1] as SORTING_TYPE,
+    }
   }
 }
 
-export const urlInstanse = new URLInstanse()
+class URLSetters extends URLGetters {
+  setValue(
+    key: EqualKeys | RangeKeys | LikeKeys | SortingKeys | SEARCH_PARAMS,
+    value: string,
+    shouldCallCallbacks = true,
+  ) {
+    this.url.searchParams.set(key, value)
+
+    window.history.pushState({}, '', this.url.href)
+    shouldCallCallbacks && this.callCallbacks()
+  }
+
+  setEqualValue(key: EqualKeys, value: string) {
+    this.setValue(key, value)
+  }
+
+  setRangeValue(key: RangeKeys, { min, max }: { min: number; max: number }) {
+    const newValue = `${SYMBOL.IN}=(${min},${max})`
+
+    this.setValue(key, newValue)
+  }
+
+  setLikeValue(key: LikeKeys, value: string) {
+    const newValue = `${SYMBOL.ASTERISK}${value}${SYMBOL.ASTERISK}`
+
+    this.setValue(key, newValue)
+  }
+
+  setSortValue(key: SortingKeys, type: SORTING_TYPE) {
+    const newValue = `${key}${SYMBOL.COMMA}${type}`
+
+    this.setValue(SEARCH_PARAMS.SORT_BY, newValue)
+  }
+
+  // setSearchValue({ key, type, value }: SetQueryValue) {
+  //   this.updateURL()
+
+  //   if (type === 'equal') {
+  //     this.url.searchParams.set(key, value)
+  //   }
+
+  //   if (type === 'range') {
+  //     const { min, max } = value
+
+  //     const newVal = `${SYMBOL.IN}=(${min},${max})`
+
+  //     this.url.searchParams.set(key, newVal)
+  //   }
+
+  //   if (type === 'like') {
+  //     const newVal = `${SYMBOL.ASTERISK}${value}${SYMBOL.ASTERISK}`
+
+  //     this.url.searchParams.set(key, newVal)
+  //   }
+
+  //   if (type === 'sort') {
+  //     const { sortKey, sortType } = value
+
+  //     const newValue = `${sortKey}${SYMBOL.COMMA}${sortType}`
+
+  //     this.url.searchParams.set(SEARCH_PARAMS.SORT_BY, newValue)
+  //   }
+
+  //   window.history.pushState({}, '', this.url.href)
+  //   this.callCallbacks()
+  // }
+}
+
+export const urlInstanse = new URLSetters()

@@ -1,14 +1,15 @@
 import { Button } from 'components/Button'
-import { createElementWithClassName } from 'helpers'
+import { createElementWithClassName, workDataInstanse } from 'helpers'
 import { urlInstanse } from 'helpers/urlInstanse'
-import { DATA_ATTRIBUTE, SORT_TYPE } from 'types'
+import { SORTING_TYPE } from 'interfaces'
+import { DATA_ATTRIBUTE } from 'types'
 import styles from './styles.css'
 import { ArrowsProps } from './types'
 
 export const Arrows = ({ initialKey }: ArrowsProps) => {
-  const { sortType } = urlInstanse.getSortByParam()
+  const sortingParam = urlInstanse.getSortByParam()
 
-  let currentSort = sortType
+  let currentSort = sortingParam ? sortingParam.sortType : SORTING_TYPE.ASC
 
   const arrowsWrapper = createElementWithClassName({ tagName: 'div', classname: styles.arrowsWrapper })
   const arrowAsc = createElementWithClassName({ tagName: 'span', classname: [styles.arrowAsc, styles.arrow] })
@@ -24,18 +25,13 @@ export const Arrows = ({ initialKey }: ArrowsProps) => {
   setArrowsSortType()
 
   const handleButtonClick = () => {
-    currentSort = currentSort === SORT_TYPE.ASC ? SORT_TYPE.DESC : SORT_TYPE.ASC
+    currentSort = currentSort === SORTING_TYPE.ASC ? SORTING_TYPE.DESC : SORTING_TYPE.ASC
     setArrowsSortType()
 
-    const { sortKey } = urlInstanse.getSortByParam()
+    const sortingParam = urlInstanse.getSortByParam()
 
-    urlInstanse.setSearchValue({
-      type: 'sort',
-      value: {
-        sortKey: sortKey ?? initialKey,
-        sortType: currentSort,
-      },
-    })
+    urlInstanse.setSortValue(sortingParam?.sortKey ?? initialKey, currentSort)
+    workDataInstanse.setSortingParams(initialKey, currentSort)
   }
 
   const arrowsButton = Button({ children: arrowsWrapper, classname: styles.sortButton, onclick: handleButtonClick })
