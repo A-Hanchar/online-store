@@ -8,6 +8,8 @@ export const AddToCartButton = ({
   textNotInBasket,
   id,
   appearance = 'standart',
+  price,
+  discount,
 }: AddToCartButtonProps) => {
   const buttonText = localStorageInstanse.hasProductId(id) ? textInBasket : textNotInBasket
 
@@ -21,13 +23,15 @@ export const AddToCartButton = ({
 
     if (localStorageInstanse.hasProductId(id)) {
       localStorageInstanse.removeProductId(id)
+      localStorageInstanse.updateBasket()
 
       button.append(textNotInBasket)
 
       return
     }
 
-    localStorageInstanse.setProductId(id)
+    localStorageInstanse.setProduct({ id, count: 1, price, discount })
+    localStorageInstanse.updateBasket()
 
     button.append(textInBasket)
   })

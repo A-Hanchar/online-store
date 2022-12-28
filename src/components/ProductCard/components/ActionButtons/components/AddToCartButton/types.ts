@@ -4,4 +4,6 @@ export type AddToCartButtonProps = {
   textNotInBasket: string
   id: number
   appearance?: Appearance
+  price: number
+  discount: number
 }
