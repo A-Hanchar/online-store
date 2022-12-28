@@ -10,13 +10,13 @@ const config: IConfiguration = {
   bail: true,
   plugins: [
     new BannerPlugin({
-      banner: `${packageJson.name}@${packageJson.version} ${new Date()}`,
+      banner: `${packageJson.name}@${packageJson.version} ${Date()}`,
     }),
     new CleanPlugin(),
     new HtmlWebpackPlugin({
       title: 'Online Shop',
       template: path.resolve(__dirname, './src/index.html'),
-      // filename: 'index.html',
+      filename: 'index.html',
       publicPath: '/',
     }),
     new MiniCssExtractPlugin({ filename: `${packageJson.name}.css` }),
