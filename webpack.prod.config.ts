@@ -4,6 +4,7 @@ import packageJson from './package.json'
 import { IConfiguration } from './webpack.config'
 import path from 'path'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { NetlifyPlugin } from 'netlify-webpack-plugin'
 
 const config: IConfiguration = {
   mode: 'production',
@@ -20,6 +21,14 @@ const config: IConfiguration = {
       publicPath: '/',
     }),
     new MiniCssExtractPlugin({ filename: `${packageJson.name}.css` }),
+    new NetlifyPlugin({
+      redirects: [
+        {
+          from: '/*',
+          to: '/',
+        },
+      ],
+    }),
   ],
   devtool: false,
 }
