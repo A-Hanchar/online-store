@@ -16,8 +16,8 @@ const config: IConfiguration = {
     new HtmlWebpackPlugin({
       title: 'Online Shop',
       template: path.resolve(__dirname, './src/index.html'),
-      filename: 'index.html',
-      publicPath: '/',
+      // filename: 'index.html',
+      // publicPath: '/',
     }),
     new MiniCssExtractPlugin({ filename: `${packageJson.name}.css` }),
   ],
