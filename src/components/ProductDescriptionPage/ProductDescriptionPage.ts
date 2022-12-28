@@ -27,7 +27,7 @@ export const ProductDescriptionPage = ({
     Breadcrumbs({ category, brand, title }),
     ProductImage({ alt: title, src: thumbnail }),
     ImagesBlock({ images, title }),
-    DescriptionBlock({ brand, category, description, price, discountPercentage, rating, stock, id, brand, category }),
+    DescriptionBlock({ brand, category, description, price, discountPercentage, rating, stock, id }),
   )
 
   return card

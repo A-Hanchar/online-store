@@ -10,13 +10,12 @@ export const ImagesBlock = ({ images, title }: ImagesBlockProps) => {
 
   images.slice(2, 4).forEach((img) => imagesBlock.append(Image({ src: img, alt: title, classname: styles.img })))
 
-  imageIsShow.append(Image({ src: images[2], alt: title, classname: styles.selectedImg }))
+  imageIsShow.append(Image({ src: images[2]!, alt: title, classname: styles.selectedImg }))
 
   container.append(imagesBlock, imageIsShow)
 
   imagesBlock.addEventListener('click', (event) => {
     const target = event.target as HTMLImageElement
-
     if (target) {
       if (imageIsShow.querySelector('img')) {
         imageIsShow.querySelector('img')?.remove()

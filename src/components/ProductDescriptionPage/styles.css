@@ -7,11 +7,11 @@
 }
 
 .header {
+  padding: 5px;
+  margin: 0;
+  color: var(--color-white);
   text-align: center;
   background-color: var(--color-black);
-  color: var(--color-white);
-  margin: 0;
-  padding: 5px;
   border-top-left-radius: var(--product-card-border-radius);
   border-top-right-radius: var(--product-card-border-radius);
 }

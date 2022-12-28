@@ -1,9 +1,10 @@
 export type DescriptionBlockProps = {
-  brand: string
-  category: string
   description: string
   price: number
-  rating: number
   discountPercentage: number
+  rating: number
   stock: number
+  id: number
+  brand: string
+  category: string
 }

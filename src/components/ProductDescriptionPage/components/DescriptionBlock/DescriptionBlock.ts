@@ -5,13 +5,14 @@ import { DescriptionBlockProps } from './types'
 import { PriceBlock } from './PriceBlock'
 
 export const DescriptionBlock = ({
-  brand,
-  category,
   description,
   price,
   discountPercentage,
   rating,
   stock,
+  id,
+  brand,
+  category,
 }: DescriptionBlockProps) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
   const block = createElementWithClassName({ tagName: 'div', classname: styles.block })
@@ -20,7 +21,7 @@ export const DescriptionBlock = ({
     createBlockOfProductDescription('Category', category),
     createBlockOfProductDescription('Description', description),
   )
-  container.append(block, PriceBlock({ price, discountPercentage, rating, stock }))
+  container.append(block, PriceBlock({ price, discountPercentage, rating, stock, id, brand, category }))
 
   return container
 }

@@ -1,11 +1,16 @@
+import { ProductDescriptionPage } from 'components/ProductDescriptionPage'
+import { createElementWithClassName } from 'helpers'
+import { products } from 'mock/products'
 import { getCategoriesParams } from 'router'
 
 export const Product = () => {
   const { productId = '' } = getCategoriesParams()
 
-  const div = document.createElement('div')
+  const container = createElementWithClassName({ tagName: 'div' })
 
-  div.innerHTML = `<h1>Product: id - ${productId}</h1>`
+  const obj = products.filter((e) => e.id === +productId)
 
-  return div
+  container.append(ProductDescriptionPage(...obj))
+
+  return container
 }

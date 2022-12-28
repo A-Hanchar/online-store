@@ -1,9 +1,9 @@
 import { ActionButtonsProps } from './types'
 import styles from './styles.css'
 import { Link } from 'components/Link'
-import { Button } from 'components/Button'
 import { routerPathes } from 'router/routerPathes'
-import { createElementWithClassName, localStorageInstanse } from 'helpers'
+import { createElementWithClassName } from 'helpers'
+import { AddToCartButton } from 'components/ProductCard/components/ActionButtons/components/AddToCartButton'
 
 export const ActionButtons = ({ id, category, brand }: ActionButtonsProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.actionButtons })
@@ -15,28 +15,8 @@ export const ActionButtons = ({ id, category, brand }: ActionButtonsProps) => {
       href: routerPathes.basket,
       classname: styles.buyButton,
     }),
-    Button({
-      children: 'Add to Cart',
-      classname: styles.addButton,
-    }),
+    AddToCartButton({ id, textInBasket: '-', textNotInBasket: '+' }),
   )
-
-  // const productsIds = localStorageInstanse.getProductsIds()
-
-  // if (!productsIds.includes(id)) {
-  //   const addInBasket = Button({
-  //     children: 'Add To Cart',
-  //     classname: styles.addButton,
-  //   })
-
-  //   addInBasket.addEventListener('click', () => {
-  //     localStorageInstanse.setProductId(id)
-
-  //     // addInBasket.remove()
-  //   })
-
-  //   wrapper.append(addInBasket)
-  // }
 
   return wrapper
 }
