@@ -30,8 +30,8 @@ export const QuantityOfItem = ({ id, stock, price, discountPercentage }: Quantit
       if (countNumber > 1) {
         countNumber--
         count.textContent = countNumber.toString()
-        localStorageInstanse.setCount(id, countNumber)
         priceItem.textContent = `$${(priceForLocal.priceWithDiscount -= priceForMinuse.priceWithDiscount).toFixed(2)}`
+        localStorageInstanse.setCount(id, countNumber)
         localStorageInstanse.setPrice(id, priceForLocal.priceWithDiscount)
       }
     },
@@ -43,8 +43,8 @@ export const QuantityOfItem = ({ id, stock, price, discountPercentage }: Quantit
       if (countNumber < stock) {
         countNumber++
         count.textContent = countNumber.toString()
-        localStorageInstanse.setCount(id, countNumber)
         priceItem.textContent = `$${(priceForLocal.priceWithDiscount += priceForMinuse.priceWithDiscount).toFixed(2)}`
+        localStorageInstanse.setCount(id, countNumber)
         localStorageInstanse.setPrice(id, priceForLocal.priceWithDiscount)
       }
     },

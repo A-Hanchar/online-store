@@ -1,18 +1,17 @@
+import { totalPrice } from './components/totalPrice/'
+import { numberOfProducts } from './components/numberOfProducts/'
+import { totalPriceWithDiscount } from './components/totalPriceWithDiscount'
 import { createElementWithClassName } from 'helpers'
 import { Text } from 'components/Text'
 import { Input } from 'components/Input'
 import { Button } from 'components/Button'
 import styles from './styles.css'
 
-export const Summary = (products: number, price: number) => {
+export const Summary = () => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
   const blockApplied = createElementWithClassName({ tagName: 'div', classname: styles.block })
   const rsBlock = createElementWithClassName({ tagName: 'div', classname: styles.promoBlock })
   const epamBlock = createElementWithClassName({ tagName: 'div', classname: styles.promoBlock })
-
-  const numberOfProducts = Text({ tagName: 'h3', text: `Products: ${products}`, classname: styles.products })
-  const totalPrice = Text({ tagName: 'h3', text: `Total: $${price}`, classname: styles.price })
-  const totalPriceWithDiscount = Text({ tagName: 'h3', text: `Total: $${price}`, classname: styles.price })
 
   const headerBlock = Text({ tagName: 'h4', text: 'Applied codes', classname: styles.headerBlock })
   const rs = Text({ tagName: 'span', text: 'Rolling Scopes School - 10% -', classname: styles.blockDescription })
@@ -28,7 +27,15 @@ export const Summary = (products: number, price: number) => {
   rsBlock.append(rs, btnDropRS)
   epamBlock.append(epam, btnDropEPAM)
 
-  container.append(numberOfProducts, totalPrice, totalPriceWithDiscount, blockApplied, inputPromo, promoCode, btnBuyNow)
+  container.append(
+    numberOfProducts(),
+    totalPrice(),
+    totalPriceWithDiscount(),
+    blockApplied,
+    inputPromo,
+    promoCode,
+    btnBuyNow,
+  )
 
   return container
 }

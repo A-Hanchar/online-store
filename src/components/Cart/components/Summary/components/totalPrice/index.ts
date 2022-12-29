@@ -1,0 +1,1 @@
+export { totalPrice } from './totalPrice'

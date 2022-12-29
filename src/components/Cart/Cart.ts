@@ -3,7 +3,6 @@ import { createElementWithClassName } from './../../helpers/createElementWithCla
 import { CartList } from './components/CartList'
 import { HeaderItem } from './components/HeaderItem'
 import { Summary } from './components/Summary'
-import { getPricesByDiscount } from 'helpers'
 import { Text } from 'components/Text'
 import styles from './styles.css'
 
@@ -12,12 +11,6 @@ export const Cart = (products: IProduct[]) => {
   const productsInCartBlock = createElementWithClassName({ tagName: 'div', classname: styles.block })
   const summaryBlock = createElementWithClassName({ tagName: 'div', classname: styles.block })
 
-  const getFullPrice = function (arr: IProduct[]) {
-    return arr
-      .reduce((prev, cur) => prev + getPricesByDiscount(cur.price, cur.discountPercentage).priceWithDiscount, 0)
-      .toFixed(2)
-  }
-
   if (products.length > 0) {
     productsInCartBlock.append(HeaderItem(products.length))
     summaryBlock.append(Text({ tagName: 'h2', text: 'Summary', classname: styles.header }))
@@ -25,7 +18,7 @@ export const Cart = (products: IProduct[]) => {
     products.forEach((product, i) => {
       productsInCartBlock.append(CartList(product, i + 1))
     })
-    summaryBlock.append(Summary(products.length, +getFullPrice(products)))
+    summaryBlock.append(Summary())
     container.append(summaryBlock)
   }
 
