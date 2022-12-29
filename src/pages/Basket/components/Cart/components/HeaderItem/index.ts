@@ -1,1 +1,0 @@
-export { HeaderItem } from './HeaderItem'

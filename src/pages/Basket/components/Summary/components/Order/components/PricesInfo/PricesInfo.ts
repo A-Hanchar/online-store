@@ -14,8 +14,8 @@ import styles from './styles.css'
 export const PricesInfo = ({ callbackList }: PriceInfoProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
 
-  const productCountText = Text({ tagName: 'p', classname: styles.p })
-  const costText = Text({ tagName: 'p', classname: styles.p })
+  const productCountText = Text({ tagName: 'p', classname: styles.text })
+  const costText = Text({ tagName: 'p', classname: styles.text })
 
   wrapper.append(productCountText, costText, ActivePromoCodes({ callbackList }))
 

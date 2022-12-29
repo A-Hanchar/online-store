@@ -1,17 +1,17 @@
 .wrapper {
-  font-size: 18px;
   margin-top: 16px;
+  font-size: 18px;
 
   & .title {
     margin: 0;
   }
 
   & .list {
-    margin: 0;
-    padding-left: 32px;
-    margin-top: 8px;
     display: flex;
     flex-direction: column;
     gap: 6px;
+    padding-left: 32px;
+    margin: 0;
+    margin-top: 8px;
   }
 }

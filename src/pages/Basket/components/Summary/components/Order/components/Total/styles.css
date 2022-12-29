@@ -1,10 +1,10 @@
 .wrapper {
-  border-top: 1px solid var(--color-black);
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding-top: 16px;
   margin-top: 16px;
+  border-top: 1px solid var(--color-black);
 
   & .total {
     margin: 0;
@@ -12,21 +12,18 @@
   }
 
   & .button {
-    width: 250px;
-    height: 35px;
-
     display: flex;
     align-items: center;
-    justify-content: center;
     align-self: center;
-
-    background-color: var(--color-red);
-    color: var(--color-white);
-    border: none;
-    border-radius: 6px;
+    justify-content: center;
+    width: 250px;
+    height: 35px;
     font-size: 24px;
     font-weight: 500;
-
+    color: var(--color-white);
     cursor: pointer;
+    background-color: var(--color-red);
+    border: none;
+    border-radius: 6px;
   }
 }

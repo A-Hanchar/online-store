@@ -8,9 +8,9 @@
     color: var(--color-white);
 
     &:not(:last-child)::after {
-      content: '/';
       position: absolute;
       left: calc(100% + 4px);
+      content: "/";
     }
   }
 }

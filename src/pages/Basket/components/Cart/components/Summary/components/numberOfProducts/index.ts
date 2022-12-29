@@ -1,1 +1,0 @@
-export { numberOfProducts } from './numberOfProducts'
