@@ -3,7 +3,7 @@ import { createElementWithClassName } from './../../helpers/createElementWithCla
 import { CartList } from './components/CartList'
 import { HeaderItem } from './components/HeaderItem'
 import { Summary } from './components/Summary'
-import { getPricesByDiscount, localStorageInstanse } from 'helpers'
+import { getPricesByDiscount } from 'helpers'
 import { Text } from 'components/Text'
 import styles from './styles.css'
 

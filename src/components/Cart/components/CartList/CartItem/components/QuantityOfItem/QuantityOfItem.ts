@@ -1,4 +1,4 @@
-import { createElementWithClassName, getPricesByDiscount, localStorageInstanse } from 'helpers'
+import { LocalStorageProduct, createElementWithClassName, getPricesByDiscount, localStorageInstanse } from 'helpers'
 import styles from './styles.css'
 import { Text } from 'components/Text'
 import { Button } from 'components/Button'
@@ -9,25 +9,28 @@ export const QuantityOfItem = ({ id, stock, price, discountPercentage }: Quantit
   const block = createElementWithClassName({ tagName: 'div', classname: styles.block })
 
   const obj = localStorageInstanse.returnProduct(id)
-  const { count: newCount, price: newPrice } = obj
+  const { count: newCount, price: newPrice } = obj as LocalStorageProduct
   const priceForLocal = getPricesByDiscount(newPrice, discountPercentage)
   const priceForMinuse = getPricesByDiscount(price, discountPercentage)
 
   const stockItem = Text({ tagName: 'span', text: `Stock: ${stock}`, classname: styles.stock })
-  const num = Text({ tagName: 'span', text: newCount, classname: styles.num })
+  const count = Text({ tagName: 'span', text: newCount.toString(), classname: styles.num })
   const priceItem = Text({
     tagName: 'span',
     text: `$${priceForLocal.priceWithDiscount.toFixed(2)}`,
     classname: styles.price,
   })
 
+  let countNumber = count.textContent as unknown as number
+
   const btnMin = Button({
     children: '-',
     classname: styles.btn,
-    onclick: () => {
-      if (+num.textContent! > 1) {
-        num.textContent--
-        localStorageInstanse.setCount(id, +num.textContent)
+    onclick: (): void => {
+      if (countNumber > 1) {
+        countNumber--
+        count.textContent = countNumber.toString()
+        localStorageInstanse.setCount(id, countNumber)
         priceItem.textContent = `$${(priceForLocal.priceWithDiscount -= priceForMinuse.priceWithDiscount).toFixed(2)}`
         localStorageInstanse.setPrice(id, priceForLocal.priceWithDiscount)
       }
@@ -37,16 +40,17 @@ export const QuantityOfItem = ({ id, stock, price, discountPercentage }: Quantit
     children: '+',
     classname: styles.btn,
     onclick: () => {
-      if (+num.textContent! < stock) {
-        num.textContent++
-        localStorageInstanse.setCount(id, +num.textContent)
+      if (countNumber < stock) {
+        countNumber++
+        count.textContent = countNumber.toString()
+        localStorageInstanse.setCount(id, countNumber)
         priceItem.textContent = `$${(priceForLocal.priceWithDiscount += priceForMinuse.priceWithDiscount).toFixed(2)}`
         localStorageInstanse.setPrice(id, priceForLocal.priceWithDiscount)
       }
     },
   })
 
-  block.append(btnMin, num, btnPlus)
+  block.append(btnMin, count, btnPlus)
   container.append(block, stockItem, priceItem)
 
   return container

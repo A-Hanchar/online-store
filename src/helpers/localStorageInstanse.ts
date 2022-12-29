@@ -1,4 +1,3 @@
-import { products } from './../mock/products'
 import { Basket } from 'components/Basket'
 import { CURRENCY, DATA_ATTRIBUTE, LOCAL_STORAGE_KEY } from 'types'
 import { createElementWithClassName } from './createElementWithClassName'
