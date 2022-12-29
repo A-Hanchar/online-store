@@ -6,6 +6,10 @@ import { Summary } from './components/Summary'
 import { Text } from 'components/Text'
 import styles from './styles.css'
 
+/**
+ *
+ * @deprecated
+ */
 export const Cart = (products: IProduct[]) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
   const productsInCartBlock = createElementWithClassName({ tagName: 'div', classname: styles.block })

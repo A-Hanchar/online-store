@@ -1,0 +1,8 @@
+.wrapper {
+  display: grid;
+  gap: 5px;
+  background-color: var(--color-gray);
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+  padding: 24px;
+}

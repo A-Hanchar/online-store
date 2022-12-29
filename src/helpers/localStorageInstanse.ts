@@ -1,5 +1,5 @@
 import { Basket } from 'components/Basket'
-import { CURRENCY, DATA_ATTRIBUTE, LOCAL_STORAGE_KEY } from 'types'
+import { CURRENCY, DATA_ATTRIBUTE, LOCAL_STORAGE_KEY, PromoCode } from 'types'
 import { createElementWithClassName } from './createElementWithClassName'
 import { getPricesByDiscount } from './getPricesByDiscount'
 
@@ -133,4 +133,46 @@ class BasketInstance extends ProductsInstanse {
   }
 }
 
+class PromoCodeInstanse extends LocalStorageInstanse {
+  setPromoCode({ id, ...promoCodeProps }: PromoCode) {
+    if (this.hasPromoCodeById(id)) {
+      return
+    }
+
+    const promoCodes = this.getPromoCodes()
+    promoCodes.push({ id, ...promoCodeProps })
+
+    localStorage.setItem(LOCAL_STORAGE_KEY.PROMO_CODES, JSON.stringify(promoCodes))
+  }
+
+  getPromoCodes() {
+    return this.getValue<PromoCode>(LOCAL_STORAGE_KEY.PROMO_CODES)
+  }
+
+  hasPromoCodeById(id: string) {
+    const promoCodeIds = this.getPromoCodes().map(({ id }) => id)
+
+    return promoCodeIds.includes(id)
+  }
+
+  getSumOfSale() {
+    const promoCodeSales = this.getPromoCodes().map(({ sale }) => sale)
+
+    const sum = promoCodeSales.reduce((prev, current) => prev + current, 0)
+
+    return sum > 100 ? 100 : sum
+  }
+
+  removePromoCodeId(id: string) {
+    const promoCodes = this.getPromoCodes().filter(({ id: checkedId }) => checkedId !== id)
+
+    localStorage.setItem(LOCAL_STORAGE_KEY.PROMO_CODES, JSON.stringify(promoCodes))
+
+    if (!promoCodes.length) {
+      localStorage.removeItem(LOCAL_STORAGE_KEY.PROMO_CODES)
+    }
+  }
+}
+
 export const localStorageInstanse = new BasketInstance()
+export const localStoragePromoCodeInstanse = new PromoCodeInstanse()

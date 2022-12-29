@@ -5,8 +5,7 @@ import { ActionButton } from './components/ActionButton'
 import { CountElements } from './components/CountElements'
 import { Price } from './components/Price'
 
-export const Actions = ({ stock, productId, productWrapper }: ActionsProps) => {
-  const callbackList: Array<() => void> = []
+export const Actions = ({ stock, productId, productWrapper, callbackList }: ActionsProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
 
   const buttonsWrapper = createElementWithClassName({ tagName: 'div', classname: styles.buttonsWrapper })
@@ -18,8 +17,6 @@ export const Actions = ({ stock, productId, productWrapper }: ActionsProps) => {
   )
 
   wrapper.append(buttonsWrapper, Price({ productId, callbackList }))
-
-  callbackList.forEach((callback) => callback())
 
   return wrapper
 }

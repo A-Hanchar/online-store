@@ -1,0 +1,11 @@
+.wrapper {
+  background-color: var(--color-white);
+
+  border-bottom-right-radius: 24px;
+  border-bottom-left-radius: 24px;
+  padding: 24px;
+
+  & .h2 {
+    margin: 0;
+  }
+}
