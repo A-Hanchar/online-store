@@ -1,7 +1,7 @@
-import { ProductDescriptionPage } from 'components/ProductDescriptionPage'
 import { createElementWithClassName } from 'helpers'
 import { products } from 'mock/products'
 import { getCategoriesParams } from 'router'
+import { ProductDescriptionPage } from './ProductDescriptionPage'
 
 export const Product = () => {
   const { productId = '' } = getCategoriesParams()

@@ -11,9 +11,19 @@ export const Breadcrumbs = ({ category, brand, title }: BreadcrumbsProps) => {
   container.append(
     Link({ id: 'link-to-store', children: 'Go to Store', href: routerPathes.home, classname: styles.breadcrumbs }),
     Text({ tagName: 'span', text: '>>', classname: styles.breadcrumbs }),
-    Text({ tagName: 'span', text: capitalizeText(category), classname: styles.breadcrumbs }),
+    Link({
+      id: 'link-to-category',
+      children: capitalizeText(category),
+      href: routerPathes.categories,
+      classname: styles.breadcrumbs,
+    }),
     Text({ tagName: 'span', text: '>>', classname: styles.breadcrumbs }),
-    Text({ tagName: 'span', text: capitalizeText(brand), classname: styles.breadcrumbs }),
+    Link({
+      id: 'link-to-category',
+      children: capitalizeText(brand),
+      href: routerPathes.category,
+      classname: styles.breadcrumbs,
+    }),
     Text({ tagName: 'span', text: '>>', classname: styles.breadcrumbs }),
     Text({ tagName: 'span', text: capitalizeText(title), classname: styles.breadcrumbs }),
   )
