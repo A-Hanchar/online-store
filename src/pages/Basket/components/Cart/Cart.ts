@@ -1,5 +1,5 @@
-import { IProduct } from './../../interfaces/IProduct'
-import { createElementWithClassName } from './../../helpers/createElementWithClassName'
+import { IProduct } from '../../../../interfaces/IProduct'
+import { createElementWithClassName } from '../../../../helpers/createElementWithClassName'
 import { CartList } from './components/CartList'
 import { HeaderItem } from './components/HeaderItem'
 import { Summary } from './components/Summary'

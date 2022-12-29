@@ -1,5 +1,5 @@
-import { totalPrice } from './components/totalPrice/'
-import { numberOfProducts } from './components/numberOfProducts/'
+import { totalPrice } from './components/totalPrice'
+import { numberOfProducts } from './components/numberOfProducts'
 import { totalPriceWithDiscount } from './components/totalPriceWithDiscount'
 import { createElementWithClassName } from 'helpers'
 import { Text } from 'components/Text'

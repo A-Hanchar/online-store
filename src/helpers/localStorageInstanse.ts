@@ -3,7 +3,7 @@ import { CURRENCY, DATA_ATTRIBUTE, LOCAL_STORAGE_KEY } from 'types'
 import { createElementWithClassName } from './createElementWithClassName'
 import { getPricesByDiscount } from './getPricesByDiscount'
 
-export type LocalStorageProduct = {
+type LocalStorageProduct = {
   id: number
   count: number
   price: number
@@ -27,7 +27,10 @@ class ProductsInstanse extends LocalStorageInstanse {
     const products = this.getProducts()
 
     return products
-      .reduce((prev, current) => prev + getPricesByDiscount(current.price, current.discount).priceWithDiscount, 0)
+      .reduce(
+        (prev, { price, discount, count }) => prev + getPricesByDiscount(price, discount).priceWithDiscount * count,
+        0,
+      )
       .toFixed(2)
   }
 
@@ -42,37 +45,16 @@ class ProductsInstanse extends LocalStorageInstanse {
     localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS, JSON.stringify(products))
   }
 
-  setCount(id: number, num: number) {
+  setProductCount(id: number, newCount: number) {
     const products = this.getProducts()
-    products.forEach((e) => {
-      if (e.id === id) {
-        e.count = num
-        this.removeProductId(id)
-        localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS, JSON.stringify(products))
-      }
-    })
-  }
 
-  setPrice(id: number, num: number) {
-    const products = this.getProducts()
-    products.forEach((e) => {
-      if (e.id === id) {
-        e.price = num
-        this.removeProductId(id)
-        localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS, JSON.stringify(products))
-      }
-    })
-  }
+    const product = products.find((product) => product.id === id)
 
-  setDiscount(id: number, num: number) {
-    const products = this.getProducts()
-    products.forEach((e) => {
-      if (e.id === id) {
-        e.discount = num
-        this.removeProductId(id)
-        localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS, JSON.stringify(products))
-      }
-    })
+    if (product) {
+      product.count = newCount
+    }
+
+    localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS, JSON.stringify(products))
   }
 
   removeProductId(id: number) {
@@ -95,10 +77,10 @@ class ProductsInstanse extends LocalStorageInstanse {
     return this.getValue<LocalStorageProduct>(LOCAL_STORAGE_KEY.PRODUCTS)
   }
 
-  returnProduct(id: number) {
+  getProductById(id: number) {
     const products = this.getProducts()
-    const arr = products.filter((e) => e.id === id)
-    return arr[0]
+
+    return products.find((product) => product.id === id)
   }
 }
 

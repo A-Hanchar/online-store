@@ -1,0 +1,9 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+
+  border: 1px solid var(--color-gold);
+  padding: 15px;
+  border-radius: 8px;
+}

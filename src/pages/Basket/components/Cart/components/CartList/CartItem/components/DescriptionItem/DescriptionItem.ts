@@ -2,7 +2,7 @@ import { Image } from 'components/Image'
 import { createElementWithClassName } from 'helpers'
 import styles from './styles.css'
 import { Text } from 'components/Text'
-import { Rating } from 'components/ProductCard/components/ProductInfo/components/Rating'
+import { Rating } from 'components/Rating'
 import { DescriptionItemProps } from './typse'
 
 export const DescriptionItem = (

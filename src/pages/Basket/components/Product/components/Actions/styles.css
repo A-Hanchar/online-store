@@ -1,0 +1,16 @@
+.wrapper {
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  & .buttonsWrapper {
+    border: 1px solid var(--color-black);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 8px;
+  }
+}

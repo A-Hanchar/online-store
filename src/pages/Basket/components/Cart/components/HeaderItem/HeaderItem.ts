@@ -1,5 +1,5 @@
-import { ItemsPages } from './components/ItemsPages/'
-import { ItemsInput } from './components/ItemsInput/'
+import { ItemsPages } from './components/ItemsPages'
+import { ItemsInput } from './components/ItemsInput'
 import { createElementWithClassName } from 'helpers'
 import { Text } from 'components/Text'
 import styles from './styles.css'
