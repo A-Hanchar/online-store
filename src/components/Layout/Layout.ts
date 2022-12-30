@@ -23,5 +23,9 @@ export const Layout = ({ children }: PropsWithChildren) => {
     addClassnameToElement({ element: main, classname: styles.mainHome })
   }
 
+  if (url.pathname === routerPathes.basket) {
+    addClassnameToElement({ element: main, classname: styles.mainBasket })
+  }
+
   return fragment
 }

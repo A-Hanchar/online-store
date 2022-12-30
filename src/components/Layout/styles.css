@@ -11,4 +11,9 @@
     grid-template-columns: 350px 1fr;
     background-color: var(--color-light-gray);
   }
+
+  & .mainBasket {
+    padding: 45px;
+    background-color: var(--color-light-gray);
+  }
 }
