@@ -8,9 +8,9 @@ export const Product = () => {
 
   const container = createElementWithClassName({ tagName: 'div' })
 
-  const obj = products.filter((e) => e.id === +productId)
+  const filteredProducts = products.filter(({ id }) => id === Number(productId))
 
-  obj.forEach((e) => container.append(ProductDescriptionPage(e)))
+  filteredProducts.forEach((e) => container.append(ProductDescriptionPage(e)))
 
   return container
 }
