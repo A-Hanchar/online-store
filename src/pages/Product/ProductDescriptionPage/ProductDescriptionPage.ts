@@ -6,8 +6,7 @@ import { ProductImage } from './components/ProductImage'
 import { ImagesBlock } from './components/ImagesBlock'
 import { DescriptionBlock } from './components/DescriptionBlock'
 import { Breadcrumbs } from 'components/Breadcrumbs'
-import { ArrayData } from 'components/Breadcrumbs/helpers/ArrayData'
-import { BreadcrumbsProps } from 'components/Breadcrumbs/types'
+import { routerPathes } from 'router/routerPathes'
 
 export const ProductDescriptionPage = ({
   title,
@@ -24,9 +23,18 @@ export const ProductDescriptionPage = ({
 }: IProduct) => {
   const card = createElementWithClassName({ tagName: 'div', classname: styles.card })
 
+  const breadCrumbs = Breadcrumbs({
+    elements: [
+      { name: 'Go to Store', url: routerPathes.home },
+      { name: category, url: `${routerPathes.categories}/${category}` },
+      { name: brand, url: `${routerPathes.category}/${brand}` },
+      { name: title, url: `${routerPathes.product}/${title}` },
+    ],
+  })
+
   card.append(
     Text({ tagName: 'h2', text: title, classname: styles.header }),
-    Breadcrumbs(ArrayData(id, title) as BreadcrumbsProps),
+    breadCrumbs,
     ProductImage({ alt: title, src: thumbnail }),
     ImagesBlock({ images, title }),
     DescriptionBlock({ brand, category, description, price, discountPercentage, rating, stock, id }),

@@ -1,6 +1,3 @@
-export type BreadcrumbsProps = [
-  {
-    name: string
-    url: string
-  },
-]
+export type BreadcrumbsProps = {
+  elements: Array<{ name: string; url: string }>
+}
