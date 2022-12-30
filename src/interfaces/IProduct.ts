@@ -23,8 +23,11 @@ export type SortingKeys = keyof Pick<IProduct, 'price' | 'rating' | 'title' | 'd
 export type ProductEqualKeys = keyof Pick<IProduct, 'category' | 'brand'>
 export type EqualKeys = ProductEqualKeys | 'appearance'
 
+export type PaginationKeys = 'total' | 'size' | 'page'
+
 export enum SEARCH_PARAMS {
   SORT_BY = 'sort_by',
+  PAGINATION = 'pagination',
 }
 
 export enum SORTING_TYPE {

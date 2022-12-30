@@ -13,7 +13,9 @@ export const Input = ({
 
   input.id = id
   input.type = type
-  input.placeholder = placeholder
+  if (placeholder) {
+    input.placeholder = placeholder
+  }
   if (dataset) {
     input.dataset[dataset] = dataset
   }

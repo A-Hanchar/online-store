@@ -1,0 +1,16 @@
+.actionButton {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  &.disable {
+    font-weight: 900;
+    color: var(--color-black);
+    cursor: not-allowed;
+    background-color: var(--color-gray);
+    border-radius: 8px;
+    opacity: 0.5;
+  }
+}

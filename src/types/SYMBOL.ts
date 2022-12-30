@@ -8,4 +8,5 @@ export enum SYMBOL {
   IN = 'in',
   ASTERISK = '*',
   EQUAL = '=',
+  SEMICOLON = ';',
 }
