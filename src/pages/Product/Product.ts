@@ -10,7 +10,7 @@ export const Product = () => {
 
   const obj = products.filter((e) => e.id === +productId)
 
-  container.append(ProductDescriptionPage(...obj))
+  obj.forEach((e) => container.append(ProductDescriptionPage(e)))
 
   return container
 }
