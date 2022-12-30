@@ -19,7 +19,7 @@ export const Total = ({ callbackList }: Totalprops) => {
     children: 'Buy',
     classname: styles.button,
     onclick() {
-      document.querySelector('main')!.append(ModalWindow())
+      document.querySelector('body')!.append(ModalWindow())
     },
   })
 
