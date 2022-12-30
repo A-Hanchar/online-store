@@ -1,3 +1,4 @@
+import { ModalWindow } from './../../../../../../../../components/ModalWindow/ModalWindow'
 import { Button } from 'components/Button'
 import { Text } from 'components/Text'
 import {
@@ -14,7 +15,13 @@ export const Total = ({ callbackList }: Totalprops) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
 
   const totalText = Text({ tagName: 'p', classname: styles.total })
-  const button = Button({ children: 'Buy', classname: styles.button })
+  const button = Button({
+    children: 'Buy',
+    classname: styles.button,
+    onclick() {
+      document.querySelector('main')!.append(ModalWindow())
+    },
+  })
 
   const renderTotaltext = () => {
     const productsPrice = localStorageInstanse.getProductsPrice()
