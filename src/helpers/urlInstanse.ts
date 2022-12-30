@@ -1,5 +1,14 @@
-import { EqualKeys, LikeKeys, RangeKeys, SearchKeys, SEARCH_PARAMS, SortingKeys, SORTING_TYPE } from 'interfaces'
-import { SYMBOL } from 'types'
+import {
+  EqualKeys,
+  LikeKeys,
+  PaginationKeys,
+  RangeKeys,
+  SearchKeys,
+  SEARCH_PARAMS,
+  SortingKeys,
+  SORTING_TYPE,
+} from 'interfaces'
+import { PAGE_SIZE, SYMBOL } from 'types'
 
 class URLInstanse {
   url: URL
@@ -121,6 +130,30 @@ class URLGetters extends URLClearMethods {
       sortType: splitedParam[1] as SORTING_TYPE,
     }
   }
+
+  getPaginationParam(): Record<PaginationKeys, number> | undefined {
+    const param = this.getQueryParam(SEARCH_PARAMS.PAGINATION)
+
+    if (!param) {
+      return
+    }
+
+    const splitedParam = param.split(SYMBOL.SEMICOLON)
+
+    const [total, page, size] = splitedParam.map((param) => Number(param.split(SYMBOL.COMMA)[1]))
+
+    if (!total || !page || !size) {
+      return
+    }
+
+    const lastPage = Math.ceil(total / size)
+
+    return {
+      total,
+      page: page > lastPage ? lastPage : page,
+      size,
+    }
+  }
 }
 
 class URLSetters extends URLGetters {
@@ -157,38 +190,19 @@ class URLSetters extends URLGetters {
     this.setValue(SEARCH_PARAMS.SORT_BY, newValue)
   }
 
-  // setSearchValue({ key, type, value }: SetQueryValue) {
-  //   this.updateURL()
+  setPaginationValue(key: PaginationKeys, value: number) {
+    const params = this.getPaginationParam() ?? { total: 0, page: 1, size: PAGE_SIZE.THREE }
 
-  //   if (type === 'equal') {
-  //     this.url.searchParams.set(key, value)
-  //   }
+    if (params[key] === value) {
+      return
+    }
 
-  //   if (type === 'range') {
-  //     const { min, max } = value
+    params[key] = value
 
-  //     const newVal = `${SYMBOL.IN}=(${min},${max})`
+    const newValue = Object.entries(params).join(SYMBOL.SEMICOLON)
 
-  //     this.url.searchParams.set(key, newVal)
-  //   }
-
-  //   if (type === 'like') {
-  //     const newVal = `${SYMBOL.ASTERISK}${value}${SYMBOL.ASTERISK}`
-
-  //     this.url.searchParams.set(key, newVal)
-  //   }
-
-  //   if (type === 'sort') {
-  //     const { sortKey, sortType } = value
-
-  //     const newValue = `${sortKey}${SYMBOL.COMMA}${sortType}`
-
-  //     this.url.searchParams.set(SEARCH_PARAMS.SORT_BY, newValue)
-  //   }
-
-  //   window.history.pushState({}, '', this.url.href)
-  //   this.callCallbacks()
-  // }
+    this.setValue(SEARCH_PARAMS.PAGINATION, newValue)
+  }
 }
 
 export const urlInstanse = new URLSetters()

@@ -1,5 +1,16 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 45px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 20px;
+
+  & .productsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+  }
+
+  & .pagination {
+    position: sticky;
+    bottom: 0;
+  }
 }

@@ -1,8 +1,5 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
+  position: relative;
 
   & .image {
     width: 250px;
@@ -10,5 +7,22 @@
     border: 1px solid var(--color-gold);
     border-radius: 8px;
     object-fit: cover;
+  }
+
+  & .currentNumber {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 25px;
+    min-height: 25px;
+    padding: 6px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-black);
+    background: var(--color-gold);
+    border-radius: 50%;
   }
 }

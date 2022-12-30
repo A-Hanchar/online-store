@@ -27,5 +27,7 @@ export const Price = ({ productId, callbackList }: Priceprops) => {
 
   callbackList.push(renderPrice)
 
+  renderPrice()
+
   return wrapper
 }

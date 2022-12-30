@@ -16,6 +16,8 @@ export const CountElements = ({ productId, callbackList }: CountElementsProps) =
     }
   }
 
+  renderText()
+
   callbackList.push(renderText)
 
   return span

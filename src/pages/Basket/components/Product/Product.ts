@@ -17,11 +17,12 @@ export const Product = ({
   stock,
   id,
   callbackList,
+  currentNumber,
 }: ProductProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
 
   wrapper.append(
-    ImageBlock({ thumbnail, title }),
+    ImageBlock({ thumbnail, title, currentNumber }),
     Description({ title, brand, category, description, discountPercentage, price, rating, stock }),
     Actions({ stock, productId: id, productWrapper: wrapper, callbackList }),
   )

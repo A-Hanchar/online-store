@@ -13,9 +13,6 @@
   }
 
   & .mainBasket {
-    display: grid;
-    grid-template-columns: 1fr 425px;
-    gap: 45px;
     padding: 45px;
     background-color: var(--color-light-gray);
   }

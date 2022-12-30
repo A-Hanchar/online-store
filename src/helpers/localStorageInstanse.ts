@@ -42,6 +42,8 @@ class ProductsInstanse extends LocalStorageInstanse {
     const products = this.getProducts()
     products.push({ id, ...productProps })
 
+    products.sort((a, b) => a.id - b.id)
+
     localStorage.setItem(LOCAL_STORAGE_KEY.PRODUCTS, JSON.stringify(products))
   }
 
