@@ -209,6 +209,20 @@ class URLSetters extends URLGetters {
     url.searchParams.set(name, value)
     return url
   }
+
+  getModalValue() {
+    const param = this.getQueryParam(SEARCH_PARAMS.MODAL)
+
+    if (param) {
+      return
+    }
+
+    return param === 'true'
+  }
+
+  setModalParam(value: boolean) {
+    this.setValue(SEARCH_PARAMS.MODAL, String(value))
+  }
 }
 
 export const urlInstanse = new URLSetters()

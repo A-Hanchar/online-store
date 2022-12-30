@@ -28,6 +28,7 @@ export type PaginationKeys = 'total' | 'size' | 'page'
 export enum SEARCH_PARAMS {
   SORT_BY = 'sort_by',
   PAGINATION = 'pagination',
+  MODAL = 'modal',
 }
 
 export enum SORTING_TYPE {
