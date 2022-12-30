@@ -1,5 +1,6 @@
-export type BreadcrumbsProps = {
-  category: string
-  brand: string
-  title: string
-}
+export type BreadcrumbsProps = [
+  {
+    name: string
+    url: string
+  },
+]

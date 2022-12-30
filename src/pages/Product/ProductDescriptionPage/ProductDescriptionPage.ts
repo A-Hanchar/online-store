@@ -6,6 +6,8 @@ import { ProductImage } from './components/ProductImage'
 import { ImagesBlock } from './components/ImagesBlock'
 import { DescriptionBlock } from './components/DescriptionBlock'
 import { Breadcrumbs } from 'components/Breadcrumbs'
+import { ArrayData } from 'components/Breadcrumbs/helpers/ArrayData'
+import { BreadcrumbsProps } from 'components/Breadcrumbs/types'
 
 export const ProductDescriptionPage = ({
   title,
@@ -24,7 +26,7 @@ export const ProductDescriptionPage = ({
 
   card.append(
     Text({ tagName: 'h2', text: title, classname: styles.header }),
-    Breadcrumbs({ category, brand, title }),
+    Breadcrumbs(ArrayData(id, title) as BreadcrumbsProps),
     ProductImage({ alt: title, src: thumbnail }),
     ImagesBlock({ images, title }),
     DescriptionBlock({ brand, category, description, price, discountPercentage, rating, stock, id }),

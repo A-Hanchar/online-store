@@ -1,31 +1,15 @@
-import { routerPathes } from 'router/routerPathes'
 import { createElementWithClassName, capitalizeText } from 'helpers'
 import styles from './styles.css'
 import { BreadcrumbsProps } from './types'
-import { Text } from 'components/Text'
 import { Link } from 'components/Link'
 
-export const Breadcrumbs = ({ category, brand, title }: BreadcrumbsProps) => {
+export const Breadcrumbs = (array: BreadcrumbsProps) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
 
-  container.append(
-    Link({ id: 'link-to-store', children: 'Go to Store', href: routerPathes.home, classname: styles.breadcrumbs }),
-    Text({ tagName: 'span', text: '>>', classname: styles.breadcrumbs }),
-    Link({
-      id: 'link-to-category',
-      children: capitalizeText(category),
-      href: routerPathes.categories,
-      classname: styles.breadcrumbs,
-    }),
-    Text({ tagName: 'span', text: '>>', classname: styles.breadcrumbs }),
-    Link({
-      id: 'link-to-category',
-      children: capitalizeText(brand),
-      href: routerPathes.category,
-      classname: styles.breadcrumbs,
-    }),
-    Text({ tagName: 'span', text: '>>', classname: styles.breadcrumbs }),
-    Text({ tagName: 'span', text: capitalizeText(title), classname: styles.breadcrumbs }),
+  array.forEach((e) =>
+    container.append(
+      Link({ id: `link-to${e.name}`, children: capitalizeText(e.name), href: e.url, classname: styles.breadcrumbs }),
+    ),
   )
 
   return container

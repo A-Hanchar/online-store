@@ -203,6 +203,12 @@ class URLSetters extends URLGetters {
 
     this.setValue(SEARCH_PARAMS.PAGINATION, newValue)
   }
+
+  createURL(name: string, value: string) {
+    const url = new URL(this.getUrl().origin)
+    url.searchParams.set(name, value)
+    return url
+  }
 }
 
 export const urlInstanse = new URLSetters()
