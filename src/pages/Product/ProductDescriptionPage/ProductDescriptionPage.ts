@@ -1,12 +1,12 @@
 import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
 import { IProduct } from 'interfaces'
-import styles from './styles.css'
 import { ProductImage } from './components/ProductImage'
 import { ImagesBlock } from './components/ImagesBlock'
 import { DescriptionBlock } from './components/DescriptionBlock'
 import { Breadcrumbs } from 'components/Breadcrumbs'
 import { routerPathes } from 'router/routerPathes'
+import styles from './styles.css'
 
 export const ProductDescriptionPage = ({
   title,

@@ -13,34 +13,4 @@ export const Breadcrumbs = ({ elements }: BreadcrumbsProps) => {
   })
 
   return ul
-
-  // const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
-  // const breadCrumbs = [] as BreadcrumbsProps
-  // breadCrumbs.push({ name: 'Go to Store', url: routerPathes.home })
-  // const product = products.filter((e) => e.id === id)
-  // product.forEach((prod) => {
-  //   for (const key in prod) {
-  //     if (key === 'category') {
-  //       breadCrumbs.push({ name: prod[key], url: urlInstanse.createURL(key, prod[key]).toString() })
-  //     }
-  //     if (key === 'brand') {
-  //       breadCrumbs.push({ name: prod[key], url: urlInstanse.createURL(key, prod[key]).toString() })
-  //     }
-  //   }
-  // })
-  // const el = breadCrumbs[1]
-  // breadCrumbs[1] = breadCrumbs[2] as { name: string; url: string }
-  // breadCrumbs[2] = el as { name: string; url: string }
-  // breadCrumbs.push({ name: title, url: '' })
-  // breadCrumbs.forEach((crumb) =>
-  //   container.append(
-  //     Link({
-  //       id: `link-to${crumb.name}`,
-  //       children: capitalizeText(crumb.name),
-  //       href: crumb.url,
-  //       classname: styles.breadcrumbs,
-  //     }),
-  //   ),
-  // )
-  // return container
 }
