@@ -1,20 +1,15 @@
 .list {
   display: flex;
-  gap: 16px;
+  gap: 8px;
   align-items: center;
-  justify-content: center;
-  padding: 16px;
+  padding: 0;
   margin: 0;
   list-style: none;
 
   & .element {
-    position: relative;
-
-    &:not(:last-child)::after {
-      position: relative;
-      right: -8px;
-      content: ">>";
-    }
+    display: flex;
+    gap: 8px;
+    align-items: center;
 
     &:last-child {
 
@@ -25,9 +20,9 @@
     }
 
     & .link {
-      font-size: 1.5rem;
+      font-size: 15px;
       font-weight: 600;
-      color: var(--color-black);
+      color: var(--color-blue);
     }
   }
 }

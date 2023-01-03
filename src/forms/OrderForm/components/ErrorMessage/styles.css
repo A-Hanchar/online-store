@@ -1,6 +1,6 @@
 .error {
-  color: var(--color-black);
+  margin: 0;
   font-size: 20px;
   font-weight: 700;
-  margin: 0;
+  color: var(--color-black);
 }

@@ -1,5 +1,7 @@
-.container {
+.wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--color-light-gray);
 }
