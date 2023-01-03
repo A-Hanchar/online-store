@@ -1,6 +1,5 @@
 import styles from './styles.css'
-import { createElementWithClassName, workDataInstanse } from 'helpers'
-import { urlInstanse } from 'helpers/urlInstanse'
+import { createElementWithClassName, workDataInstanse, urlInstanse } from 'helpers'
 import { InputProps } from './types'
 
 export const Input = ({ type, key }: InputProps) => {

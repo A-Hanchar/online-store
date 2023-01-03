@@ -5,23 +5,18 @@ import { createElementWithClassName } from 'helpers'
 export const Authors = () => {
   const authors = createElementWithClassName({ tagName: 'div', classname: styles.authors })
 
-  const businator = Link({
-    id: 'businator',
-    children: 'Businator',
-    href: 'https://github.com/Businator',
-    classname: styles.author,
-    target: '_blank',
-  })
+  const gitHubIds = ['Businator', 'A-Hanchar']
 
-  const aHanchar = Link({
-    id: 'aHanchar',
-    children: 'A-Hanchar',
-    href: 'https://github.com/A-Hanchar',
-    classname: styles.author,
-    target: '_blank',
+  gitHubIds.forEach((userId) => {
+    authors.append(
+      Link({
+        children: userId,
+        href: `https://github.com/${userId}`,
+        classname: styles.author,
+        target: '_blank',
+      }),
+    )
   })
-
-  authors.append(businator, aHanchar)
 
   return authors
 }

@@ -7,9 +7,10 @@ import { AddToCartButton } from './components/AddToCartButton'
 export const ActionButtons = ({ id, category, brand, price, discount }: ActionButtonsProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: [styles.actionButtons, styles.standart] })
 
-  wrapper.append(ViewDealButton({ brand, category, id }))
-
-  wrapper.append(AddToCartButton({ id, textInBasket: '—', textNotInBasket: '+', price, discount }))
+  wrapper.append(
+    ViewDealButton({ brand, category, id }),
+    AddToCartButton({ id, textInBasket: '—', textNotInBasket: '+', price, discount }),
+  )
 
   return wrapper
 }

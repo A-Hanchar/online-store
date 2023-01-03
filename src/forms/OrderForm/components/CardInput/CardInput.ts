@@ -2,41 +2,31 @@ import { CardLogo } from './../CardLogo/CardLogo'
 import { Input } from 'components/Input'
 import styles from './styles.css'
 import { createElementWithClassName } from 'helpers'
-import { SYMBOL } from 'types'
+import { SYMBOL } from 'enums'
 
 export const CardInput = () => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
 
   const cardNumber = Input({
-    id: 'cardNumber',
     placeholder: 'Card number',
     classname: styles.input,
-    dataset: 'number',
-    container: createElementWithClassName({ tagName: 'div' }),
   })
 
   const cardValid = Input({
-    id: 'cardValid',
     placeholder: 'Valid Thru',
     classname: styles.input,
-    dataset: 'valid',
-    container: createElementWithClassName({ tagName: 'div' }),
+    maxLength: 5,
   })
 
   const cardCVV = Input({
-    id: 'cardCVV',
     placeholder: 'Code',
     classname: styles.input,
-    dataset: 'code',
-    container: createElementWithClassName({ tagName: 'div' }),
   })
 
   const cardLogo = CardLogo()
 
-  const num = cardNumber.querySelector('input')!
-
-  num.addEventListener('input', () => {
-    const value = num.value
+  cardNumber.addEventListener('input', () => {
+    const value = cardNumber.value
     const firstLetter = value[0]
 
     switch (firstLetter) {
@@ -56,18 +46,16 @@ export const CardInput = () => {
     }
   })
 
-  const val = cardValid.querySelector('input')
+  cardValid.addEventListener('input', () => {
+    const arr = cardValid.value.split('')
 
-  val!.maxLength = 5
-
-  val!.addEventListener('input', () => {
-    const arr = val!.value.split('')
-    if (val!.value.length === 2) {
+    if (cardValid.value.length === 2) {
       if (arr.includes(SYMBOL.SLASH, 0)) {
         arr.splice(arr.indexOf(SYMBOL.SLASH), 1)
       }
+
       arr.splice(2, 0, SYMBOL.SLASH)
-      val!.value = arr.join('')
+      cardValid.value = arr.join('')
     }
   })
 

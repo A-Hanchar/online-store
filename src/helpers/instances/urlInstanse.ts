@@ -1,15 +1,5 @@
-import {
-  EqualKeys,
-  LikeKeys,
-  ModalFormName,
-  PaginationKeys,
-  RangeKeys,
-  SearchKeys,
-  SEARCH_PARAMS,
-  SortingKeys,
-  SORTING_TYPE,
-} from 'interfaces'
-import { PAGE_SIZE, SYMBOL } from 'types'
+import { PAGE_SIZE, SEARCH_PARAMS, SORT_TYPE, SYMBOL } from 'enums'
+import { EqualKeys, FormName, LikeKeys, PaginationKeys, RangeKeys, SearchKeys, SortingKeys } from 'types'
 
 class URLInstanse {
   url: URL
@@ -128,7 +118,7 @@ class URLGetters extends URLClearMethods {
 
     return {
       sortKey: splitedParam[0] as SortingKeys,
-      sortType: splitedParam[1] as SORTING_TYPE,
+      sortType: splitedParam[1] as SORT_TYPE,
     }
   }
 
@@ -185,7 +175,7 @@ class URLSetters extends URLGetters {
     this.setValue(key, newValue)
   }
 
-  setSortValue(key: SortingKeys, type: SORTING_TYPE) {
+  setSortValue(key: SortingKeys, type: SORT_TYPE) {
     const newValue = `${key}${SYMBOL.COMMA}${type}`
 
     this.setValue(SEARCH_PARAMS.SORT_BY, newValue)
@@ -212,7 +202,7 @@ class URLSetters extends URLGetters {
   }
 
   getModalValue() {
-    const param = this.getQueryParam<ModalFormName>(SEARCH_PARAMS.MODAL)
+    const param = this.getQueryParam<FormName>(SEARCH_PARAMS.MODAL)
 
     if (!param) {
       return
@@ -221,7 +211,7 @@ class URLSetters extends URLGetters {
     return param
   }
 
-  setModalParam(value: ModalFormName) {
+  setModalParam(value: FormName) {
     this.setValue(SEARCH_PARAMS.MODAL, value)
   }
 }

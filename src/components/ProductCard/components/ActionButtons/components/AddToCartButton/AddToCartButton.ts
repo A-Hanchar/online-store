@@ -19,13 +19,11 @@ export const AddToCartButton = ({
   })
 
   button.addEventListener('click', () => {
-    button.replaceChildren()
-
     if (localStorageInstanse.hasProductId(id)) {
       localStorageInstanse.removeProductId(id)
       localStorageInstanse.updateBasket()
 
-      button.append(textNotInBasket)
+      button.replaceChildren(textNotInBasket)
 
       return
     }
@@ -33,7 +31,7 @@ export const AddToCartButton = ({
     localStorageInstanse.setProduct({ id, count: 1, price, discount })
     localStorageInstanse.updateBasket()
 
-    button.append(textInBasket)
+    button.replaceChildren(textInBasket)
   })
 
   return button

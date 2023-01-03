@@ -1,14 +1,7 @@
-import {
-  FilterCheckboxKeys,
-  IProduct,
-  LikeKeys,
-  ProductEqualKeys,
-  RangeKeys,
-  SortingKeys,
-  SORTING_TYPE,
-} from 'interfaces'
+import { SORT_TYPE, SYMBOL } from 'enums'
+import { IProduct } from 'interfaces'
 import { products as productsList } from 'mock/products'
-import { SYMBOL } from 'types'
+import { FilterCheckboxKeys, LikeKeys, ProductEqualKeys, RangeKeys, SortingKeys } from 'types'
 import { urlInstanse } from './urlInstanse'
 
 type ProductFilter =
@@ -73,7 +66,7 @@ class ProductsFilters extends ProductsInstanse {
   productsRangeKeys: RangeKeys[]
   sortParams?: {
     key: SortingKeys
-    sortingType: SORTING_TYPE
+    sortingType: SORT_TYPE
   }
 
   constructor() {
@@ -131,7 +124,7 @@ class ProductsFilters extends ProductsInstanse {
     })
   }
 
-  setSortingParams(key: SortingKeys, sortingType: SORTING_TYPE) {
+  setSortingParams(key: SortingKeys, sortingType: SORT_TYPE) {
     this.sortParams = {
       key,
       sortingType,
@@ -145,7 +138,7 @@ class ProductsFilters extends ProductsInstanse {
 
     const { key, sortingType } = this.sortParams
 
-    if (sortingType === SORTING_TYPE.ASC) {
+    if (sortingType === SORT_TYPE.ASC) {
       this.products.sort((a, b) => {
         const valueA = a[key]
         const valueB = b[key]
@@ -168,7 +161,7 @@ class ProductsFilters extends ProductsInstanse {
       })
     }
 
-    if (sortingType === SORTING_TYPE.DESC) {
+    if (sortingType === SORT_TYPE.DESC) {
       this.products.sort((a, b) => {
         const valueA = a[key]
         const valueB = b[key]

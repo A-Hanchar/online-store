@@ -2,9 +2,9 @@ import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
 import { DescriptionProps } from './types'
 import styles from './styles.css'
-import { CURRENCY } from 'types'
 import { Rating } from 'components/Rating'
 import { H3WithSpan } from '../H3WithSpan'
+import { CURRENCY } from 'enums'
 
 export const Description = ({
   title,

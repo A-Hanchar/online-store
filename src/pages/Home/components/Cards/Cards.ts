@@ -1,7 +1,7 @@
 import { ProductCard, ProductCardFull } from 'components/ProductCard'
-import { createElementWithClassName, workDataInstanse } from 'helpers'
-import { urlInstanse } from 'helpers/urlInstanse'
-import { Appearance, DATA_ATTRIBUTE } from 'types'
+import { DATA_ATTRIBUTE } from 'enums'
+import { createElementWithClassName, workDataInstanse, urlInstanse } from 'helpers'
+import { Appearance } from 'types'
 import styles from './styles.css'
 
 export const Cards = () => {

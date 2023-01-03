@@ -1,4 +1,4 @@
-import { LikeKeys } from './../../interfaces/IProduct'
+import { LikeKeys } from 'types'
 
 export type SearchByProps = {
   key: LikeKeys

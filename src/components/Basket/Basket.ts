@@ -6,5 +6,5 @@ import styles from './styles.css'
 export const Basket = () => {
   const span = createElementWithClassName({ tagName: 'span', classname: styles.basketImage })
 
-  return Link({ id: 'basket', children: span, href: routerPathes.basket, classname: styles.basket })
+  return Link({ children: span, href: routerPathes.basket, classname: styles.basket })
 }

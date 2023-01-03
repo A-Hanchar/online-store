@@ -1,10 +1,9 @@
 import { Button } from 'components/Button'
-import { PAGE_SIZE } from 'types'
 import styles from './styles.css'
 import commonStyles from '../commonStyles.css'
 import { SizeButtonProps } from './types'
-import { toggleClassnameToElement } from 'helpers'
-import { urlInstanse } from 'helpers/urlInstanse'
+import { toggleClassnameToElement, urlInstanse } from 'helpers'
+import { PAGE_SIZE } from 'enums'
 
 export const SizeButton = ({ SizeList }: SizeButtonProps) => {
   const handleButtonClick = () => {

@@ -1,9 +1,9 @@
 export const containsClassnameToElement = ({
   element,
-  classname,
+  classname = '',
 }: {
   element: HTMLElement
   classname?: string
 }): boolean => {
-  return element.classList.contains(classname!)
+  return element.classList.contains(classname)
 }

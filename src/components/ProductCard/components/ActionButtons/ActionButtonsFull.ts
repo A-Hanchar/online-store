@@ -7,9 +7,8 @@ import { ViewDealButton } from './components/ViewDealButton'
 export const ActionButtonsFull = ({ id, category, brand, price, discount }: ActionButtonsProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: [styles.actionButtons, styles.full] })
 
-  wrapper.append(ViewDealButton({ brand, category, id, appearance: 'full' }))
-
   wrapper.append(
+    ViewDealButton({ brand, category, id, appearance: 'full' }),
     AddToCartButton({
       textInBasket: 'Remove From Cart',
       textNotInBasket: 'Add To Cart',

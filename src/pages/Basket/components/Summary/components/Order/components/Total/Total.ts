@@ -7,10 +7,10 @@ import {
   localStorageInstanse,
   localStoragePromoCodeInstanse,
 } from 'helpers'
-import { CURRENCY } from 'types'
 import styles from './styles.css'
 import { Totalprops } from './types'
-import { OrderForm } from 'forms/OrderForm'
+import { OrderForm } from 'forms'
+import { CURRENCY } from 'enums'
 
 export const Total = ({ callbackList }: Totalprops) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })

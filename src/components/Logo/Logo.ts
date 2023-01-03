@@ -10,7 +10,6 @@ export const Logo = () => {
   })
 
   const link = Link({
-    id: 'logo',
     children: LogoImage,
     href: routerPathes.home,
     classname: styles.logo,

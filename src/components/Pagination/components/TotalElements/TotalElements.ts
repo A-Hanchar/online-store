@@ -1,5 +1,5 @@
 import { Text } from 'components/Text'
-import { urlInstanse } from 'helpers/urlInstanse'
+import { urlInstanse } from 'helpers'
 
 export const TotalElements = () => {
   const text = Text({ tagName: 'p', text: 'Total:' })

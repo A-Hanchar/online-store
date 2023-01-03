@@ -1,8 +1,7 @@
 import { Button } from 'components/Button'
 import { ActionButtonProps } from './types'
 import styles from './styles.css'
-import { addClassnameToElement, localStorageInstanse, removeClassnameToElement } from 'helpers'
-import { urlInstanse } from 'helpers/urlInstanse'
+import { addClassnameToElement, localStorageInstanse, removeClassnameToElement, urlInstanse } from 'helpers'
 import { routerPathes } from 'router/routerPathes'
 
 export const ActionButton = ({ stock, type, productId, callbackList, productWrapper }: ActionButtonProps) => {

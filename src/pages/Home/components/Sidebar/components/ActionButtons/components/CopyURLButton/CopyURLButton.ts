@@ -1,8 +1,6 @@
-import { urlInstanse } from 'helpers/urlInstanse'
 import { Button } from 'components/Button/Button'
 import commonStyles from '../commonStyles.css'
-import { addClassnameToElement } from 'helpers'
-import { removeClassnameToElement } from 'helpers/removeClassnameToElement '
+import { addClassnameToElement, removeClassnameToElement, urlInstanse } from 'helpers'
 
 export const CopyURLButton = () => {
   const handleClick = () => {

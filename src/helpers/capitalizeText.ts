@@ -1,4 +1,4 @@
-import { SYMBOL } from 'types'
+import { SYMBOL } from 'enums'
 
 export const capitalizeText = (text: string) => {
   return text

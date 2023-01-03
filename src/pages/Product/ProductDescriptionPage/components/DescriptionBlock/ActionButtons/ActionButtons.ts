@@ -5,8 +5,8 @@ import { AddToCartButton } from 'components/ProductCard/components/ActionButtons
 import { Button } from 'components/Button'
 import { renderComponent } from 'router'
 import { routerPathes } from 'router/routerPathes'
-import { ModalFormName, SEARCH_PARAMS } from 'interfaces'
-import { SYMBOL } from 'types'
+import { FormName } from 'types'
+import { SEARCH_PARAMS, SYMBOL } from 'enums'
 
 export const ActionButtons = ({ id, price, discount }: ActionButtonsProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.actionButtons })
@@ -17,7 +17,7 @@ export const ActionButtons = ({ id, price, discount }: ActionButtonsProps) => {
       localStorageInstanse.updateBasket()
     }
 
-    const formName: ModalFormName = 'orderForm'
+    const formName: FormName = 'orderForm'
     const url = `${routerPathes.basket}?${SEARCH_PARAMS.MODAL}${SYMBOL.EQUAL}${formName}`
 
     window.history.pushState({}, '', url)

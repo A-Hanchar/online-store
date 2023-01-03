@@ -1,5 +1,6 @@
+import { FormName } from 'types'
 import { OrderForm } from './OrderForm'
 
-export const formByName: Record<'orderForm', () => HTMLFormElement> = {
+export const formByName: Record<FormName, () => HTMLFormElement> = {
   orderForm: OrderForm,
 }

@@ -1,13 +1,10 @@
-import { createElementWithClassName, workDataInstanse } from 'helpers'
+import { workDataInstanse, urlInstanse } from 'helpers'
 import { SearchByProps } from './types'
 import styles from './styles.css'
-import { urlInstanse } from 'helpers/urlInstanse'
+import { Input } from 'components/Input'
 
 export const SearchBy = ({ key, placeholder = '' }: SearchByProps) => {
-  const input = createElementWithClassName({ tagName: 'input', classname: styles.input })
-
-  input.type = 'text'
-  input.placeholder = placeholder
+  const input = Input({ classname: styles.input, placeholder })
 
   const setValue = () => {
     input.value = urlInstanse.getLikeParam(key) ?? ''

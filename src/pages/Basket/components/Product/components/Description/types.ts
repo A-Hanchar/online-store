@@ -1,4 +1,4 @@
-import { Category } from 'interfaces'
+import { Category } from 'types'
 
 export type DescriptionProps = {
   title: string

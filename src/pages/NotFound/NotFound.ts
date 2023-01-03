@@ -12,7 +12,7 @@ export const NotFound = () => {
     imageNotFound,
     Text({ tagName: 'h1', text: 'Sorry, it looks like the page get lost', classname: styles.h1 }),
     Text({ tagName: 'h2', text: '(or someone has stolen it recently)', classname: styles.h2 }),
-    Link({ id: 'a', children: 'Back to Home', href: routerPathes.home, classname: styles.link }),
+    Link({ children: 'Back to Home', href: routerPathes.home, classname: styles.link }),
   )
 
   return container
