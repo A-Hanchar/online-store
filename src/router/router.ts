@@ -1,4 +1,5 @@
 import { Products, Home, NotFound, Basket, Product, Category } from 'pages'
+import { Brand } from 'pages/Brand'
 import { routerPathes } from './routerPathes'
 import { RouterOwnObject } from './types'
 
@@ -23,8 +24,14 @@ export const router: RouterOwnObject[] = [
         content: Category,
         childrenRoutes: [
           {
-            path: routerPathes.product,
-            content: Product,
+            path: routerPathes.brand,
+            content: Brand,
+            childrenRoutes: [
+              {
+                path: routerPathes.product,
+                content: Product,
+              },
+            ],
           },
         ],
       },

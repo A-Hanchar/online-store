@@ -8,10 +8,11 @@ export const getCategoriesParams = () => {
   if (pathname.includes(routerPathes.categories)) {
     const categoriesParams = pathname.replace(`${routerPathes.categories}${SYMBOL.SLASH}`, '')
 
-    const [categoryId, productId] = categoriesParams.split(SYMBOL.SLASH)
+    const [categoryId, brandId, productId] = categoriesParams.split(SYMBOL.SLASH)
 
     return {
       categoryId,
+      brandId,
       productId,
     }
   }

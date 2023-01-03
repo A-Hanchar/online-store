@@ -7,6 +7,6 @@ export const ViewDealButton = ({ brand, category, id, appearance = 'standart' }:
   Link({
     id: `${category}-${brand}-${id}`,
     children: 'View Deal',
-    href: generatePathname.categoriesCategoryIdProductId(category, String(id)),
+    href: generatePathname.categoriesCategoryIdProductId(category, brand, String(id)),
     classname: [styles.viewDeal, styles[appearance]],
   })

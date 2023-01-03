@@ -10,6 +10,7 @@ import {
 import { CURRENCY } from 'types'
 import styles from './styles.css'
 import { Totalprops } from './types'
+import { Body } from 'components/Body'
 
 export const Total = ({ callbackList }: Totalprops) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
@@ -19,7 +20,7 @@ export const Total = ({ callbackList }: Totalprops) => {
     children: 'Buy',
     classname: styles.button,
     onclick() {
-      document.querySelector('body')!.append(ModalWindow())
+      Body.append(ModalWindow())
     },
   })
 
