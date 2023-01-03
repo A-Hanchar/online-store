@@ -4,14 +4,14 @@
   align-items: center;
 
   & .noticeWindow {
-    height: 300px;
-    width: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 500px;
+    height: 300px;
     font-size: 32px;
-    color: var(--color-white);
     font-weight: 700;
+    color: var(--color-white);
   }
 }
 
