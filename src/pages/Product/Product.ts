@@ -3,6 +3,7 @@ import { createElementWithClassName, generatePathname } from 'helpers'
 import { products } from 'mock/products'
 import { getCategoriesParams } from 'router'
 import { routerPathes } from 'router/routerPathes'
+
 import { ProductDescriptionPage } from './ProductDescriptionPage'
 import styles from './styles.css'
 

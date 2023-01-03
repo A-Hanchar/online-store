@@ -2,10 +2,11 @@ import { createElementWithClassName, localStorageInstanse } from 'helpers'
 import { THREE_SECONDS } from 'helpers/constants'
 import { renderComponent } from 'router'
 import { routerPathes } from 'router/routerPathes'
-import { isFormValid } from './isFormValid'
+
 import { ButtonConfirm } from './components/ButtonConfirm'
 import { CardInput } from './components/CardInput'
 import { PersonInput } from './components/PersonIntup'
+import { isFormValid } from './isFormValid'
 import styles from './styles.css'
 import { ValidationInputs } from './types'
 

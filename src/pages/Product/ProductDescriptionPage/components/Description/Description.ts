@@ -1,9 +1,10 @@
+import { ProductPrices } from 'components/ProductPrices'
 import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
-import { DescriptionProps } from './types'
-import styles from './styles.css'
-import { ProductPrices } from 'components/ProductPrices'
+
 import { ActionButtons } from './components/ActionButtons'
+import styles from './styles.css'
+import { DescriptionProps } from './types'
 
 export const Description = ({
   category,

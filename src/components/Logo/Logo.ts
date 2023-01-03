@@ -1,6 +1,7 @@
 import { Image } from 'components/Image'
 import { Link } from 'components/Link'
 import { routerPathes } from 'router/routerPathes'
+
 import styles from './styles.css'
 
 export const Logo = () => {

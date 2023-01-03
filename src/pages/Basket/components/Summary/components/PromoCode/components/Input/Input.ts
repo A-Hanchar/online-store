@@ -5,6 +5,7 @@ import {
   removeClassnameToElement,
 } from 'helpers'
 import { promoCodes } from 'mock/promoCodes'
+
 import { AddPromoCode } from '../AddPromoCode'
 import styles from './styles.css'
 import { InputProps } from './types'

@@ -1,9 +1,10 @@
-import styles from './styles.css'
 import { createElementWithClassName } from 'helpers'
-import { CardInputProps } from './types'
-import { CardNumber } from './components/CardNumber'
-import { CardDate } from './components/CardDate'
+
 import { CardCVV } from './components/CardCVV'
+import { CardDate } from './components/CardDate'
+import { CardNumber } from './components/CardNumber'
+import styles from './styles.css'
+import { CardInputProps } from './types'
 
 export const CardInput = ({ validationInputs }: CardInputProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })

@@ -1,8 +1,9 @@
 import { Input } from 'components/Input'
 import { createElementWithClassName } from 'helpers'
-import { CardCVVProps } from './types'
-import commonStyles from '../commonStyles.css'
+
 import { ErrorMessage } from '../../../ErrorMessage'
+import commonStyles from '../commonStyles.css'
+import { CardCVVProps } from './types'
 
 export const CardCVV = ({ validationInputs }: CardCVVProps) => {
   const inputWrapper = createElementWithClassName({ tagName: 'div', classname: commonStyles.inputWrapper })

@@ -1,9 +1,11 @@
 import { Input } from 'components/Input'
 import { SYMBOL } from 'enums'
-import { ErrorMessage } from '../../../ErrorMessage'
+
 import { createElementWithClassName } from 'helpers'
-import { CardDateProps } from './types'
+
+import { ErrorMessage } from '../../../ErrorMessage'
 import commonStyles from '../commonStyles.css'
+import { CardDateProps } from './types'
 
 export const CardDate = ({ validationInputs }: CardDateProps) => {
   const inputWrapper = createElementWithClassName({ tagName: 'div', classname: commonStyles.inputWrapper })

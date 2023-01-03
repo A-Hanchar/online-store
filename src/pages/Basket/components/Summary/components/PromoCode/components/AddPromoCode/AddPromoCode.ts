@@ -1,7 +1,9 @@
 import { Button } from 'components/Button'
-import { AddPromoCodeProps } from './types'
-import styles from './styles.css'
+
 import { localStoragePromoCodeInstanse } from 'helpers'
+
+import styles from './styles.css'
+import { AddPromoCodeProps } from './types'
 
 export const AddPromoCode = ({ description, callbackList, sale, id, clearWrapper }: AddPromoCodeProps) => {
   const handleClick = () => {

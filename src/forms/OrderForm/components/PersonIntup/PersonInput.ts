@@ -1,9 +1,11 @@
 /* eslint-disable no-useless-escape */
 import { Input } from 'components/Input'
-import styles from './styles.css'
+
 import { createElementWithClassName } from 'helpers'
-import { PersonInputProps } from './types'
+
 import { ErrorMessage } from '../ErrorMessage'
+import styles from './styles.css'
+import { PersonInputProps } from './types'
 
 export const PersonInput = ({ validationInputs }: PersonInputProps) => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })

@@ -2,6 +2,7 @@ import { SORT_TYPE, SYMBOL } from 'enums'
 import { IProduct } from 'interfaces'
 import { products as productsList } from 'mock/products'
 import { FilterCheckboxKeys, LikeKeys, ProductEqualKeys, RangeKeys, SortingKeys } from 'types'
+
 import { urlInstanse } from './urlInstanse'
 
 type ProductFilter =

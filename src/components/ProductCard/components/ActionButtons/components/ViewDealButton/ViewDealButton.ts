@@ -1,7 +1,9 @@
 import { Link } from 'components/Link'
-import { ViewButtonProps } from './types'
-import styles from './styles.css'
+
 import { generatePathname } from 'helpers'
+
+import styles from './styles.css'
+import { ViewButtonProps } from './types'
 
 export const ViewDealButton = ({ brand, category, id, appearance = 'standart' }: ViewButtonProps) =>
   Link({

@@ -156,10 +156,18 @@ class URLSetters extends URLGetters {
     key: EqualKeys | RangeKeys | LikeKeys | SortingKeys | SEARCH_PARAMS,
     value: string,
     shouldCallCallbacks = true,
+    historyAddType: 'push' | 'replace' = 'push',
   ) {
     this.url.searchParams.set(key, value)
 
-    window.history.pushState({}, '', this.url.href)
+    if (historyAddType === 'push') {
+      window.history.pushState({}, '', this.url.href)
+    }
+
+    if (historyAddType === 'replace') {
+      window.history.replaceState({}, '', this.url.href)
+    }
+
     shouldCallCallbacks && this.callCallbacks()
   }
 
@@ -185,7 +193,7 @@ class URLSetters extends URLGetters {
     this.setValue(SEARCH_PARAMS.SORT_BY, newValue)
   }
 
-  setPaginationValue(key: PaginationKeys, value: number) {
+  setPaginationValue(key: PaginationKeys, value: number, historyAddType: 'push' | 'replace' = 'push') {
     const params = this.getPaginationParam() ?? { total: 0, page: 1, size: PAGE_SIZE.THREE }
 
     if (params[key] === value) {
@@ -196,7 +204,7 @@ class URLSetters extends URLGetters {
 
     const newValue = Object.entries(params).join(SYMBOL.SEMICOLON)
 
-    this.setValue(SEARCH_PARAMS.PAGINATION, newValue)
+    this.setValue(SEARCH_PARAMS.PAGINATION, newValue, true, historyAddType)
   }
 
   createURL(name: string, value: string) {

@@ -1,9 +1,10 @@
 import { Button } from 'components/Button'
-import { addClassnameToElement, workDataInstanse, removeClassnameToElement, urlInstanse } from 'helpers'
-import styles from './styles.css'
-import { onClickFilterButton } from './helpers'
-import { ListElementProps } from './types'
 import { SYMBOL } from 'enums'
+import { addClassnameToElement, workDataInstanse, removeClassnameToElement, urlInstanse } from 'helpers'
+
+import { onClickFilterButton } from './helpers'
+import styles from './styles.css'
+import { ListElementProps } from './types'
 
 export const ListElement = ({ content, searchKey, searchValue }: ListElementProps) => {
   const button = Button({

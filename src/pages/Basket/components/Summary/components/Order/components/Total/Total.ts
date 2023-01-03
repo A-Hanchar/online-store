@@ -1,16 +1,20 @@
-import { ModalWindow } from './../../../../../../../../components/ModalWindow/ModalWindow'
 import { Button } from 'components/Button'
+
 import { Text } from 'components/Text'
+
+import { CURRENCY } from 'enums'
+import { OrderForm } from 'forms'
 import {
   createElementWithClassName,
   getPricesByDiscount,
   localStorageInstanse,
   localStoragePromoCodeInstanse,
 } from 'helpers'
+
+import { ModalWindow } from './../../../../../../../../components/ModalWindow/ModalWindow'
+
 import styles from './styles.css'
 import { Totalprops } from './types'
-import { OrderForm } from 'forms'
-import { CURRENCY } from 'enums'
 
 export const Total = ({ callbackList }: Totalprops) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })

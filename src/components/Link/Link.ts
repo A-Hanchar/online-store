@@ -1,5 +1,6 @@
-import { createElementWithClassName } from './../../helpers/createElementWithClassName'
 import { renderComponent } from 'router'
+
+import { createElementWithClassName } from './../../helpers/createElementWithClassName'
 import { LinkProps } from './types'
 
 export const Link = ({ children, href, classname, target = '_self' }: LinkProps) => {

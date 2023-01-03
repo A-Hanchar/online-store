@@ -4,6 +4,7 @@ import { createElementWithClassName, localStorageInstanse } from 'helpers'
 import { renderComponent } from 'router'
 import { routerPathes } from 'router/routerPathes'
 import { FormName } from 'types'
+
 import { AddToCartButton } from '../AddToCartButton'
 import styles from './styles.css'
 import { ActionButtonsProps } from './types'

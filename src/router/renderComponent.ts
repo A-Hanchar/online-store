@@ -1,6 +1,7 @@
 import { Body } from 'components/Body'
 import { Layout } from 'components/Layout'
 import { urlInstanse } from 'helpers'
+
 import { routerPathes } from './routerPathes'
 import { getRoute } from './utils'
 

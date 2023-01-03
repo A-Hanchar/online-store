@@ -1,6 +1,7 @@
 import { Button } from 'components/Button'
 import { DATA_ATTRIBUTE, SORT_TYPE } from 'enums'
 import { createElementWithClassName, workDataInstanse, urlInstanse } from 'helpers'
+
 import styles from './styles.css'
 import { ArrowsProps } from './types'
 

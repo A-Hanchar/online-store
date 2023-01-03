@@ -1,7 +1,8 @@
-import { createElementWithClassName, toggleClassnameToElement, urlInstanse } from 'helpers'
-import styles from './styles.css'
-import commonStyles from '../commonStyles.css'
 import { PAGE_SIZE } from 'enums'
+import { createElementWithClassName, toggleClassnameToElement, urlInstanse } from 'helpers'
+
+import commonStyles from '../commonStyles.css'
+import styles from './styles.css'
 
 export const SizeList = () => {
   const ul = createElementWithClassName({ tagName: 'ul', classname: [commonStyles.hidden, styles.sizeList] })

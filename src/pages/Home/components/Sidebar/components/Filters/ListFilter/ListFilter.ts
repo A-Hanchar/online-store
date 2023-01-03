@@ -1,9 +1,10 @@
+import { Text } from 'components/Text'
 import { capitalizeText, createElementWithClassName, workDataInstanse } from 'helpers'
-import { ListFilterProps } from './types'
+
+import { ListElement } from '../ListElement'
 import commonStyles from '../commonStyles.css'
 import styles from './styles.css'
-import { ListElement } from '../ListElement'
-import { Text } from 'components/Text'
+import { ListFilterProps } from './types'
 
 export const ListFilter = ({ key, title }: ListFilterProps) => {
   workDataInstanse.setInitialProducts()

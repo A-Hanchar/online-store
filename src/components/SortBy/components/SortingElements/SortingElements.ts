@@ -1,5 +1,6 @@
 import { Text } from 'components/Text'
 import { addClassnameToElement, createElementWithClassName } from 'helpers'
+
 import { SortElement } from '../SortElement'
 
 import styles from './styles.css'

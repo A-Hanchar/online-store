@@ -1,5 +1,6 @@
 import { createElementWithClassName } from 'helpers'
 import { IProduct } from 'interfaces'
+
 import { ActionButtonsFull } from './components/ActionButtons'
 import { ProductImage } from './components/ProductImage'
 import { ProductInfo } from './components/ProductInfo'

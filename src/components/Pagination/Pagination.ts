@@ -1,4 +1,5 @@
 import { createElementWithClassName, urlInstanse } from 'helpers'
+
 import { ActionButtons } from './components/ActionButtons'
 import { Limit } from './components/Limit'
 import { TotalElements } from './components/TotalElements'
@@ -14,7 +15,7 @@ export const Pagination = ({ totalElements }: PaginationProps) => {
     const params = urlInstanse.getPaginationParam()
 
     if (!params) {
-      urlInstanse.setPaginationValue('total', totalElements)
+      urlInstanse.setPaginationValue('total', totalElements, 'replace')
 
       return
     }
@@ -24,11 +25,11 @@ export const Pagination = ({ totalElements }: PaginationProps) => {
     const lastPage = Math.ceil(total / size)
 
     if (page > lastPage) {
-      urlInstanse.setPaginationValue('page', lastPage)
+      urlInstanse.setPaginationValue('page', lastPage, 'replace')
     }
 
     if (total > totalElements) {
-      urlInstanse.setPaginationValue('total', totalElements)
+      urlInstanse.setPaginationValue('total', totalElements, 'replace')
     }
   }
 

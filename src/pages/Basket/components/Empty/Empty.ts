@@ -1,5 +1,6 @@
 import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
+
 import styles from './styles.css'
 
 export const Empty = () => {

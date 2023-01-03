@@ -1,5 +1,6 @@
 import { Image } from 'components/Image'
 import { Link } from 'components/Link'
+
 import styles from './styles.css'
 
 export const RSLogo = () => {

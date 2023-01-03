@@ -1,7 +1,8 @@
 import { Image } from 'components/Image'
 import { createElementWithClassName } from 'helpers'
-import { ImagesProps } from './types'
+
 import styles from './styles.css'
+import { ImagesProps } from './types'
 
 export const Images = ({ thumbnail, images }: ImagesProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })

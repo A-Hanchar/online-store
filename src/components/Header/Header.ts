@@ -1,5 +1,6 @@
 import { Logo } from 'components/Logo'
 import { addClassnameToElement, createElementWithClassName, localStorageInstanse } from 'helpers'
+
 import styles from './styles.css'
 import { AddContentType } from './types'
 

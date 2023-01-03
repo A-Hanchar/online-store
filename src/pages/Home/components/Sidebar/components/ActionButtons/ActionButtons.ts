@@ -1,4 +1,5 @@
 import { createElementWithClassName } from 'helpers'
+
 import { CopyURLButton } from './components/CopyURLButton'
 import { ResetFiltersButton } from './components/ResetFiltersButton'
 import styles from './styles.css'

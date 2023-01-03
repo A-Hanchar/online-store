@@ -1,8 +1,10 @@
-import { ProductInfoProps } from './types'
-import styles from './styles.css'
-import { Text } from 'components/Text'
-import { createElementWithClassName } from 'helpers'
 import { ProductPrices } from 'components/ProductPrices'
+import { Text } from 'components/Text'
+
+import { createElementWithClassName } from 'helpers'
+
+import styles from './styles.css'
+import { ProductInfoProps } from './types'
 
 export const ProductInfo = ({
   title,

@@ -1,4 +1,5 @@
 import { createElementWithClassName } from 'helpers'
+
 import { InputProps } from './types'
 
 export const Input = ({ type = 'text', placeholder = '', classname, maxLength }: InputProps) => {

@@ -1,10 +1,12 @@
+import { Image } from 'components/Image'
 import { Input } from 'components/Input'
-import { ErrorMessage } from '../../../ErrorMessage'
+
 import { createElementWithClassName } from 'helpers'
+
+import { ErrorMessage } from '../../../ErrorMessage'
 import commonStyles from '../commonStyles.css'
 import styles from './styles.css'
 import { CardNumberProps } from './types'
-import { Image } from 'components/Image'
 
 export const CardNumber = ({ validationInputs }: CardNumberProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })

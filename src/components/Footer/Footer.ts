@@ -1,8 +1,9 @@
-import { createElementWithClassName } from 'helpers/createElementWithClassName'
-import { Authors } from './components/Authors/'
-import { Text } from './../Text/Text'
-import styles from './styles.css'
 import { RSLogo } from 'components/RSLogo'
+import { createElementWithClassName } from 'helpers/createElementWithClassName'
+
+import { Text } from './../Text/Text'
+import { Authors } from './components/Authors/'
+import styles from './styles.css'
 
 export const Footer = () => {
   const footer = createElementWithClassName({ tagName: 'footer', classname: styles.footer })
