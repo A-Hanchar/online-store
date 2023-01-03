@@ -1,4 +1,4 @@
-import { FilterCheckboxKeys } from 'interfaces'
+import { FilterCheckboxKeys } from 'types'
 
 export type ListFilterProps = {
   key: FilterCheckboxKeys

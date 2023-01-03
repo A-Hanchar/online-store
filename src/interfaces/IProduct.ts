@@ -1,5 +1,4 @@
-import { formByName } from 'forms'
-import { Category } from './Category'
+import { Category } from 'types'
 
 export interface IProduct {
   id: number
@@ -14,31 +13,3 @@ export interface IProduct {
   thumbnail: string
   images: string[]
 }
-
-export type RangeKeys = keyof Pick<IProduct, 'price' | 'stock'>
-
-export type LikeKeys = keyof Pick<IProduct, 'title'>
-
-export type SortingKeys = keyof Pick<IProduct, 'price' | 'rating' | 'title' | 'discountPercentage'>
-
-export type ProductEqualKeys = keyof Pick<IProduct, 'category' | 'brand'>
-export type EqualKeys = ProductEqualKeys | 'appearance'
-
-export type PaginationKeys = 'total' | 'size' | 'page'
-
-export enum SEARCH_PARAMS {
-  SORT_BY = 'sort_by',
-  PAGINATION = 'pagination',
-  MODAL = 'modal',
-}
-
-export type ModalFormName = keyof typeof formByName
-
-export enum SORTING_TYPE {
-  ASC = 'asc',
-  DESC = 'desc',
-}
-
-export type SearchKeys = RangeKeys | LikeKeys | SortingKeys | EqualKeys | SEARCH_PARAMS
-
-export type FilterCheckboxKeys = keyof Pick<IProduct, 'category' | 'brand'>

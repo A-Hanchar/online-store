@@ -1,8 +1,11 @@
-import { addClassnameToElement, createElementWithClassName } from 'helpers'
+import {
+  addClassnameToElement,
+  createElementWithClassName,
+  removeClassnameToElement,
+  containsClassnameToElement,
+} from 'helpers'
 import { regArr } from './../../RegExp/RegExp'
 import styles from './styles.css'
-import { removeClassnameToElement } from 'helpers/removeClassnameToElement '
-import { containsClassnameToElement } from 'helpers/containsClassnameToElement '
 
 export const checkValidation = (form: HTMLFormElement, arr: typeof regArr) => {
   const allInputs = form.querySelectorAll('input')

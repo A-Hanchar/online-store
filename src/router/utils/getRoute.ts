@@ -1,7 +1,7 @@
-import { urlInstanse } from 'helpers/urlInstanse'
+import { SYMBOL } from 'enums'
+import { urlInstanse } from 'helpers'
 import { notFoundRoute, rootRoute, router, RouterOwnObject } from 'router'
 import { routerPathes } from 'router/routerPathes'
-import { SYMBOL } from 'types'
 
 export const getRoute = () => {
   const url = urlInstanse.getUrl()

@@ -1,7 +1,6 @@
-import { formByName } from './../../forms/formByName'
 import { ModalWindow } from 'components/ModalWindow'
-import { createElementWithClassName, localStorageInstanse } from 'helpers'
-import { urlInstanse } from 'helpers/urlInstanse'
+import { formByName } from 'forms'
+import { createElementWithClassName, localStorageInstanse, urlInstanse } from 'helpers'
 import { Empty } from './components/Empty'
 import { Products } from './components/Products'
 import { Summary } from './components/Summary'
@@ -26,9 +25,7 @@ export const Basket = () => {
     const countElements = localStorageInstanse.getProducts().length
 
     if (!isfirstRenderEmpty && countElements === 0) {
-      wrapper.replaceChildren()
-
-      wrapper.append(Empty())
+      wrapper.replaceChildren(Empty())
     }
 
     const modalForm = urlInstanse.getModalValue()

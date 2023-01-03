@@ -1,6 +1,6 @@
-import { urlInstanse } from 'helpers/urlInstanse'
-import { EqualKeys } from 'interfaces'
-import { SYMBOL } from 'types'
+import { SYMBOL } from 'enums'
+import { urlInstanse } from 'helpers'
+import { EqualKeys } from 'types'
 
 export const onClickFilterButton: (props: { key: EqualKeys; addedValue: string }) => void = ({ key, addedValue }) => {
   const url = urlInstanse.getUrl()

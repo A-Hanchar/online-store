@@ -25,11 +25,11 @@ export const ProductDescriptionPage = ({
 
   const breadCrumbs = Breadcrumbs({
     elements: [
-      { name: 'Home', url: routerPathes.home, id: 'breadHome' },
-      { name: 'Categories', url: routerPathes.categories, id: 'breadHome' },
-      { name: category, url: `${routerPathes.categories}/${category}`, id: 'breadCategories' },
-      { name: brand, url: `${routerPathes.categories}/${category}/${brand}`, id: 'breadCategory' },
-      { name: title, url: `${routerPathes.categories}/${category}/${brand}/${id}`, id: 'breadProduct' },
+      { name: 'Home', url: routerPathes.home },
+      { name: 'Categories', url: routerPathes.categories },
+      { name: category, url: `${routerPathes.categories}/${category}` },
+      { name: brand, url: `${routerPathes.categories}/${category}/${brand}` },
+      { name: title, url: `${routerPathes.categories}/${category}/${brand}/${id}` },
     ],
   })
 

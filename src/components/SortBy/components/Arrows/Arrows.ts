@@ -1,15 +1,13 @@
 import { Button } from 'components/Button'
-import { createElementWithClassName, workDataInstanse } from 'helpers'
-import { urlInstanse } from 'helpers/urlInstanse'
-import { SORTING_TYPE } from 'interfaces'
-import { DATA_ATTRIBUTE } from 'types'
+import { DATA_ATTRIBUTE, SORT_TYPE } from 'enums'
+import { createElementWithClassName, workDataInstanse, urlInstanse } from 'helpers'
 import styles from './styles.css'
 import { ArrowsProps } from './types'
 
 export const Arrows = ({ initialKey }: ArrowsProps) => {
   const sortingParam = urlInstanse.getSortByParam()
 
-  let currentSort = sortingParam ? sortingParam.sortType : SORTING_TYPE.ASC
+  let currentSort = sortingParam ? sortingParam.sortType : SORT_TYPE.ASC
 
   const arrowsWrapper = createElementWithClassName({ tagName: 'div', classname: styles.arrowsWrapper })
   const arrowAsc = createElementWithClassName({ tagName: 'span', classname: [styles.arrowAsc, styles.arrow] })
@@ -25,7 +23,7 @@ export const Arrows = ({ initialKey }: ArrowsProps) => {
   setArrowsSortType()
 
   const handleButtonClick = () => {
-    currentSort = currentSort === SORTING_TYPE.ASC ? SORTING_TYPE.DESC : SORTING_TYPE.ASC
+    currentSort = currentSort === SORT_TYPE.ASC ? SORT_TYPE.DESC : SORT_TYPE.ASC
     setArrowsSortType()
 
     const sortingParam = urlInstanse.getSortByParam()

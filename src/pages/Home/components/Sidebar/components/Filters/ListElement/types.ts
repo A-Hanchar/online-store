@@ -1,4 +1,4 @@
-import { ProductEqualKeys } from 'interfaces'
+import { ProductEqualKeys } from 'types'
 
 export type ListElementProps = {
   content: string

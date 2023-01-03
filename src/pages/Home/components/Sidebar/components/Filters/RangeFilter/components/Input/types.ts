@@ -1,4 +1,4 @@
-import { RangeKeys } from 'interfaces'
+import { RangeKeys } from 'types'
 
 export type InputProps = {
   type: 'left' | 'right'

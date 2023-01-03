@@ -1,8 +1,6 @@
-import { urlInstanse } from 'helpers/urlInstanse'
 import { Button } from 'components/Button/Button'
 import commonStyles from '../commonStyles.css'
-import { addClassnameToElement, workDataInstanse } from 'helpers'
-import { removeClassnameToElement } from 'helpers/removeClassnameToElement '
+import { addClassnameToElement, workDataInstanse, removeClassnameToElement, urlInstanse } from 'helpers'
 
 export const ResetFiltersButton = () => {
   const handleClick = () => {

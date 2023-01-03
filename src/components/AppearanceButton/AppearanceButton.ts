@@ -1,8 +1,7 @@
-import { createElementWithClassName } from 'helpers'
+import { createElementWithClassName, urlInstanse } from 'helpers'
 import { AppearanceButtonProps } from './types'
 import styles from './styles.css'
 import { Button } from 'components/Button'
-import { urlInstanse } from 'helpers/urlInstanse'
 import { Appearance } from 'types'
 
 export const AppearanceButton = ({ type = 'standart' }: AppearanceButtonProps) => {
@@ -12,14 +11,12 @@ export const AppearanceButton = ({ type = 'standart' }: AppearanceButtonProps) =
   const fullContent = createElementWithClassName({ tagName: 'div', classname: styles.full })
 
   const handleButtonClick = () => {
-    buttonContent.replaceChildren()
-
     if (currentType === 'standart') {
       currentType = 'full'
-      buttonContent.append(fullContent)
+      buttonContent.replaceChildren(fullContent)
     } else {
       currentType = 'standart'
-      buttonContent.append(standartContent)
+      buttonContent.replaceChildren(standartContent)
     }
 
     urlInstanse.setEqualValue('appearance', currentType)

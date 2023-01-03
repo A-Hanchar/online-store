@@ -1,5 +1,4 @@
-import { createElementWithClassName } from 'helpers'
-import { urlInstanse } from 'helpers/urlInstanse'
+import { createElementWithClassName, urlInstanse } from 'helpers'
 import { ActionButtons } from './components/ActionButtons'
 import { Limit } from './components/Limit'
 import { TotalElements } from './components/TotalElements'

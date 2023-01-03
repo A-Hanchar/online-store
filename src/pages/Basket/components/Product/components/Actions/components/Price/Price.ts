@@ -1,5 +1,5 @@
+import { CURRENCY } from 'enums'
 import { createElementWithClassName, getPricesByDiscount, localStorageInstanse } from 'helpers'
-import { CURRENCY } from 'types'
 import { H3WithSpan } from '../../../H3WithSpan'
 import { Priceprops } from './types'
 
@@ -7,8 +7,6 @@ export const Price = ({ productId, callbackList }: Priceprops) => {
   const wrapper = createElementWithClassName({ tagName: 'div' })
 
   const renderPrice = () => {
-    wrapper.replaceChildren()
-
     const product = localStorageInstanse.getProductById(productId)
 
     if (product) {
@@ -16,7 +14,7 @@ export const Price = ({ productId, callbackList }: Priceprops) => {
 
       const totalPrice = (getPricesByDiscount(price, discount).priceWithDiscount * count).toFixed(2)
 
-      wrapper.append(
+      wrapper.replaceChildren(
         H3WithSpan({
           title: 'Total',
           description: `${CURRENCY.DOLLAR}${totalPrice}`,

@@ -1,6 +1,5 @@
 import { Text } from 'components/Text'
-import { createElementWithClassName, workDataInstanse } from 'helpers'
-import { urlInstanse } from 'helpers/urlInstanse'
+import { createElementWithClassName, workDataInstanse, urlInstanse } from 'helpers'
 import styles from './styles.css'
 
 export const FoundCards = () => {

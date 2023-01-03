@@ -1,3 +1,3 @@
 export type CircleProps = {
-  width: number
+  width?: number
 }

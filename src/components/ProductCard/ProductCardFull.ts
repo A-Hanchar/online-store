@@ -1,7 +1,7 @@
 import { createElementWithClassName } from 'helpers'
 import { IProduct } from 'interfaces'
 import { ActionButtonsFull } from './components/ActionButtons'
-import { ProductImageFull } from './components/ProductImage'
+import { ProductImage } from './components/ProductImage'
 import { ProductInfo } from './components/ProductInfo'
 import styles from './styles.css'
 
@@ -20,7 +20,7 @@ export const ProductCardFull = ({
   const card = createElementWithClassName({ tagName: 'div', classname: [styles.card, styles.full] })
 
   card.append(
-    ProductImageFull({ alt: title, src: thumbnail, discountPercentage }),
+    ProductImage({ alt: title, src: thumbnail, discountPercentage, type: 'full' }),
     ProductInfo({ title, description, discountPercentage, price, category, rating, stock }),
     ActionButtonsFull({ id, brand, category, price, discount: discountPercentage }),
   )

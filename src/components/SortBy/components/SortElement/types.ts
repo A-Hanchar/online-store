@@ -1,4 +1,4 @@
-import { SortingKeys } from 'interfaces'
+import { SortingKeys } from 'types'
 
 export type SortElement = {
   key: SortingKeys

@@ -1,8 +1,8 @@
 import { SortElementProps } from './types'
-import { urlInstanse } from 'helpers/urlInstanse'
+import { urlInstanse } from 'helpers'
 import { Button } from 'components/Button'
 import styles from './styles.css'
-import { SORTING_TYPE } from 'interfaces'
+import { SORT_TYPE } from 'enums'
 
 export const SortElement = ({ key, title, onClick }: SortElementProps) => {
   const handleButtonClick = () => {
@@ -10,7 +10,7 @@ export const SortElement = ({ key, title, onClick }: SortElementProps) => {
 
     onClick?.()
 
-    urlInstanse.setSortValue(key, sortParam?.sortType ?? SORTING_TYPE.ASC)
+    urlInstanse.setSortValue(key, sortParam?.sortType ?? SORT_TYPE.ASC)
   }
 
   const button = Button({ children: title, onclick: handleButtonClick, classname: styles.button })

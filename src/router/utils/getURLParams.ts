@@ -1,6 +1,6 @@
-import { urlInstanse } from 'helpers/urlInstanse'
+import { SYMBOL } from 'enums'
+import { urlInstanse } from 'helpers'
 import { routerPathes } from 'router/routerPathes'
-import { SYMBOL } from 'types'
 
 export const getCategoriesParams = () => {
   const pathname = urlInstanse.getUrl().pathname

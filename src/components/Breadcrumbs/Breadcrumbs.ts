@@ -6,10 +6,10 @@ import styles from './styles.css'
 export const Breadcrumbs = ({ elements }: BreadcrumbsProps) => {
   const ul = createElementWithClassName({ tagName: 'ul', classname: styles.list })
 
-  elements.forEach(({ name, url, id }) => {
+  elements.forEach(({ name, url }) => {
     const li = createElementWithClassName({ tagName: 'li', classname: styles.element })
-    li.append(Link({ id, href: url, children: capitalizeText(name), classname: styles.link }))
 
+    li.append(Link({ href: url, children: capitalizeText(name), classname: styles.link }))
     ul.append(li)
   })
 

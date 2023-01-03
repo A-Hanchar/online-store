@@ -2,11 +2,10 @@ import { createElementWithClassName } from './../../helpers/createElementWithCla
 import { renderComponent } from 'router'
 import { LinkProps } from './types'
 
-export const Link = ({ id, children, href, classname, target = '_self' }: LinkProps) => {
+export const Link = ({ children, href, classname, target = '_self' }: LinkProps) => {
   const a = createElementWithClassName({ tagName: 'a', classname })
   children && a.append(children)
 
-  a.id = id
   a.href = href
   a.target = target
 
@@ -14,6 +13,7 @@ export const Link = ({ id, children, href, classname, target = '_self' }: LinkPr
     if (target === '_blank') {
       return
     }
+
     event.preventDefault()
 
     window.history.pushState({}, '', href)
