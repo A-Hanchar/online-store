@@ -1,1 +1,0 @@
-export { checkValidation } from './checkValidation'

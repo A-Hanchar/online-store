@@ -1,11 +1,9 @@
 import { createElementWithClassName, urlInstanse } from 'helpers'
-import { AppearanceButtonProps } from './types'
 import styles from './styles.css'
 import { Button } from 'components/Button'
-import { Appearance } from 'types'
 
-export const AppearanceButton = ({ type = 'standart' }: AppearanceButtonProps) => {
-  let currentType = urlInstanse.getQueryParam<Appearance>('appearance') ?? type
+export const AppearanceButton = () => {
+  let currentType = urlInstanse.getAppearanceParam()
 
   const standartContent = createElementWithClassName({ tagName: 'div', classname: styles.standart })
   const fullContent = createElementWithClassName({ tagName: 'div', classname: styles.full })

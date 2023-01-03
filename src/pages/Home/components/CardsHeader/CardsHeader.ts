@@ -24,7 +24,7 @@ export const CardsHeader = () => {
     classname: styles.searchAppearanceWrapper,
   })
 
-  searchAppearanceWrapper.append(SearchBy({ key: 'title', placeholder: 'Search By Title' }), AppearanceButton({}))
+  searchAppearanceWrapper.append(SearchBy({ key: 'title', placeholder: 'Search By Title' }), AppearanceButton())
 
   wrapper.append(sortWrapper, searchAppearanceWrapper)
 

@@ -1,11 +1,3 @@
-import { getCategoriesParams } from 'router'
+import { UnderDevelopment } from 'components/UnderDevelopment'
 
-export const Category = () => {
-  const { categoryId = '' } = getCategoriesParams()
-
-  const div = document.createElement('div')
-
-  div.innerHTML = `<h1>${categoryId}</h1>`
-
-  return div
-}
+export const Category = () => UnderDevelopment()

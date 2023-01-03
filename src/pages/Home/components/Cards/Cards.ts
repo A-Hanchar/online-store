@@ -11,7 +11,7 @@ export const Cards = () => {
     cardsWrapper.replaceChildren()
     workDataInstanse.updateProductsWithRange()
 
-    const searchAppearance: Appearance = urlInstanse.getQueryParam<Appearance>('appearance') ?? 'standart'
+    const searchAppearance: Appearance = urlInstanse.getAppearanceParam()
     cardsWrapper.setAttribute(DATA_ATTRIBUTE.DATA_GRID_APPEARANCE, searchAppearance)
 
     cardsWrapper.append(
