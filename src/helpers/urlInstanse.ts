@@ -1,6 +1,7 @@
 import {
   EqualKeys,
   LikeKeys,
+  ModalFormName,
   PaginationKeys,
   RangeKeys,
   SearchKeys,
@@ -211,17 +212,17 @@ class URLSetters extends URLGetters {
   }
 
   getModalValue() {
-    const param = this.getQueryParam(SEARCH_PARAMS.MODAL)
+    const param = this.getQueryParam<ModalFormName>(SEARCH_PARAMS.MODAL)
 
-    if (param) {
+    if (!param) {
       return
     }
 
-    return param === 'true'
+    return param
   }
 
-  setModalParam(value: boolean) {
-    this.setValue(SEARCH_PARAMS.MODAL, String(value))
+  setModalParam(value: ModalFormName) {
+    this.setValue(SEARCH_PARAMS.MODAL, value)
   }
 }
 

@@ -1,3 +1,5 @@
+import { formByName } from './../../forms/formByName'
+import { ModalWindow } from 'components/ModalWindow'
 import { createElementWithClassName, localStorageInstanse } from 'helpers'
 import { urlInstanse } from 'helpers/urlInstanse'
 import { Empty } from './components/Empty'
@@ -27,6 +29,14 @@ export const Basket = () => {
       wrapper.replaceChildren()
 
       wrapper.append(Empty())
+    }
+
+    const modalForm = urlInstanse.getModalValue()
+
+    if (modalForm) {
+      const form = formByName[modalForm]()
+
+      ModalWindow({ children: form })
     }
   }
 

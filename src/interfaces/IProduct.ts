@@ -1,3 +1,4 @@
+import { formByName } from 'forms'
 import { Category } from './Category'
 
 export interface IProduct {
@@ -30,6 +31,8 @@ export enum SEARCH_PARAMS {
   PAGINATION = 'pagination',
   MODAL = 'modal',
 }
+
+export type ModalFormName = keyof typeof formByName
 
 export enum SORTING_TYPE {
   ASC = 'asc',
