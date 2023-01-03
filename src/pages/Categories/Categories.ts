@@ -1,7 +1,3 @@
-export const Categories = () => {
-  const div = document.createElement('div')
+import { UnderDevelopment } from 'components/UnderDevelopment'
 
-  div.innerHTML = '<h1>Categories</h1>'
-
-  return div
-}
+export const Categories = () => UnderDevelopment()

@@ -1,5 +1,5 @@
 import { PAGE_SIZE, SEARCH_PARAMS, SORT_TYPE, SYMBOL } from 'enums'
-import { EqualKeys, FormName, LikeKeys, PaginationKeys, RangeKeys, SearchKeys, SortingKeys } from 'types'
+import { Appearance, EqualKeys, FormName, LikeKeys, PaginationKeys, RangeKeys, SearchKeys, SortingKeys } from 'types'
 
 class URLInstanse {
   url: URL
@@ -144,6 +144,10 @@ class URLGetters extends URLClearMethods {
       page: page > lastPage ? lastPage : page,
       size,
     }
+  }
+
+  getAppearanceParam() {
+    return this.getQueryParam<Appearance>('appearance') ?? 'standart'
   }
 }
 

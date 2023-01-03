@@ -1,5 +1,5 @@
 import { Text } from 'components/Text'
-import { createElementWithClassName } from 'helpers'
+import { createElementWithClassName, generatePathname } from 'helpers'
 import { IProduct } from 'interfaces'
 import { ProductImage } from './components/ProductImage'
 import { ImagesBlock } from './components/ImagesBlock'
@@ -27,9 +27,9 @@ export const ProductDescriptionPage = ({
     elements: [
       { name: 'Home', url: routerPathes.home },
       { name: 'Categories', url: routerPathes.categories },
-      { name: category, url: `${routerPathes.categories}/${category}` },
-      { name: brand, url: `${routerPathes.categories}/${category}/${brand}` },
-      { name: title, url: `${routerPathes.categories}/${category}/${brand}/${id}` },
+      { name: category, url: generatePathname.categoriesCategoryId(category) },
+      { name: brand, url: generatePathname.categoriesCategoryIdBrandId(category, brand) },
+      { name: title, url: generatePathname.categoriesCategoryIdBrandIdProductId(category, brand, String(id)) },
     ],
   })
 

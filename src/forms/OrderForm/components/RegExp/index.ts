@@ -1,1 +1,0 @@
-export { regArr } from './RegExp'

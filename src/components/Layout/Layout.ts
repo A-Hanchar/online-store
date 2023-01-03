@@ -12,6 +12,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
 
   children && main.append(children)
 
+  Body.removeAttribute('class')
   addClassnameToElement({ element: Body, classname: styles.page })
 
   fragment.append(Header(), main, Footer())

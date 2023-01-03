@@ -1,13 +1,19 @@
 .container {
   display: flex;
   flex-direction: column;
-}
+  gap: 16px;
 
-.input {
-  padding: 5px;
-  margin: 10px;
-  text-align: center;
-  border: none;
-  border-radius: 24px;
-  outline: none;
+  & .inputWrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    & .input {
+      padding: 5px;
+      text-align: center;
+      border: none;
+      border-radius: 24px;
+      outline: none;
+    }
+  }
 }
