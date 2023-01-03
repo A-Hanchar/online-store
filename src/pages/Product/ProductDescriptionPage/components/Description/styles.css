@@ -1,0 +1,24 @@
+.wrapper {
+  grid-area: description;
+
+  & .title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  & .category {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-gray);
+  }
+
+  & .description {
+    display: -webkit-box;
+    margin: 0;
+    margin-top: 8px;
+    overflow: hidden;
+    font-size: 16px;
+  }
+}

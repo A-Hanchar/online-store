@@ -1,9 +1,9 @@
 .form {
   display: flex;
   flex-direction: column;
+  gap: 16px;
   align-items: center;
   padding: 16px;
-  gap: 16px;
 
   & .noticeWindow {
     display: flex;

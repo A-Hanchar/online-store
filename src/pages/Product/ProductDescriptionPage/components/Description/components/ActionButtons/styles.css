@@ -1,0 +1,33 @@
+.actionButtons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+
+  & .buyButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    padding: 5px;
+    font-size: 20px;
+    color: var(--color-white);
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    background-color: var(--color-green);
+    border: none;
+    border-radius: 5px;
+  }
+
+  & .addButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    color: var(--color-white);
+    cursor: pointer;
+    background: var(--color-green);
+    border: none;
+    border-radius: 5px;
+  }
+}

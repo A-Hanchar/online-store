@@ -1,12 +1,9 @@
-import { Text } from 'components/Text'
-import { createElementWithClassName, generatePathname } from 'helpers'
+import { capitalizeText, createElementWithClassName } from 'helpers'
 import { IProduct } from 'interfaces'
-import { ProductImage } from './components/ProductImage'
-import { ImagesBlock } from './components/ImagesBlock'
-import { DescriptionBlock } from './components/DescriptionBlock'
-import { Breadcrumbs } from 'components/Breadcrumbs'
-import { routerPathes } from 'router/routerPathes'
 import styles from './styles.css'
+import { Images } from './components/Images'
+import { Text } from 'components/Text'
+import { Description } from './components/Description'
 
 export const ProductDescriptionPage = ({
   title,
@@ -21,25 +18,13 @@ export const ProductDescriptionPage = ({
   thumbnail,
   images,
 }: IProduct) => {
-  const card = createElementWithClassName({ tagName: 'div', classname: styles.card })
+  const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
 
-  const breadCrumbs = Breadcrumbs({
-    elements: [
-      { name: 'Home', url: routerPathes.home },
-      { name: 'Categories', url: routerPathes.categories },
-      { name: category, url: generatePathname.categoriesCategoryId(category) },
-      { name: brand, url: generatePathname.categoriesCategoryIdBrandId(category, brand) },
-      { name: title, url: generatePathname.categoriesCategoryIdBrandIdProductId(category, brand, String(id)) },
-    ],
-  })
-
-  card.append(
-    Text({ tagName: 'h2', text: title, classname: styles.header }),
-    breadCrumbs,
-    ProductImage({ alt: title, src: thumbnail }),
-    ImagesBlock({ images, title }),
-    DescriptionBlock({ brand, category, description, price, discountPercentage, rating, stock, id }),
+  wrapper.append(
+    Images({ thumbnail, images }),
+    Text({ tagName: 'h1', text: capitalizeText(title), classname: styles.title }),
+    Description({ category, description, discountPercentage, price, rating, stock, id, brand }),
   )
 
-  return card
+  return wrapper
 }

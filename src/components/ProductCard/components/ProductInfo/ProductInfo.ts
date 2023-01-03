@@ -2,7 +2,7 @@ import { ProductInfoProps } from './types'
 import styles from './styles.css'
 import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
-import { Price } from './components/Price'
+import { ProductPrices } from 'components/ProductPrices'
 
 export const ProductInfo = ({
   title,
@@ -20,7 +20,7 @@ export const ProductInfo = ({
     Text({ tagName: 'p', text: category, classname: styles.category }),
     Text({ tagName: 'p', text: `In stock: ${stock}`, classname: styles.category }),
     Text({ tagName: 'p', text: description, classname: styles.description }),
-    Price({ price, discountPercentage, rating }),
+    ProductPrices({ price, discountPercentage, rating }),
   )
 
   return wrapper
