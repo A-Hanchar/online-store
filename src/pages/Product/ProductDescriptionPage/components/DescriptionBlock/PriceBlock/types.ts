@@ -4,6 +4,4 @@ export type PriceBlockProps = {
   discountPercentage: number
   stock: number
   id: number
-  brand: string
-  category: string
 }

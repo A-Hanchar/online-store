@@ -1,4 +1,4 @@
-export { Products } from './Products'
+export { Categories } from './Categories'
 export { Home } from './Home'
 export { NotFound } from './NotFound'
 export { Basket } from './Basket'

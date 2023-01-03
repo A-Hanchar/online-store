@@ -2,7 +2,7 @@ import { createElementWithClassName } from './../../helpers/createElementWithCla
 import { renderComponent } from 'router'
 import { LinkProps } from './types'
 
-export const Link = ({ id, children, href, classname, target = '_self', onClickBeforeHistoryPush }: LinkProps) => {
+export const Link = ({ id, children, href, classname, target = '_self' }: LinkProps) => {
   const a = createElementWithClassName({ tagName: 'a', classname })
   children && a.append(children)
 
@@ -15,8 +15,6 @@ export const Link = ({ id, children, href, classname, target = '_self', onClickB
       return
     }
     event.preventDefault()
-
-    onClickBeforeHistoryPush?.()
 
     window.history.pushState({}, '', href)
     renderComponent()

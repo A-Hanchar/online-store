@@ -21,7 +21,7 @@ export const DescriptionBlock = ({
     BlockOfProductDescription('Category', category),
     BlockOfProductDescription('Description', description),
   )
-  container.append(block, PriceBlock({ price, discountPercentage, rating, stock, id, brand, category }))
+  container.append(block, PriceBlock({ price, discountPercentage, rating, stock, id }))
 
   return container
 }

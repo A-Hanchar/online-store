@@ -33,16 +33,20 @@ export const CardInput = () => {
 
   const cardLogo = CardLogo()
 
-  const num = cardNumber.querySelector('input')
-  num!.addEventListener('input', () => {
-    switch (num!.value.startsWith('')) {
-      case num!.value.startsWith('2'):
+  const num = cardNumber.querySelector('input')!
+
+  num.addEventListener('input', () => {
+    const value = num.value
+    const firstLetter = value[0]
+
+    switch (firstLetter) {
+      case '2':
         cardLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Mir-logo.SVG.svg'
         break
-      case num!.value.startsWith('4'):
+      case '4':
         cardLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg'
         break
-      case num!.value.startsWith('5'):
+      case '5':
         cardLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg'
         break
       default:
