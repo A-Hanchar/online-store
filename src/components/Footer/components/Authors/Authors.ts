@@ -1,6 +1,8 @@
 import { Link } from 'components/Link'
-import styles from './styles.css'
+
 import { createElementWithClassName } from 'helpers'
+
+import styles from './styles.css'
 
 export const Authors = () => {
   const authors = createElementWithClassName({ tagName: 'div', classname: styles.authors })

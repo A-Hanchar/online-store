@@ -4,6 +4,7 @@ import { Header } from 'components/Header'
 import { addClassnameToElement, urlInstanse } from 'helpers'
 import { routerPathes } from 'router/routerPathes'
 import { PropsWithChildren } from 'types'
+
 import styles from './styles.css'
 
 export const Layout = ({ children }: PropsWithChildren) => {

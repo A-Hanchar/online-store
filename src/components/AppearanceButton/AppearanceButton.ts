@@ -1,6 +1,7 @@
-import { createElementWithClassName, urlInstanse } from 'helpers'
-import styles from './styles.css'
 import { Button } from 'components/Button'
+import { createElementWithClassName, urlInstanse } from 'helpers'
+
+import styles from './styles.css'
 
 export const AppearanceButton = () => {
   let currentType = urlInstanse.getAppearanceParam()

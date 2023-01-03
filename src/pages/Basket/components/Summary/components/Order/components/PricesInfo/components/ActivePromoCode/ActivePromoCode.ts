@@ -1,7 +1,8 @@
 import { Button } from 'components/Button'
 import { createElementWithClassName, localStoragePromoCodeInstanse } from 'helpers'
-import { ActivePromoCodeProps } from './types'
+
 import styles from './styles.css'
+import { ActivePromoCodeProps } from './types'
 
 export const ActivePromoCode = ({ callbackList, description, sale, id }: ActivePromoCodeProps) => {
   const li = createElementWithClassName({ tagName: 'li', classname: styles.li })

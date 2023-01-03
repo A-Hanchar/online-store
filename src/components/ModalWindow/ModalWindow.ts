@@ -2,6 +2,7 @@ import { Body } from 'components/Body'
 import { SEARCH_PARAMS } from 'enums'
 import { addClassnameToElement, createElementWithClassName, removeClassnameToElement, urlInstanse } from 'helpers'
 import { PropsWithChildren } from 'types'
+
 import styles from './styles.css'
 
 export const ModalWindow = ({ children }: Required<PropsWithChildren>) => {

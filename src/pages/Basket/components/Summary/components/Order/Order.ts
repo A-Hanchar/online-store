@@ -1,5 +1,6 @@
 import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
+
 import { PricesInfo } from './components/PricesInfo'
 import { Total } from './components/Total/Total'
 import styles from './styles.css'

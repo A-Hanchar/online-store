@@ -1,7 +1,9 @@
 import { Button } from 'components/Button'
-import { AddToCartButtonProps } from './types'
-import styles from './styles.css'
+
 import { localStorageInstanse } from 'helpers'
+
+import styles from './styles.css'
+import { AddToCartButtonProps } from './types'
 
 export const AddToCartButton = ({
   textInBasket,

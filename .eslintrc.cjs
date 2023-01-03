@@ -9,6 +9,8 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'standard-with-typescript',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
     'plugin:prettier/recommended',
     'prettier',
   ],
@@ -167,6 +169,31 @@ module.exports = {
     ],
     'no-param-reassign': 'error',
     'no-undef-init': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: ['external', ['builtin', 'internal', 'unknown', 'parent', 'sibling', 'index', 'object', 'type']],
+        pathGroupsExcludedImportTypes: ['react'],
+        pathGroups: [
+          {
+            pattern: '@/**',
+            group: 'external',
+            position: 'after',
+          },
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+        ],
+        alphabetize: { order: 'asc' },
+        'newlines-between': 'always-and-inside-groups',
+      },
+    ],
+    'import/no-deprecated': 'warn',
+    'import/no-unresolved': 'off',
+    'import/no-extraneous-dependencies': ['error'],
+    'import/namespace': ['warn', { allowComputed: true }],
     'prettier/prettier': [
       'error',
       {

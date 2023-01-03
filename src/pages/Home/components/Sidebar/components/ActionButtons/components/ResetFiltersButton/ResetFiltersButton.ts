@@ -1,6 +1,8 @@
 import { Button } from 'components/Button/Button'
-import commonStyles from '../commonStyles.css'
+
 import { addClassnameToElement, workDataInstanse, removeClassnameToElement, urlInstanse } from 'helpers'
+
+import commonStyles from '../commonStyles.css'
 
 export const ResetFiltersButton = () => {
   const handleClick = () => {

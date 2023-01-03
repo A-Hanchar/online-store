@@ -1,9 +1,10 @@
 import { createElementWithClassName } from 'helpers'
-import { ActionsProps } from './types'
-import styles from './styles.css'
+
 import { ActionButton } from './components/ActionButton'
 import { CountElements } from './components/CountElements'
 import { Price } from './components/Price'
+import styles from './styles.css'
+import { ActionsProps } from './types'
 
 export const Actions = ({ stock, productId, productWrapper, callbackList }: ActionsProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })

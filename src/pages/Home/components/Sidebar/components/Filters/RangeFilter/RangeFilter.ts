@@ -1,9 +1,10 @@
 import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
+
 import commonStyles from '../commonStyles.css'
-import { RangeFilterProps } from './types'
 import { Input } from './components/Input'
 import styles from './styles.css'
+import { RangeFilterProps } from './types'
 
 export const RangeFilter = ({ key, title }: RangeFilterProps) => {
   const div = createElementWithClassName({ tagName: 'div', classname: commonStyles.filterWrapper })

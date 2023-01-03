@@ -1,8 +1,9 @@
-import { ActionButtonsProps } from './types'
-import styles from './styles.css'
 import { createElementWithClassName } from 'helpers'
-import { ViewDealButton } from './components/ViewDealButton'
+
 import { AddToCartButton } from './components/AddToCartButton'
+import { ViewDealButton } from './components/ViewDealButton'
+import styles from './styles.css'
+import { ActionButtonsProps } from './types'
 
 export const ActionButtons = ({ id, category, brand, price, discount }: ActionButtonsProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: [styles.actionButtons, styles.standart] })

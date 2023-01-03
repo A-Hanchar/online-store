@@ -1,9 +1,10 @@
+import { Text } from 'components/Text'
 import { capitalizeText, createElementWithClassName } from 'helpers'
 import { IProduct } from 'interfaces'
-import styles from './styles.css'
-import { Images } from './components/Images'
-import { Text } from 'components/Text'
+
 import { Description } from './components/Description'
+import { Images } from './components/Images'
+import styles from './styles.css'
 
 export const ProductDescriptionPage = ({
   title,

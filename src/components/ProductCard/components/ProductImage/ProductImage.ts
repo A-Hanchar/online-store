@@ -1,8 +1,10 @@
 import { Image } from 'components/Image'
-import { ProductImageProps } from './types'
-import styles from './styles.css'
-import { createElementWithClassName } from 'helpers'
+
 import { DATA_ATTRIBUTE } from 'enums'
+import { createElementWithClassName } from 'helpers'
+
+import styles from './styles.css'
+import { ProductImageProps } from './types'
 
 export const ProductImage = ({ alt, src, discountPercentage, type = 'standart' }: ProductImageProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: [styles.productImage, styles[type]] })

@@ -1,9 +1,11 @@
-import { createElementWithClassName, capitalizeText } from 'helpers'
-import { BreadcrumbsProps } from './types'
 import { Link } from 'components/Link'
-import styles from './styles.css'
+
 import { Text } from 'components/Text'
 import { SYMBOL } from 'enums'
+import { createElementWithClassName, capitalizeText } from 'helpers'
+
+import styles from './styles.css'
+import { BreadcrumbsProps } from './types'
 
 export const Breadcrumbs = ({ elements }: BreadcrumbsProps) => {
   const ul = createElementWithClassName({ tagName: 'ul', classname: styles.list })

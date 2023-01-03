@@ -1,8 +1,10 @@
 import { Link } from 'components/Link'
 import { Text } from 'components/Text'
-import styles from './styles.css'
-import { routerPathes } from 'router/routerPathes'
+
 import { createElementWithClassName } from 'helpers'
+import { routerPathes } from 'router/routerPathes'
+
+import styles from './styles.css'
 
 export const NotFound = () => {
   const container = createElementWithClassName({ tagName: 'div', classname: styles.container })

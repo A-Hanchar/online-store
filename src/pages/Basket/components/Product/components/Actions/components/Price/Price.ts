@@ -1,5 +1,6 @@
 import { CURRENCY } from 'enums'
 import { createElementWithClassName, getPricesByDiscount, localStorageInstanse } from 'helpers'
+
 import { H3WithSpan } from '../../../H3WithSpan'
 import { Priceprops } from './types'
 

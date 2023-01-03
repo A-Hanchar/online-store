@@ -1,4 +1,5 @@
 import { Text } from 'components/Text'
+import { CURRENCY } from 'enums'
 import {
   addClassnameToElement,
   createElementWithClassName,
@@ -6,10 +7,10 @@ import {
   localStoragePromoCodeInstanse,
   removeClassnameToElement,
 } from 'helpers'
+
 import { ActivePromoCodes } from './components/ActivePromoCodes'
-import { PriceInfoProps } from './types'
 import styles from './styles.css'
-import { CURRENCY } from 'enums'
+import { PriceInfoProps } from './types'
 
 export const PricesInfo = ({ callbackList }: PriceInfoProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })

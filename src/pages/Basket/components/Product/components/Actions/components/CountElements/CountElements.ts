@@ -1,5 +1,6 @@
 import { Text } from 'components/Text'
 import { localStorageInstanse } from 'helpers'
+
 import styles from './styles.css'
 import { CountElementsProps } from './types'
 

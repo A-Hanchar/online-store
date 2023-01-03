@@ -2,6 +2,7 @@ import { AppearanceButton } from 'components/AppearanceButton'
 import { SearchBy } from 'components/SearchBy'
 import { SortBy } from 'components/SortBy'
 import { createElementWithClassName } from 'helpers'
+
 import styles from './styles.css'
 
 export const CardsHeader = () => {

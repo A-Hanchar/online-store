@@ -1,10 +1,11 @@
-import { Text } from 'components/Text'
-import { createElementWithClassName } from 'helpers'
-import { DescriptionProps } from './types'
-import styles from './styles.css'
 import { Rating } from 'components/Rating'
-import { H3WithSpan } from '../H3WithSpan'
+import { Text } from 'components/Text'
 import { CURRENCY } from 'enums'
+import { createElementWithClassName } from 'helpers'
+
+import { H3WithSpan } from '../H3WithSpan'
+import styles from './styles.css'
+import { DescriptionProps } from './types'
 
 export const Description = ({
   title,

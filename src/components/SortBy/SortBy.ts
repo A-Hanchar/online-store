@@ -1,6 +1,7 @@
 import { Button } from 'components/Button'
 import { SORT_TYPE } from 'enums'
 import { createElementWithClassName, toggleClassnameToElement, workDataInstanse, urlInstanse } from 'helpers'
+
 import { Arrows } from './components/Arrows'
 import { SortingElements } from './components/SortingElements'
 import styles from './styles.css'

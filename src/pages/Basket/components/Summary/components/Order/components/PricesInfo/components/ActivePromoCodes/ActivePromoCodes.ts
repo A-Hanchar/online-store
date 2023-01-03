@@ -1,8 +1,9 @@
 import { Text } from 'components/Text'
 import { createElementWithClassName, localStoragePromoCodeInstanse } from 'helpers'
-import { ActivePromoCodesProps } from './types'
-import styles from './styles.css'
+
 import { ActivePromoCode } from '../ActivePromoCode'
+import styles from './styles.css'
+import { ActivePromoCodesProps } from './types'
 
 export const ActivePromoCodes = ({ callbackList }: ActivePromoCodesProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })

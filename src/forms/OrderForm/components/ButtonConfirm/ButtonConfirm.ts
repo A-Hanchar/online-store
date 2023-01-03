@@ -1,5 +1,6 @@
-import styles from './styles.css'
 import { Button } from 'components/Button'
+
+import styles from './styles.css'
 
 export const ButtonConfirm = () =>
   Button({

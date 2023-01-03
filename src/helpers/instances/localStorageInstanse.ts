@@ -1,6 +1,7 @@
 import { Basket } from 'components/Basket'
 import { CURRENCY, DATA_ATTRIBUTE, LOCAL_STORAGE_KEY } from 'enums'
 import { PromoCode } from 'types'
+
 import { createElementWithClassName } from '../createElementWithClassName'
 import { getPricesByDiscount } from '../getPricesByDiscount'
 

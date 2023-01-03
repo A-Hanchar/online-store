@@ -1,8 +1,10 @@
-import { SortElementProps } from './types'
-import { urlInstanse } from 'helpers'
 import { Button } from 'components/Button'
-import styles from './styles.css'
 import { SORT_TYPE } from 'enums'
+import { urlInstanse } from 'helpers'
+
+import styles from './styles.css'
+
+import { SortElementProps } from './types'
 
 export const SortElement = ({ key, title, onClick }: SortElementProps) => {
   const handleButtonClick = () => {

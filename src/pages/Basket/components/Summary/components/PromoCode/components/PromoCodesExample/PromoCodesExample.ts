@@ -1,6 +1,7 @@
 import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
 import { promoCodes } from 'mock/promoCodes'
+
 import styles from './styles.css'
 
 export const PromoCodesExample = () => {

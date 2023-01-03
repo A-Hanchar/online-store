@@ -2,6 +2,7 @@ import { ProductCard, ProductCardFull } from 'components/ProductCard'
 import { DATA_ATTRIBUTE } from 'enums'
 import { createElementWithClassName, workDataInstanse, urlInstanse } from 'helpers'
 import { Appearance } from 'types'
+
 import styles from './styles.css'
 
 export const Cards = () => {

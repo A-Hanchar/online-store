@@ -1,5 +1,6 @@
 import { Categories, Home, NotFound, Basket, Product, Category } from 'pages'
 import { Brand } from 'pages/Brand'
+
 import { routerPathes } from './routerPathes'
 import { RouterOwnObject } from './types'
 

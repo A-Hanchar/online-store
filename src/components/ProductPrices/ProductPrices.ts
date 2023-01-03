@@ -1,9 +1,10 @@
-import { createElementWithClassName, getPricesByDiscount } from 'helpers'
-import { ProductPricesProps } from './types'
-import styles from './styles.css'
-import { Text } from 'components/Text'
 import { Rating } from 'components/Rating'
+import { Text } from 'components/Text'
 import { CURRENCY } from 'enums'
+import { createElementWithClassName, getPricesByDiscount } from 'helpers'
+
+import styles from './styles.css'
+import { ProductPricesProps } from './types'
 
 export const ProductPrices = ({ price, discountPercentage, rating }: ProductPricesProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
