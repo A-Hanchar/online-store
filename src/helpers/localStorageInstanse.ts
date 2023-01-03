@@ -69,6 +69,10 @@ class ProductsInstanse extends LocalStorageInstanse {
     }
   }
 
+  removeProductsList() {
+    localStorage.removeItem(LOCAL_STORAGE_KEY.PRODUCTS)
+  }
+
   hasProductId(id: number) {
     const productsIds = this.getProducts().map(({ id }) => id)
 

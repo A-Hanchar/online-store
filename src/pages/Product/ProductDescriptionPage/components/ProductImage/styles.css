@@ -1,0 +1,11 @@
+.productImage {
+  display: flex;
+  justify-content: center;
+
+  & img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: var(--product-card-border-radius);
+  }
+}

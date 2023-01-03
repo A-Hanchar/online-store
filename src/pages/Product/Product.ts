@@ -1,11 +1,17 @@
+import { createElementWithClassName } from 'helpers'
+import { products } from 'mock/products'
 import { getCategoriesParams } from 'router'
+import { ProductDescriptionPage } from './ProductDescriptionPage'
+import styles from './styles.css'
 
 export const Product = () => {
   const { productId = '' } = getCategoriesParams()
 
-  const div = document.createElement('div')
+  const container = createElementWithClassName({ tagName: 'div', classname: styles.container })
 
-  div.innerHTML = `<h1>Product: id - ${productId}</h1>`
+  const filteredProducts = products.filter(({ id }) => id === Number(productId))
 
-  return div
+  filteredProducts.forEach((e) => container.append(ProductDescriptionPage(e)))
+
+  return container
 }
