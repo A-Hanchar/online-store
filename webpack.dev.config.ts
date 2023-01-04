@@ -1,6 +1,8 @@
-import { IConfiguration } from './webpack.config'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+
+import { IConfiguration } from './webpack.config'
+import path from 'path'
 
 const config: IConfiguration = {
   mode: 'development',
@@ -18,6 +20,7 @@ const config: IConfiguration = {
       title: 'Online Shop',
       template: 'src/index.html',
       publicPath: '/',
+      favicon: path.resolve(__dirname, 'src', 'assets', 'images', 'favicon.png'),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',

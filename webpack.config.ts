@@ -1,9 +1,10 @@
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { Configuration as WebpackConfiguration } from 'webpack'
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
+
 import devConfig from './webpack.dev.config'
 import prodConfig from './webpack.prod.config'
 import path from 'path'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 const isDevelopmentMode = process.env.NODE_ENV === 'development'
 

@@ -8,9 +8,4 @@
     flex-direction: column;
     gap: 45px;
   }
-
-  & .pagination {
-    position: sticky;
-    bottom: 0;
-  }
 }

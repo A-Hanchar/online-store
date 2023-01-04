@@ -17,7 +17,7 @@ export const ModalWindow = ({ children }: Required<PropsWithChildren>) => {
     const target = event.target
 
     if (target === wrapper) {
-      urlInstanse.removeSearchValueByKey(SEARCH_PARAMS.MODAL)
+      urlInstanse.removeSearchValueByKey(SEARCH_PARAMS.MODAL, 'replace')
 
       removeClassnameToElement({ element: Body, classname: styles.disableScroll })
       Body.removeChild(wrapper)

@@ -1,10 +1,11 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { NetlifyPlugin } from 'netlify-webpack-plugin'
 import { BannerPlugin, CleanPlugin } from 'webpack'
+
 import packageJson from './package.json'
 import { IConfiguration } from './webpack.config'
 import path from 'path'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { NetlifyPlugin } from 'netlify-webpack-plugin'
 
 const config: IConfiguration = {
   mode: 'production',
@@ -19,6 +20,7 @@ const config: IConfiguration = {
       template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html',
       publicPath: '/',
+      favicon: path.resolve(__dirname, 'src', 'assets', 'images', 'favicon.png'),
     }),
     new MiniCssExtractPlugin({ filename: `${packageJson.name}.css` }),
     new NetlifyPlugin({
