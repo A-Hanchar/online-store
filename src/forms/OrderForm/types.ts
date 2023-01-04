@@ -1,1 +1,5 @@
-export type ValidationInputs = Array<{ input: HTMLInputElement; validation: RegExp; error: HTMLElement }>
+export type ValidationInputs = Array<{
+  input: HTMLInputElement
+  validation: RegExp | (() => boolean)
+  error: HTMLElement
+}>
