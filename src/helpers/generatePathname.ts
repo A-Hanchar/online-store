@@ -8,6 +8,6 @@ export const generatePathname = {
     return `${routerPathes.categories}/${categoryId}/${brandId}`
   },
   categoriesCategoryIdBrandIdProductId(categoryId: string, brandId: string, productId: string) {
-    return `${routerPathes.categories}/${brandId}/${categoryId}/${productId}`
+    return `${routerPathes.categories}/${categoryId}/${brandId}/${productId}`
   },
 }

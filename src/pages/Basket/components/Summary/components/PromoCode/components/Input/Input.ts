@@ -4,7 +4,7 @@ import {
   localStoragePromoCodeInstanse,
   removeClassnameToElement,
 } from 'helpers'
-import { promoCodes } from 'mock/promoCodes'
+import { promoCodes } from 'mocks/promoCodes'
 
 import { AddPromoCode } from '../AddPromoCode'
 import styles from './styles.css'

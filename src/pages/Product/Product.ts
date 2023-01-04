@@ -1,6 +1,6 @@
 import { Breadcrumbs } from 'components/Breadcrumbs'
 import { createElementWithClassName, generatePathname } from 'helpers'
-import { products } from 'mock/products'
+import { products } from 'mocks/products'
 import { getCategoriesParams } from 'router'
 import { routerPathes } from 'router/routerPathes'
 
