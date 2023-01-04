@@ -1,6 +1,6 @@
 import { Text } from 'components/Text'
 import { createElementWithClassName } from 'helpers'
-import { promoCodes } from 'mock/promoCodes'
+import { promoCodes } from 'mocks/promoCodes'
 
 import styles from './styles.css'
 

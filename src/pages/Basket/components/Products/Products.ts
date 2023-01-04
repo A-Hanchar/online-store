@@ -1,6 +1,6 @@
 import { Pagination } from 'components/Pagination'
 import { createElementWithClassName, localStorageInstanse, urlInstanse } from 'helpers'
-import { products } from 'mock/products'
+import { products } from 'mocks/products'
 
 import { Product } from '../Product'
 import styles from './styles.css'
