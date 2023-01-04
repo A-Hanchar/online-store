@@ -1,7 +1,8 @@
 /* eslint-disable no-useless-escape */
 import { Input } from 'components/Input'
+import { SYMBOL } from 'enums'
 
-import { createElementWithClassName } from 'helpers'
+import { checkCountAndLengthWords, createElementWithClassName } from 'helpers'
 
 import { ErrorMessage } from '../ErrorMessage'
 import styles from './styles.css'
@@ -23,6 +24,19 @@ export const PersonInput = ({ validationInputs }: PersonInputProps) => {
     placeholder: 'Phone number',
     classname: styles.input,
   })
+
+  const phoneValidation = () => {
+    const value = phoneInput.value
+    const firstLetter = value[0]
+
+    if (firstLetter !== SYMBOL.PLUS) {
+      return false
+    }
+
+    const phonePart = value.slice(1)
+
+    return phonePart.length >= 8 && !!Number(phonePart)
+  }
 
   phoneWrapper.append(phoneInput)
 
@@ -48,22 +62,22 @@ export const PersonInput = ({ validationInputs }: PersonInputProps) => {
   validationInputs.push(
     {
       input: nameInput,
-      validation: /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/,
+      validation: () => checkCountAndLengthWords({ string: nameInput.value, minCountWords: 2, minCountLetters: 3 }),
       error: ErrorMessage(),
     },
     {
       input: phoneInput,
-      validation: /^[\+][(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,}$/,
+      validation: phoneValidation,
       error: ErrorMessage(),
     },
     {
       input: addressInput,
-      validation: /^(\w{5,}\s){2,}(\w{5,})/,
+      validation: () => checkCountAndLengthWords({ string: addressInput.value, minCountWords: 3, minCountLetters: 5 }),
       error: ErrorMessage(),
     },
     {
       input: emailInput,
-      validation: /[a-zA-Z1-9\-\._]+@[a-z1-9]+(.[a-z1-9]+){1,}/,
+      validation: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
       error: ErrorMessage(),
     },
   )

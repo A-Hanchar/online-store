@@ -15,6 +15,8 @@ export const CardNumber = ({ validationInputs }: CardNumberProps) => {
   const input = Input({
     placeholder: 'Card number',
     classname: commonStyles.input,
+    maxLength: 16,
+    type: 'number',
   })
 
   const cardLogo = Image({
@@ -24,8 +26,15 @@ export const CardNumber = ({ validationInputs }: CardNumberProps) => {
   })
 
   input.addEventListener('input', () => {
-    const value = input.value
-    const firstLetter = value[0]
+    const value = Number(input.value)
+
+    input.value = String(value > -1 ? Math.abs(value) : 0)
+
+    if (input.value.length > input.maxLength) {
+      input.value = input.value.slice(0, input.maxLength)
+    }
+
+    const firstLetter = input.value[0]
 
     switch (firstLetter) {
       case '2':
@@ -35,7 +44,8 @@ export const CardNumber = ({ validationInputs }: CardNumberProps) => {
         cardLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg'
         break
       case '5':
-        cardLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg'
+        cardLogo.src =
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mastercard_2019_logo.svg/640px-Mastercard_2019_logo.svg.png'
         break
       default:
         cardLogo.src =

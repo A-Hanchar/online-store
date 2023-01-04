@@ -9,4 +9,5 @@ export enum SYMBOL {
   ASTERISK = '*',
   EQUAL = '=',
   SEMICOLON = ';',
+  PLUS = '+',
 }
