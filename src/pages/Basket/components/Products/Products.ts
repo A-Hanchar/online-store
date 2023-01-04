@@ -1,5 +1,5 @@
 import { Pagination } from 'components/Pagination'
-import { addClassnameToElement, createElementWithClassName, localStorageInstanse, urlInstanse } from 'helpers'
+import { createElementWithClassName, localStorageInstanse, urlInstanse } from 'helpers'
 import { products } from 'mock/products'
 
 import { Product } from '../Product'
@@ -13,8 +13,6 @@ export const Products = ({ callbackList }: ProductsProps) => {
   const pagination = Pagination({ totalElements: localStorageInstanse.getProducts().length })
 
   wrapper.append(productsWrapper, pagination)
-
-  addClassnameToElement({ element: pagination, classname: styles.pagination })
 
   const renderItems = () => {
     productsWrapper.replaceChildren()

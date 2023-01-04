@@ -56,8 +56,8 @@ class URLCallbacks extends URLInstanse {
 }
 
 class URLClearMethods extends URLCallbacks {
-  resetUrl(resetedPath: string) {
-    window.history.pushState({}, '', resetedPath)
+  resetUrl(resetedPath: string, type: 'push' | 'replace' = 'push') {
+    type === 'push' ? window.history.pushState({}, '', resetedPath) : window.history.replaceState({}, '', resetedPath)
     this.callCallbacks()
   }
 
@@ -67,11 +67,11 @@ class URLClearMethods extends URLCallbacks {
     this.resetUrl(this.url.pathname)
   }
 
-  removeSearchValueByKey(key: SearchKeys) {
+  removeSearchValueByKey(key: SearchKeys, type: 'push' | 'replace' = 'push') {
     this.updateURL()
 
     this.url.searchParams.delete(key)
-    this.resetUrl(this.url.href)
+    this.resetUrl(this.url.href, type)
   }
 }
 
