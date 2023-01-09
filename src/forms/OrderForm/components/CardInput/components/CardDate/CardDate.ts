@@ -12,22 +12,38 @@ export const CardDate = ({ validationInputs }: CardDateProps) => {
   const input = Input({
     placeholder: 'Valid Thru',
     classname: commonStyles.input,
-    maxLength: 5,
   })
+
+  const inputMaxLength = 5
 
   inputWrapper.append(input)
 
   input.addEventListener('input', () => {
-    const arr = input.value.split('')
-
-    if (input.value.length === 2) {
-      if (arr.includes(SYMBOL.SLASH, 0)) {
-        arr.splice(arr.indexOf(SYMBOL.SLASH), 1)
-      }
-
-      arr.splice(2, 0, SYMBOL.SLASH)
-      input.value = arr.join('')
+    if (input.value.length > inputMaxLength) {
+      input.value = input.value.slice(0, inputMaxLength)
     }
+
+    const arrayOfInputElements = input.value.split('')
+
+    arrayOfInputElements.forEach((element, index) => {
+      if (isNaN(Number(element)) && element !== SYMBOL.SLASH) {
+        arrayOfInputElements.splice(index, 1)
+      }
+    })
+
+    if (arrayOfInputElements.length === 2) {
+      if (arrayOfInputElements.includes(SYMBOL.SLASH)) {
+        arrayOfInputElements.splice(arrayOfInputElements.indexOf(SYMBOL.SLASH), 1)
+      }
+      arrayOfInputElements.push(SYMBOL.SLASH)
+    }
+
+    if (arrayOfInputElements.length > 2 && arrayOfInputElements.indexOf(SYMBOL.SLASH) !== 2) {
+      arrayOfInputElements.splice(arrayOfInputElements.indexOf(SYMBOL.SLASH), 1)
+      arrayOfInputElements[2] = SYMBOL.SLASH
+    }
+
+    input.value = arrayOfInputElements.join('')
   })
 
   validationInputs.push({
