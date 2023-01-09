@@ -23,9 +23,9 @@ export const CardDate = ({ validationInputs }: CardDateProps) => {
 
     const arrayOfInputElements = input.value.split('')
 
-    arrayOfInputElements.forEach((e, i) => {
-      if (isNaN(Number(e)) && e !== SYMBOL.SLASH) {
-        arrayOfInputElements.splice(i, 1)
+    arrayOfInputElements.forEach((element, index) => {
+      if (isNaN(Number(element)) && element !== SYMBOL.SLASH) {
+        arrayOfInputElements.splice(index, 1)
       }
     })
 
