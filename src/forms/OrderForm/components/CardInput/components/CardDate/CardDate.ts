@@ -14,13 +14,13 @@ export const CardDate = ({ validationInputs }: CardDateProps) => {
     classname: commonStyles.input,
   })
 
-  const inputLength = 5
+  const inputMaxLength = 5
 
   inputWrapper.append(input)
 
   input.addEventListener('input', () => {
-    if (input.value.length > 5) {
-      input.value = input.value.slice(0, inputLength)
+    if (input.value.length > inputMaxLength) {
+      input.value = input.value.slice(0, inputMaxLength)
     }
 
     const arrayOfInputElements = input.value.split('')
