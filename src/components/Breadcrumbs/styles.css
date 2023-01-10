@@ -1,0 +1,28 @@
+.list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  & .element {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &:last-child {
+
+      & .link {
+        text-decoration: none;
+        pointer-events: none;
+      }
+    }
+
+    & .link {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-blue);
+    }
+  }
+}

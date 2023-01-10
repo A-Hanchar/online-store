@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  & .descriptionProduct {
+
+    & .title {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    & .categoryBrand {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-gray);
+    }
+
+    & .description {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  & .additionDescription {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    & .descriptionInNumbers {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+  }
+}

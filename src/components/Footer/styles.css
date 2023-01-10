@@ -1,0 +1,18 @@
+.footer {
+  display: flex;
+  grid-area: footer;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 40px;
+  background-color: var(--color-white);
+  box-shadow: 0 0 55px rgb(0 0 0 / 0.1);
+}
+
+.logo {
+  width: 5rem;
+}
+
+.date {
+  font-size: 1.3rem;
+  font-weight: 600;
+}

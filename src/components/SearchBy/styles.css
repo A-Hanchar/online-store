@@ -1,0 +1,11 @@
+.input {
+  box-sizing: border-box;
+  min-width: 350px;
+  height: 35px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-black);
+  border: none;
+  border-radius: 15px;
+}

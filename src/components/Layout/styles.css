@@ -1,0 +1,19 @@
+.page {
+  display: grid;
+  grid-template-areas: "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+
+  & .mainHome {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    background-color: var(--color-light-gray);
+  }
+
+  & .mainBasket {
+    padding: 45px;
+    background-color: var(--color-light-gray);
+  }
+}

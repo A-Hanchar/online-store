@@ -1,0 +1,25 @@
+:root {
+  --product-card-border-radius: 24px;
+}
+
+.card {
+  display: grid;
+  background-color: var(--color-white);
+  filter: drop-shadow(0 0 4px rgb(0 0 0 / 0.1)) drop-shadow(0 2px 4px rgb(0 0 0 / 0.1));
+  border-radius: var(--product-card-border-radius);
+
+  &.standart {
+    grid-template-areas: "image"
+      "productInfo"
+      "actionButtons";
+    width: 350px;
+  }
+
+  &.full {
+    grid-template-areas: "image productInfo"
+      "image actionButtons";
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    width: 100%;
+  }
+}

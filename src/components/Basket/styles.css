@@ -1,0 +1,31 @@
+.basket {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  font-size: 18px;
+  color: #000;
+  text-decoration: none;
+
+  &::after {
+    position: absolute;
+    left: calc(50% + 10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    min-height: 20px;
+    font-size: 10px;
+    color: var(--color-white);
+    content: attr(data-basket-count-items);
+    background-color: var(--color-red);
+    border-radius: 50%;
+  }
+
+  & .basketImage {
+    width: 27px;
+    height: 27px;
+    background: url(assets/images/basket.svg) center/contain no-repeat;
+  }
+}

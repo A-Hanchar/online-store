@@ -1,0 +1,21 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  & .chooseSorting {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+  }
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,10 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 12px 40px;
+  font-size: 18px;
+  color: var(--color-light-gray);
+  background-color: var(--color-gray);
+}

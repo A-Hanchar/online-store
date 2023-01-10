@@ -1,0 +1,14 @@
+.actionButtons {
+  grid-area: actionButtons;
+  gap: 16px;
+  padding: 16px;
+
+  &.standart {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  &.full {
+    display: flex;
+  }
+}
