@@ -22,4 +22,14 @@ describe('toggleClassnameToElement', () => {
 
     expect(elementMock.classList.contains(classnameMock)).toBeTruthy()
   })
+
+  it('SHOULD add not empty class to elements', () => {
+    const elementMock = document.createElement('div')
+    const classnameMock1 = 'classnameMock-1'
+    const classnameMock2 = undefined
+    const classnameMock3 = 'classnameMock-3'
+
+    toggleClassnameToElement({ element: elementMock, classname: [classnameMock1, classnameMock2, classnameMock3] })
+    expect(elementMock.classList.length).toBe(2)
+  })
 })
