@@ -1,5 +1,6 @@
 import { Button } from 'components/Button'
 
+import { ModalWindow } from 'components/ModalWindow'
 import { Text } from 'components/Text'
 
 import { CURRENCY } from 'enums'
@@ -10,8 +11,6 @@ import {
   localStorageInstanse,
   localStoragePromoCodeInstanse,
 } from 'helpers'
-
-import { ModalWindow } from './../../../../../../../../components/ModalWindow/ModalWindow'
 
 import styles from './styles.css'
 import { Totalprops } from './types'

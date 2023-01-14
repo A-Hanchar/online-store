@@ -8,8 +8,18 @@ import styles from './styles.css'
 import { SortByProps } from './types'
 
 export const SortBy = ({ elements }: SortByProps) => {
-  const sortParam = urlInstanse.getSortByParam()
-  const currentElem = sortParam ? elements.find(({ key }) => key === sortParam.sortKey) ?? elements[0] : elements[0]
+  const getCurrentElement = () => {
+    const sortParam = urlInstanse.getSortByParam()
+
+    const currentElem = sortParam ? elements.find(({ key }) => key === sortParam.sortKey) ?? elements[0] : elements[0]
+
+    return {
+      sortParam,
+      currentElem,
+    }
+  }
+
+  const { currentElem } = getCurrentElement()
 
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
 
@@ -19,8 +29,7 @@ export const SortBy = ({ elements }: SortByProps) => {
   })
 
   const updateSortingElements = () => {
-    const sortParam = urlInstanse.getSortByParam()
-    const currentElem = sortParam ? elements.find(({ key }) => key === sortParam.sortKey) ?? elements[0] : elements[0]
+    const { sortParam, currentElem } = getCurrentElement()
 
     const sortKey = sortParam?.sortKey ?? currentElem.key
     const sortType = sortParam?.sortType ?? SORT_TYPE.ASC

@@ -9,8 +9,7 @@ import { SizeButtonProps } from './types'
 
 export const SizeButton = ({ SizeList }: SizeButtonProps) => {
   const handleButtonClick = () => {
-    toggleClassnameToElement({ element: SizeList, classname: commonStyles.hidden })
-    toggleClassnameToElement({ element: SizeList, classname: commonStyles.flex })
+    toggleClassnameToElement({ element: SizeList, classname: [commonStyles.hidden, commonStyles.flex] })
   }
 
   const button = Button({

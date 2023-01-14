@@ -13,8 +13,7 @@ export const SizeList = () => {
     const li = createElementWithClassName({ tagName: 'li', classname: styles.listItem })
 
     li.addEventListener('click', () => {
-      toggleClassnameToElement({ element: ul, classname: commonStyles.hidden })
-      toggleClassnameToElement({ element: ul, classname: commonStyles.flex })
+      toggleClassnameToElement({ element: ul, classname: [commonStyles.hidden, commonStyles.flex] })
 
       urlInstanse.setPaginationValue('size', size)
     })
